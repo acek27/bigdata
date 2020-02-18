@@ -44,7 +44,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group has-feedback">
-                <input type="name" class="form-control" name="name" placeholder="Name" autofocus>
+                <input type="name" class="form-control" name="name" placeholder="Username" autofocus>
                 <span
                     class="glyphicon glyphicon-envelope form-control-feedback @error('name') is-invalid @enderror"></span>
                 @error('name')
