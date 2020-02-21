@@ -34,7 +34,6 @@
                 return {icon: feature.getProperty('icon')};
             });
         }
-
         google.maps.event.addDomListener(window, "load", initMap);
     </script>
 @endpush
