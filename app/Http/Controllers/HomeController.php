@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         try {
             // Open Shapefile
-            $Shapefile = new ShapefileReader('gis/Perairan/Garis_Pantai.shp');
+            $Shapefile = new ShapefileReader('gis/Toponimi/Administrasi_Point.shp');
 
             // Read all the records
             while ($Geometry = $Shapefile->fetchRecord()) {
@@ -42,9 +42,17 @@ class HomeController extends Controller
                     continue;
                 }
 
+                // Print Geometry as an Array
+//                $data = ($Geometry->getArray());
+
+                // Print Geometry as WKT
+//                $data = ($Geometry->getWKT());
+
                 // Print Geometry as GeoJSON
-//                return ($Geometry->getGeoJSON());
-                $data =  ($Geometry->getArray());
+                $data = ($Geometry->getGeoJSON());
+
+                // Print DBF data
+//                $data = ($Geometry->getDataArray());
                 return $data;
 //                return view('home',compact('data'));
             }
