@@ -19,23 +19,23 @@
 
 @endsection
 @push('scripts')
-    <script>
-        var map;
+{{--    <script>--}}
+{{--        var map;--}}
 
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map-canvas'), {
-                zoom: 11,
-                center: {lat: -7.7050532, lng: 113.9952789},
-                scrollwheel: false,
-            });
+{{--        function initMap() {--}}
+{{--            map = new google.maps.Map(document.getElementById('map-canvas'), {--}}
+{{--                zoom: 11,--}}
+{{--                center: {lat: -7.7050532, lng: 113.9952789},--}}
+{{--                scrollwheel: false,--}}
+{{--            });--}}
 
-            map.data.loadGeoJson('gis/Infrastruktur_Point.geojson');
-            map.data.setStyle(function (feature) {
-                return {icon: feature.getProperty('icon')};
-            });
-        }
-        google.maps.event.addDomListener(window, "load", initMap);
-    </script>
+{{--            map.data.loadGeoJson('gis/Infrastruktur_Point.geojson');--}}
+{{--            map.data.setStyle(function (feature) {--}}
+{{--                return {icon: feature.getProperty('icon')};--}}
+{{--            });--}}
+{{--        }--}}
+{{--        google.maps.event.addDomListener(window, "load", initMap);--}}
+{{--    </script>--}}
     <script>
         var map;
         var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
