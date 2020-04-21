@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('can:admin');
+//        $this->middleware('can:admin');
     }
 
     /**
