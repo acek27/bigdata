@@ -4,7 +4,18 @@
     <script type="text/javascript"
             src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCyz35pK5Ccrp8a58PJSEO9vhLC6WU3FvU&libraries=drawing,geometry"></script>
 @endpush
-
+@section('title')
+    BIGDATA | DASHBOARD
+@endsection
+@section('header')
+    DASHBOARD
+@endsection
+@section('bar1')
+    BIGDATA
+@endsection
+@section('bar2')
+    DASHBOARD
+@endsection
 @section('content')
     <!-- Page Heading -->
     <div class="row">

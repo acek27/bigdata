@@ -20,7 +20,8 @@ trait Resource
      */
     public function index()
     {
-        return view($this->view . '.index');
+        $model = $this->model::all();
+        return view($this->view . '.index',compact('model'));
     }
 
     /**

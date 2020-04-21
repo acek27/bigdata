@@ -9,7 +9,7 @@ class KecamatanController extends Controller
 {
     use Resource;
 //    protected $model = Aspek::class;
-    protected $view = 'kecamatans';
+    protected $view = 'homes';
     protected $route = 'kecamatan';
 
     public function __construct()

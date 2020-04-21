@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Shapefile\Shapefile;
+use App\Http\Traits\Resource;
+use App\Models\Kecamatan;
 use Shapefile\ShapefileException;
 use Shapefile\ShapefileReader;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    use Resource;
+    protected $model = Kecamatan::class;
+    protected $view = 'homes';
+    protected $route = 'home';
     public function __construct()
     {
-//        $this->middleware('can:admin');
+        $this->middleware('can:opd');
     }
 
     /**
@@ -24,10 +23,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
 
     public function map()
     {
