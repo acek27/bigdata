@@ -13,16 +13,25 @@ class HomeController extends Controller
     protected $model = Kecamatan::class;
     protected $view = 'homes';
     protected $route = 'home';
+
     public function __construct()
     {
-        $this->middleware('can:opd');
+        $this->middleware('auth');
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\RedirectResponse
      */
+    public function index()
+    {
+        if (\Auth::user()->can('admin')){
+            return view('homes.index');
+        } else if (\Auth::user()->can('pencacah')){
+            return redirect()->route('kuesioner.index');
+        }
+    }
 
     public function map()
     {

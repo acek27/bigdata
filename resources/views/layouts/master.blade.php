@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @stack('css')
 </head>
-<body class="sidebar-mini layout-fixed accent-indigo text-sm">
+<body class="sidebar-mini layout-fixed accent-indigo text-sm sidebar-collapse">
 <div class="wrapper">
 
     <!-- Navbar -->
