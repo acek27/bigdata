@@ -2,15 +2,23 @@
 
 namespace App\Models;
 
+use App\Http\Traits\GetYear;
 use Illuminate\Database\Eloquent\Model;
 
 class Bidang_industri extends Model
 {
+    use GetYear;
+
     protected $with = ['md_bahanbakus', 'md_suplier'];
     protected $fillable = ['nik', 'idjenisindustri', 'namaproduk', 'produksiperbulan',
         'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan',
         'namasuplier', 'idsuplier', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
         'pemasaranluarnegeri', 'tempatpemasaran', 'hargajualproduk', 'operasionalperbulan'];
+
+    public function scopeTahun($query)
+    {
+        return $query->whereYear('created_at', '2018');
+    }
 
     public function md_bahanbakus()
     {

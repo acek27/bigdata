@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Http\Traits\GetYear;
 use Illuminate\Database\Eloquent\Model;
 
 class Kepemilikanaset extends Model
 {
+    use GetYear;
+
     protected $with = ['md_asetusahas'];
     protected $fillable = ['nik', 'idasetusaha', 'jumlahaset'];
 

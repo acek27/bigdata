@@ -8,6 +8,7 @@ class Kecamatan extends Model
 {
     protected $table = 'kecamatan';
     protected $primaryKey = 'idkecamatan';
+    protected $keyType = 'string';
 
     public function desa()
     {

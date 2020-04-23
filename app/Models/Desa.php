@@ -8,6 +8,8 @@ class Desa extends Model
 {
     protected $table = 'desa';
     protected $primaryKey = 'iddesa';
+    protected $with = ['kecamatan'];
+    protected $keyType = 'string';
 
     public function bidang_pertanians()
     {

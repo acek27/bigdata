@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Http\Traits\GetYear;
 use Illuminate\Database\Eloquent\Model;
 
 class Budidayaikan extends Model
 {
+    use GetYear;
+
     protected $with = ['md_jenisbudidayas', 'md_jenispakanternaks'];
     protected $fillable = ['nik', 'idjenisikan', 'luaskolam', 'satuanluas', 'hargabibit', 'satuanbibit', 'hargajual',
         'satuanjual', 'tanggaltebar', 'tanggalpanen', 'kapasitasperpanen', 'panenpertahun', 'biayaproduksi',

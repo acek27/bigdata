@@ -2,17 +2,20 @@
 
 namespace App\Models;
 
+use App\Http\Traits\GetYear;
 use Illuminate\Database\Eloquent\Model;
 
 class Bidang_pertanian extends Model
 {
+    use GetYear;
+
     protected $with = ['desasuplier', 'desakios', 'md_saprodis'];
-    protected $fillable = ['nik','statuspengelolaan','statuspembibitan','namasuplier',
-        'iddesasuplier','kebutuhanpupukorganik','kebutuhanpupukanorganik','sumberpupuk','namakios',
-        'iddesakios','sumberirigasi','modelpenjualan','hargaijon','satuanijon','pemasaranhasil',
-        'pemasarandalamkabupaten','pemasaranluarkabupaten','pemasaranluarprovinsi','pemasaranluarnegeri',
-        'pengolahanlimbah','jenisolahanlimbah','kapasitaslimbahperpanen','satuanlimbah',
-        'hargasebelumolah','idsaprodi'];
+    protected $fillable = ['nik', 'statuspengelolaan', 'statuspembibitan', 'namasuplier',
+        'iddesasuplier', 'kebutuhanpupukorganik', 'kebutuhanpupukanorganik', 'sumberpupuk', 'namakios',
+        'iddesakios', 'sumberirigasi', 'modelpenjualan', 'hargaijon', 'satuanijon', 'pemasaranhasil',
+        'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi', 'pemasaranluarnegeri',
+        'pengolahanlimbah', 'jenisolahanlimbah', 'kapasitaslimbahperpanen', 'satuanlimbah',
+        'hargasebelumolah', 'idsaprodi'];
 
     public function desasuplier()
     {
