@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kepemilikanusahadagang extends Model
 {
     protected $with = ['md_jenisusahadagangs'];
+    protected $fillable = ['nik', 'idjenisusahadagang'];
 
     public function bidang_perdagangans()
     {
@@ -17,4 +18,5 @@ class Kepemilikanusahadagang extends Model
     {
         return $this->belongsTo(Md_jenisusahadagang::class, 'idjenisusahadagang', 'id');
     }
+
 }

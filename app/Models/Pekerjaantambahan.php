@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pekerjaantambahan extends Model
 {
     protected $with = ['md_bidangusahapekerjaans', 'md_statuspekerjaans'];
+    protected $fillable = ['nik', 'idjenisusaha', 'idstatuspekerjaan'];
 
     public function md_bidangusahapekerjaans()
     {

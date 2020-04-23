@@ -18,4 +18,9 @@ class Desa extends Model
     {
         return $this->hasMany(Bidang_peternakan::class);
     }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'idkecamatan', 'idkecamatan');
+    }
 }

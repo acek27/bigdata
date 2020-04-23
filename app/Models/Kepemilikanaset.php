@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kepemilikanaset extends Model
 {
     protected $with = ['md_asetusahas'];
+    protected $fillable = ['nik', 'idasetusaha', 'jumlahaset'];
 
     public function md_asetusahas()
     {
