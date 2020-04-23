@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Resource;
+use App\Models\Bidang_industri;
 use App\Models\Kecamatan;
+use App\Models\Md_suplier;
 use Shapefile\ShapefileException;
 use Shapefile\ShapefileReader;
 
 class HomeController extends Controller
 {
     use Resource;
+
     protected $model = Kecamatan::class;
     protected $view = 'homes';
     protected $route = 'home';
@@ -22,13 +25,14 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function index()
     {
-        if (\Auth::user()->can('admin')){
-            return view('homes.index');
-        } else if (\Auth::user()->can('pencacah')){
+        if (\Auth::user()->can('admin')) {
+            $model = Md_suplier::all();
+            return view('homes.index',compact('model'));
+        } else if (\Auth::user()->can('pencacah')) {
             return redirect()->route('kuesioner.index');
         }
     }

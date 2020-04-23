@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Md_saprodi extends Model
 {
-    //
+    public function bidang_pertanians()
+    {
+        return $this->hasMany(Bidang_pertanian::class);
+    }
 }

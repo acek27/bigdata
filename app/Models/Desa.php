@@ -8,4 +8,14 @@ class Desa extends Model
 {
     protected $table = 'desa';
     protected $primaryKey = 'iddesa';
+
+    public function bidang_pertanians()
+    {
+        return $this->hasMany(Bidang_pertanian::class);
+    }
+
+    public function bidang_peternakans()
+    {
+        return $this->hasMany(Bidang_peternakan::class);
+    }
 }
