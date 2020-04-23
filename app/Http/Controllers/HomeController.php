@@ -2,12 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Traits\Resource;
-use App\Models\Bidang_industri;
-use App\Models\Desa;
-use App\Models\Kecamatan;
-use App\Models\Md_suplier;
-use App\Models\Penghasilantambahan;
 use Shapefile\ShapefileException;
 use Shapefile\ShapefileReader;
 

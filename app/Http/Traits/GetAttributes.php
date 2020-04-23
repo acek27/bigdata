@@ -2,7 +2,7 @@
 
 namespace App\Http\Traits;
 
-trait GetYear
+trait GetAttributes
 {
     public function scopeGetYear($query)
     {

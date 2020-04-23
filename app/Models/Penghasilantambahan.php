@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Traits\GetYear;
+use App\Http\Traits\GetAttributes;
 
 class Penghasilantambahan extends Model
 {
-    use GetYear;
+    use GetAttributes;
 
     protected $fillable = ['nik', 'namasumberdaya', 'panenpertahun', 'hasilperpanen'];
 

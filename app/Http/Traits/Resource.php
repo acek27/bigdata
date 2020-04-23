@@ -10,6 +10,7 @@ namespace App\Http\Traits;
 
 
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 trait Resource
 {

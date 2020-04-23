@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Http\Traits\GetYear;
+use App\Http\Traits\GetAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Garapanpertanian extends Model
 {
-    use GetYear;
+    use GetAttributes;
 
     protected $with = ['md_jenistanamans'];
     protected $fillable = ['nik', 'jenistanaman', 'luastanam', 'satuanluas', 'bulantanam', 'bulantanamselanjutnya',

@@ -17,7 +17,7 @@ class KuesionerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:pencacah');
     }
 
     public function index()

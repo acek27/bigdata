@@ -2,18 +2,62 @@
 
 namespace App\Models;
 
-use App\Http\Traits\GetYear;
+use App\Http\Traits\GetAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Bidang_industri extends Model
 {
-    use GetYear;
+    use GetAttributes;
 
     protected $with = ['md_bahanbakus', 'md_suplier'];
     protected $fillable = ['nik', 'idjenisindustri', 'namaproduk', 'produksiperbulan',
         'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan',
         'namasuplier', 'idsuplier', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
         'pemasaranluarnegeri', 'tempatpemasaran', 'hargajualproduk', 'operasionalperbulan'];
+
+    public static $rulesCreate = [
+        'nik' => 'required',
+        'idjenisindustri' => 'required',
+        'namaproduk' => 'required',
+        'produksiperbulan' => 'required',
+        'satuanproduksi' => 'required',
+        'idbahanbaku' => 'required',
+        'kebutuhanperbulan' => 'required',
+        'satuanbahanbaku' => 'required',
+        'hargakulakbahan' => 'required',
+        'namasuplier' => 'required',
+        'idsuplier' => 'required',
+        'pemasarandalamkabupaten' => 'required',
+        'pemasaranluarkabupaten' => 'required',
+        'pemasaranluarprovinsi' => 'required',
+        'pemasaranluarnegeri' => 'required',
+        'tempatpemasaran' => 'required',
+        'hargajualproduk' => 'required',
+        'operasionalperbulan' => 'required',
+    ];
+
+    public static function rulesEdit(Bidang_industri $data)
+    {
+        return ['nik' => 'required',
+            'idjenisindustri' => 'required',
+            'namaproduk' => 'required',
+            'produksiperbulan' => 'required',
+            'satuanproduksi' => 'required',
+            'idbahanbaku' => 'required',
+            'kebutuhanperbulan' => 'required',
+            'satuanbahanbaku' => 'required',
+            'hargakulakbahan' => 'required',
+            'namasuplier' => 'required',
+            'idsuplier' => 'required',
+            'pemasarandalamkabupaten' => 'required',
+            'pemasaranluarkabupaten' => 'required',
+            'pemasaranluarprovinsi' => 'required',
+            'pemasaranluarnegeri' => 'required',
+            'tempatpemasaran' => 'required',
+            'hargajualproduk' => 'required',
+            'operasionalperbulan' => 'required',
+        ];
+    }
 
     public function scopeTahun($query)
     {

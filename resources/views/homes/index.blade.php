@@ -1,63 +1,102 @@
 @extends('layouts.master')
-
+@section('title')
+    BIGDATA | DASHBOARD
+@endsection
+@section('header')
+    DASHBOARD
+@endsection
+@section('bar1')
+    BIGDATA
+@endsection
+@section('bar2')
+    DASHBOARD
+@endsection
 @section('content')
-    {{$model}}
-    <div class="row">
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>print</h3>
 
-                    <p>New Orders</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
+    <div class="row">
+        <div class="col-lg-2 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>50</h3>
 
-                    <p>Bounce Rate</p>
+                    <p>Pertanian</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                    <i class="fa fa-leaf"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-info">
                 <div class="inner">
-                    <h3 style="color: white">44</h3>
+                    <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                    <p style="color: white">User Registrations</p>
+                    <p>Peternakan</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="fas fa-horse"></i>
                 </div>
-                <a href="#" class="small-box-footer"><span style="color: white">More info</span> <i style="color: white" class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>44</h3>
+
+                    <p>Perikanan</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <a href="#" class="small-box-footer"><span style="color: white">More info</span> <i style="color: white"
+                                                                                                    class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-2 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>65</h3>
 
-                    <p>Unique Visitors</p>
+                    <p>Industri</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="fas fa-industry"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+                <div class="inner">
+                    <h3>65</h3>
+
+                    <p>Perdagangan</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-2 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gray">
+                <div class="inner">
+                    <h3>65</h3>
+                    <p>Jasa</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-money-check-alt"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -65,6 +104,201 @@
         <!-- ./col -->
     </div>
     <!-- /.row -->
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">CPU Traffic</span>
+                    <span class="info-box-number">
+                  10
+                  <small>%</small>
+                </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Likes</span>
+                    <span class="info-box-number">41,410</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix hidden-md-up"></div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Sales</span>
+                    <span class="info-box-number">760</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">New Members</span>
+                    <span class="info-box-number">2,000</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Monthly Recap Report</h5>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-wrench"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" role="menu" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(45px, 18px, 0px);">
+                                <a href="#" class="dropdown-item">Action</a>
+                                <a href="#" class="dropdown-item">Another action</a>
+                                <a href="#" class="dropdown-item">Something else here</a>
+                                <a class="dropdown-divider"></a>
+                                <a href="#" class="dropdown-item">Separated link</a>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-center">
+                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                            </p>
+
+                            <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                                <!-- Sales Chart Canvas -->
+                                <canvas id="salesChart" height="161" style="height: 180px; display: block; width: 781px;" width="702" class="chartjs-render-monitor"></canvas>
+                            </div>
+                            <!-- /.chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center">
+                                <strong>Goal Completion</strong>
+                            </p>
+
+                            <div class="progress-group">
+                                Add Products to Cart
+                                <span class="float-right"><b>160</b>/200</span>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+
+                            <div class="progress-group">
+                                Complete Purchase
+                                <span class="float-right"><b>310</b>/400</span>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                </div>
+                            </div>
+
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Visit Premium Page</span>
+                                <span class="float-right"><b>480</b>/800</span>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-success" style="width: 60%"></div>
+                                </div>
+                            </div>
+
+                            <!-- /.progress-group -->
+                            <div class="progress-group">
+                                Send Inquiries
+                                <span class="float-right"><b>250</b>/500</span>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <!-- /.progress-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- ./card-body -->
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm-3 col-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                                <h5 class="description-header">$35,210.43</h5>
+                                <span class="description-text">TOTAL REVENUE</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                                <h5 class="description-header">$10,390.90</h5>
+                                <span class="description-text">TOTAL COST</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                                <h5 class="description-header">$24,813.53</h5>
+                                <span class="description-text">TOTAL PROFIT</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-3 col-6">
+                            <div class="description-block">
+                                <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                                <h5 class="description-header">1200</h5>
+                                <span class="description-text">GOAL COMPLETIONS</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
     <!-- Main row -->
     <div class="row">
         <!-- Left col -->
@@ -79,10 +313,10 @@
                     <div class="card-tools">
                         <ul class="nav nav-pills ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                                <a class="nav-link" href="#revenue-chart" data-toggle="tab">Area</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                                <a class="nav-link active" href="#sales-chart" data-toggle="tab">Donut</a>
                             </li>
                         </ul>
                     </div>
@@ -90,11 +324,11 @@
                 <div class="card-body">
                     <div class="tab-content p-0">
                         <!-- Morris chart - Sales -->
-                        <div class="chart tab-pane active" id="revenue-chart"
+                        <div class="chart tab-pane" id="revenue-chart"
                              style="position: relative; height: 300px;">
                             <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
                         </div>
-                        <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                        <div class="chart tab-pane active" id="sales-chart" style="position: relative; height: 300px;">
                             <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                         </div>
                     </div>
@@ -587,6 +821,248 @@
             <!-- /.card -->
         </section>
         <!-- right col -->
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">Online Store Visitors</h3>
+                        <a href="javascript:void(0);">View Report</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex">
+                        <p class="d-flex flex-column">
+                            <span class="text-bold text-lg">820</span>
+                            <span>Visitors Over Time</span>
+                        </p>
+                        <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 12.5%
+                    </span>
+                            <span class="text-muted">Since last week</span>
+                        </p>
+                    </div>
+                    <!-- /.d-flex -->
+
+                    <div class="position-relative mb-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="visitors-chart" height="179" width="505" class="chartjs-render-monitor" style="display: block; height: 200px; width: 562px;"></canvas>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-end">
+                  <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> This Week
+                  </span>
+
+                        <span>
+                    <i class="fas fa-square text-gray"></i> Last Week
+                  </span>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 class="card-title">Products</h3>
+                    <div class="card-tools">
+                        <a href="#" class="btn btn-tool btn-sm">
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a href="#" class="btn btn-tool btn-sm">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-striped table-valign-middle">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Sales</th>
+                            <th>More</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                Some Product
+                            </td>
+                            <td>$13 USD</td>
+                            <td>
+                                <small class="text-success mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    12%
+                                </small>
+                                12,000 Sold
+                            </td>
+                            <td>
+                                <a href="#" class="text-muted">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                Another Product
+                            </td>
+                            <td>$29 USD</td>
+                            <td>
+                                <small class="text-warning mr-1">
+                                    <i class="fas fa-arrow-down"></i>
+                                    0.5%
+                                </small>
+                                123,234 Sold
+                            </td>
+                            <td>
+                                <a href="#" class="text-muted">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                Amazing Product
+                            </td>
+                            <td>$1,230 USD</td>
+                            <td>
+                                <small class="text-danger mr-1">
+                                    <i class="fas fa-arrow-down"></i>
+                                    3%
+                                </small>
+                                198 Sold
+                            </td>
+                            <td>
+                                <a href="#" class="text-muted">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                Perfect Item
+                                <span class="badge bg-danger">NEW</span>
+                            </td>
+                            <td>$199 USD</td>
+                            <td>
+                                <small class="text-success mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    63%
+                                </small>
+                                87 Sold
+                            </td>
+                            <td>
+                                <a href="#" class="text-muted">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col-md-6 -->
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">Sales</h3>
+                        <a href="javascript:void(0);">View Report</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex">
+                        <p class="d-flex flex-column">
+                            <span class="text-bold text-lg">$18,230.00</span>
+                            <span>Sales Over Time</span>
+                        </p>
+                        <p class="ml-auto d-flex flex-column text-right">
+                    <span class="text-success">
+                      <i class="fas fa-arrow-up"></i> 33.1%
+                    </span>
+                            <span class="text-muted">Since last month</span>
+                        </p>
+                    </div>
+                    <!-- /.d-flex -->
+
+                    <div class="position-relative mb-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="sales-chart" height="179" style="display: block; height: 200px; width: 562px;" width="505" class="chartjs-render-monitor"></canvas>
+                    </div>
+
+                    <div class="d-flex flex-row justify-content-end">
+                  <span class="mr-2">
+                    <i class="fas fa-square text-primary"></i> This year
+                  </span>
+
+                        <span>
+                    <i class="fas fa-square text-gray"></i> Last year
+                  </span>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 class="card-title">Online Store Overview</h3>
+                    <div class="card-tools">
+                        <a href="#" class="btn btn-sm btn-tool">
+                            <i class="fas fa-download"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm btn-tool">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <p class="text-success text-xl">
+                            <i class="ion ion-ios-refresh-empty"></i>
+                        </p>
+                        <p class="d-flex flex-column text-right">
+                    <span class="font-weight-bold">
+                      <i class="ion ion-android-arrow-up text-success"></i> 12%
+                    </span>
+                            <span class="text-muted">CONVERSION RATE</span>
+                        </p>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                        <p class="text-warning text-xl">
+                            <i class="ion ion-ios-cart-outline"></i>
+                        </p>
+                        <p class="d-flex flex-column text-right">
+                    <span class="font-weight-bold">
+                      <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
+                    </span>
+                            <span class="text-muted">SALES RATE</span>
+                        </p>
+                    </div>
+                    <!-- /.d-flex -->
+                    <div class="d-flex justify-content-between align-items-center mb-0">
+                        <p class="text-danger text-xl">
+                            <i class="ion ion-ios-people-outline"></i>
+                        </p>
+                        <p class="d-flex flex-column text-right">
+                    <span class="font-weight-bold">
+                      <i class="ion ion-android-arrow-down text-danger"></i> 1%
+                    </span>
+                            <span class="text-muted">REGISTRATION RATE</span>
+                        </p>
+                    </div>
+                    <!-- /.d-flex -->
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-6 -->
     </div>
 @endsection
 @push('script')

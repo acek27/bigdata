@@ -3,26 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Resource;
-use App\Models\Kecamatan;
-use App\Models\Penghasilantambahan;
+use App\Models\Desa;
+use App\Models\Pengolahanlimbahternak;
 use Illuminate\Http\Request;
 
 class HomeadminController extends Controller
 {
     use Resource;
 
-    protected $model = Penghasilantambahan::class;
+    protected $model = Pengolahanlimbahternak::class;
     protected $view = 'homes';
     protected $route = 'homeAdmin';
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:admin');
     }
 
     public function index()
     {
-        $model = $this->model::GetYear()->get();
-        return view('homes.index', compact('model'));
+        return view('homes.index');
     }
 }

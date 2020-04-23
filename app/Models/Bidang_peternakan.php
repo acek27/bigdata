@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Http\Traits\GetYear;
+use App\Http\Traits\GetAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class Bidang_peternakan extends Model
 {
-    use GetYear;
+    use GetAttributes;
 
     protected $with = ['desa', 'md_penyakitternaks'];
     protected $fillable = ['nik', 'statuspengelolaan', 'kepemilikankandang', 'peruntukanternak',

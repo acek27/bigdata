@@ -710,6 +710,8 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('dist/js/pages/dashboard2.js')}}"></script>
+<script src="{{asset('dist/js/pages/dashboard3.js')}}"></script>
 @stack('script')
 <script>
     $.ajaxSetup({
