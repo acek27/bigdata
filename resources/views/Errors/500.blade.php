@@ -21,7 +21,7 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
     <div class="lockscreen-logo">
-        <a href="../../index2.html"><b>BIG</b>DATA</a>
+        <a href="{{route('home')}}"><b>BIG</b>DATA</a>
     </div>
     <section class="content">
         <div class="error-page">
