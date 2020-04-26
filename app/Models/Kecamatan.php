@@ -10,6 +10,12 @@ class Kecamatan extends Model
     protected $primaryKey = 'idkecamatan';
     protected $keyType = 'string';
 
+    public function getKecamatanAttribute($value)
+    {
+        return ucwords(strtolower($value));
+    }
+
+
     public function desa()
     {
         return $this->hasMany(Desa::class);

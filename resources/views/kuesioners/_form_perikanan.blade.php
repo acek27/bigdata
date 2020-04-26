@@ -148,7 +148,7 @@
             </div>
         </td>
         <td>
-            {{ Form::select('id','a',null,[
+            {{ Form::select('id',$jenispakanikan,null,[
             'class'=>'form-control select2',
             'id' => 'id'
             ]) }}

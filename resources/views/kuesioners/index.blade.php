@@ -163,7 +163,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-{{--                    @include('kuesioners._form_perikanan')--}}
+                    @include('kuesioners._form_perikanan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>

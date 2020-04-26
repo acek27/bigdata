@@ -57,7 +57,7 @@ class KuesionerController extends Controller
         $jenisikanbudidaya = Md_jenisikanbudidaya::all();
         $jenisikantangkap = Md_jenisikantangkap::all();
         $jenisusahadagang = Md_jenisusahadagang::all();
-//        $jenispakanikan = Md_jenispakanikan::pluck('jenispakanikan','id')->all();
+        $jenispakanikan = Md_jenispakanikan::pluck('jenispakanikan','id')->all();
         $desa = Desa::select('iddesa', DB::raw('CONCAT(kecamatan, " - ", namadesa) AS desa'))
         ->join('kecamatan','desa.idkecamatan','=','kecamatan.idkecamatan')->pluck('desa','iddesa')->all();
         return view($this->view.'.index',compact('bidangusahapekerjaan','statuspekerjaan','asetusaha','perbankan','kredit','jenisindustri',
