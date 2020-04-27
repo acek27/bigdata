@@ -5,18 +5,20 @@
             <label for="inputProjectLeader">1. Sebutkan bidang usaha pekerjaan tambahan anda dan statusnya dalam
                 pekerjaan tersebut (bisa memilih lebih dari 1 bidang)</label>
             <div class="row">
+                @php($i= 1)
                 @foreach($bidangusahapekerjaan as $bidang)
                     <div class="form-check col-lg-6">
                         <div class="row">
                             <div class="col-md-7">
-                                <input onclick="check()" name="bu{{$bidang->id}}" id="bu{{$bidang->id}}"
+                                <input onclick="check()" name="bu{{$i}}" id="bu{{$i}}"
                                        value="{{$bidang->id}}"
                                        class="form-group-input" type="checkbox">
-                                <label for="bu{{$bidang->id}}" class="form-check-label">{{$bidang->bidangusaha}}</label>
+                                <label for="bu{{$i}}" class="form-check-label">{{$bidang->bidangusaha}}</label>
                             </div>
-                            <div id="div{{$bidang->id}}" class="col-md-3" style="display: none">
-                                <select id="idstatuspekerjaan{{$bidang->id}}" name="idstatuspekerjaan{{$bidang->id}}"
+                            <div id="div{{$i}}" class="col-md-3" style="display: none">
+                                <select id="idstatuspekerjaan{{$i}}" name="idstatuspekerjaan{{$i}}"
                                         class="col-lg-12">
+                                    <option value="">pilih</option>
                                     @foreach($statuspekerjaan as $status)
                                         <option value="{{$status->id}}">{{$status->statuspekerjaan}}</option>
                                     @endforeach
@@ -24,6 +26,7 @@
                             </div>
                         </div>
                     </div>
+                    @php($i++)
                 @endforeach
             </div>
         </div>
@@ -185,20 +188,20 @@
                                 <div class="form-group row">
                                     <label>Bank</label>
                                     <div class="col-sm-10">
-                                        {{ Form::text('namabank',null,[
+                                        {{ Form::text('namabank'.$bank->id,null,[
                                         'class'=>'form-control',
-                                        'id' => 'namabank'
+                                        'id' => 'namabank'.$bank->id
                                         ]) }}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group row">
-                                    {{ Form::label('cabang', 'Alamat/cabang') }}
+                                    {{ Form::label('cabang'.$bank->id, 'Alamat/cabang') }}
                                     <div class="col-sm-10">
                                         {{ Form::text('cabang',null,[
                                         'class'=>'form-control',
-                                        'id' => 'cabang'
+                                        'id' => 'cabang'.$bank->id
                                         ]) }}
                                     </div>
                                 </div>

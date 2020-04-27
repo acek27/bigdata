@@ -10,6 +10,7 @@ class Desa extends Model
     protected $primaryKey = 'iddesa';
     protected $with = ['kecamatan'];
     protected $keyType = 'string';
+
 //    protected $appends =['namadesa'];
 
     public function getNamadesaAttribute($value)

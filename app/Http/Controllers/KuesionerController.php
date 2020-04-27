@@ -23,6 +23,7 @@ use App\Models\Md_jenisikantangkap;
 use App\Models\Md_jenispakanikan;
 use App\Models\Md_jenisusahadagang;
 use App\Models\Desa;
+use App\Models\Pekerjaantambahan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -68,9 +69,18 @@ class KuesionerController extends Controller
 
     public function store(Request $request)
     {
-//        $this->validate($request, $this->model::$rulesCreate);
-//        $this->model::create($request->all());
-        return $request->all();
+        $nik = '132410101085';
+        $total = Md_bidangusahapekerjaan::count();
+        $data = array_filter($request->all());
+        for ($i = 1; $i <= $total; $i++) {
+            $dasar = new Pekerjaantambahan();
+            if (array_key_exists('bu' . $i, $data)) {
+                $dasar->nik = $nik;
+                $dasar->idjenisusaha = $data['bu' . $i];
+                $dasar->idstatuspekerjaan = $data['idstatuspekerjaan' . $i];
+                $dasar->save();
+            }
+        }
 //        return redirect(route($this->route . '.index'));
     }
 }

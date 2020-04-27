@@ -199,17 +199,19 @@
 @push('script')
     <script>
         function check() {
+            var i = 1;
             var total = {{$bidangusahapekerjaan->count('id')}};
-                @foreach($bidangusahapekerjaan as $idbidang)
-            var id = 'bu{{$idbidang->id}}';
-            var check = document.getElementById(id)
-            if (check.checked === true) {
-                $('#div{{$idbidang->id}}').show();
-            } else {
-                $('#div{{$idbidang->id}}').hide();
-                $('#idstatuspekerjaan{{$idbidang->id}}').val('');
+            for (i = 1; i <= total; i++) {
+                var id = 'bu' + i;
+                var check = document.getElementById(id)
+                if (check.checked === true) {
+                    // $('#idstatuspekerjaan' + i).val('1');
+                    $('#div' + i).show();
+                } else {
+                    $('#div' + i).hide();
+                    $('#idstatuspekerjaan' + i).val('');
+                }
             }
-            @endforeach
         }
     </script>
 @endpush
