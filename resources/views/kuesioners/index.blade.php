@@ -70,7 +70,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    @include('kuesioners._form_industri')
+                    {{--                    @include('kuesioners._form_industri')--}}
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    @include('kuesioners._form_perdagangan')
+                    {{--                    @include('kuesioners._form_perdagangan')--}}
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    @include('kuesioners._form_pertanian')
+                    {{--                    @include('kuesioners._form_pertanian')--}}
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -140,7 +140,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    @include('kuesioners._form_peternakan')
+                    {{--                    @include('kuesioners._form_peternakan')--}}
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    @include('kuesioners._form_perikanan')
+                    {{--                    @include('kuesioners._form_perikanan')--}}
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    @include('kuesioners._form_jasa')
+                    {{--                    @include('kuesioners._form_jasa')--}}
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -197,10 +197,19 @@
     </div>
 @endsection
 @push('script')
-    <!-- Sparkline -->
-    <script
-        src="{{asset('plugins/sparklines/sparkline.js')}}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
-
+    <script>
+        function check() {
+            var total = {{$bidangusahapekerjaan->count('id')}};
+                @foreach($bidangusahapekerjaan as $idbidang)
+            var id = 'bu{{$idbidang->id}}';
+            var check = document.getElementById(id)
+            if (check.checked === true) {
+                $('#div{{$idbidang->id}}').show();
+            } else {
+                $('#div{{$idbidang->id}}').hide();
+                $('#idstatuspekerjaan{{$idbidang->id}}').val('');
+            }
+            @endforeach
+        }
+    </script>
 @endpush

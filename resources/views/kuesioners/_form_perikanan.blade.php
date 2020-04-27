@@ -8,7 +8,7 @@
     </div>
     <div class="col-md-1">
         <input class="form-group" name="perikanan" id="perikanan" value="0" class="form-check-input" type="radio">
-        <label class="form-check-label"> Tidak </label>
+        <label class="form-check-label">Tidak</label>
     </div>
 </div>
 
@@ -78,237 +78,243 @@
                             </div>
                         </td>
                         <td>
-            {{ Form::select('id',$satuan,null,[
-                  'class'=>'form-control select2',
-                  'id' => 'id'
-                  ]) }}
-        </div>
-        <td>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Rp.</span>
-                </div>
-                {{ Form::text('aspek',null,[
-                    'class'=>'form-control',
-                    'id' => 'aspek'
-                ]) }}
-            </div>
-        </td>
-        <td>
-            {{ Form::select('id',$satuan,null,[
-                  'class'=>'form-control select2',
-                  'id' => 'id'
-                  ]) }}
-        </td>
-        <td>
-            {{ Form::text('aspek',null,[
-                      'class'=>'form-control',
-                      'id' => 'aspek'
-                  ]) }}
-        </td>
-        <td>
-            {{ Form::text('aspek',null,[
-                      'class'=>'form-control',
-                      'id' => 'aspek'
-                  ]) }}</td>
-        <td>
-            <div class="input-group">
+                            {{ Form::select('id',$satuan,null,[
+                                  'class'=>'form-control select2',
+                                  'id' => 'id'
+                                  ]) }}
+                        </td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp.</span>
+                                </div>
+                                {{ Form::text('aspek',null,[
+                                    'class'=>'form-control',
+                                    'id' => 'aspek'
+                                ]) }}
+                            </div>
+                        </td>
+                        <td>
+                            {{ Form::select('id',$satuan,null,[
+                                  'class'=>'form-control select2',
+                                  'id' => 'id'
+                                  ]) }}
+                        </td>
+                        <td>
+                            {{ Form::text('aspek',null,[
+                                      'class'=>'form-control',
+                                      'id' => 'aspek'
+                                  ]) }}
+                        </td>
+                        <td>
+                            {{ Form::text('aspek',null,[
+                                      'class'=>'form-control',
+                                      'id' => 'aspek'
+                                  ]) }}</td>
+                        <td>
+                            <div class="input-group">
 
-                {{ Form::text('aspek',null,[
-                    'class'=>'form-control',
-                    'id' => 'aspek'
-                ]) }}
-                <div class="input-group-append">
-                    <span class="input-group-text">Ton</span>
-                </div>
-            </div>
-        </td>
-        <td>
-            <div class="input-group">
+                                {{ Form::text('aspek',null,[
+                                    'class'=>'form-control',
+                                    'id' => 'aspek'
+                                ]) }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Ton</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="input-group">
 
-                {{ Form::text('aspek',null,[
-                    'class'=>'form-control',
-                    'id' => 'aspek'
-                ]) }}
-                <div class="input-group-append">
-                    <span class="input-group-text">Kali</span>
-                </div>
-            </div>
-        </td>
+                                {{ Form::text('aspek',null,[
+                                    'class'=>'form-control',
+                                    'id' => 'aspek'
+                                ]) }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Kali</span>
+                                </div>
+                            </div>
+                        </td>
 
-        <td>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Rp.</span>
-                </div>
-                {{ Form::text('aspek',null,[
-                    'class'=>'form-control',
-                    'id' => 'aspek'
-                ]) }}
-            </div>
-        </td>
-        <td>
-            {{ Form::select('id',$jenispakanikan,null,[
-            'class'=>'form-control select2',
-            'id' => 'id'
-            ]) }}
-        </td>
-        <td>
-            {{ Form::text('aspek',null,[
-                'class'=>'form-control',
-                'id' => 'aspek'
-            ]) }}
-        </td>
-        <td>
-            {{ Form::select('id',$satuan,null,[
-            'class'=>'form-control select2',
-            'id' => 'id'
-            ]) }}
-        </td>
-        <td>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Rp.</span>
-                </div>
-                {{ Form::text('aspek',null,[
-                    'class'=>'form-control',
-                    'id' => 'aspek'
-                ]) }}
-            </div>
-        </td>
-        </tr>
-        @endforeach
-        <tr>
-            <td>
-                <div class="input-group">
-                    <input name="jenisikanbudidaya11" id="jenisikanbudidaya11" value="11"
-                           class="form-group-input" type="checkbox">
-                    {{ Form::text('aspek',null,[
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp.</span>
+                                </div>
+                                {{ Form::text('aspek',null,[
+                                    'class'=>'form-control',
+                                    'id' => 'aspek'
+                                ]) }}
+                            </div>
+                        </td>
+                        <td>
+                            {{ Form::select('id',$jenispakanikan,null,[
+                            'class'=>'form-control select2',
+                            'id' => 'id'
+                            ]) }}
+                        </td>
+                        <td>
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                        </td>
+                        <td>
+                            {{ Form::select('id',$satuan,null,[
+                            'class'=>'form-control select2',
+                            'id' => 'id'
+                            ]) }}
+                        </td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp.</span>
+                                </div>
+                                {{ Form::text('aspek',null,[
+                                    'class'=>'form-control',
+                                    'id' => 'aspek'
+                                ]) }}
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td>
+                        <div class="input-group">
+                            <input name="jenisikanbudidaya11" id="jenisikanbudidaya11" value="11"
+                                   class="form-group-input" type="checkbox">
+                            {{ Form::text('aspek',null,[
+                                    'class'=>'form-control',
+                                    'id' => 'aspek'
+                                ]) }}
+                        </div>
+                    </td>
+                    <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
+                    </td>
+                    <td>
+                        {{ Form::select('id',$satuan,null,[
+                              'class'=>'form-control select2',
+                              'id' => 'id'
+                              ]) }}
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ Form::select('id',$satuan,null,[
+                              'class'=>'form-control select2',
+                              'id' => 'id'
+                              ]) }}
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ Form::select('id',$satuan,null,[
+                              'class'=>'form-control select2',
+                              'id' => 'id'
+                              ]) }}
+                    </td>
+                    <td>
+                        {{ Form::text('aspek',null,[
+                                  'class'=>'form-control',
+                                  'id' => 'aspek'
+                              ]) }}
+                    </td>
+                    <td>
+                        {{ Form::text('aspek',null,[
+                                  'class'=>'form-control',
+                                  'id' => 'aspek'
+                              ]) }}</td>
+                    <td>
+                        <div class="input-group">
+
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                            <div class="input-group-append">
+                                <span class="input-group-text">Ton</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-group">
+
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                            <div class="input-group-append">
+                                <span class="input-group-text">Kali</span>
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                        </div>
+                    </td>
+                    <td>
+                        {{ Form::select('id',$jenispakanikan,null,[
+                        'class'=>'form-control select2',
+                        'id' => 'id'
+                        ]) }}
+                    </td>
+                    <td>
+                        {{ Form::text('aspek',null,[
                             'class'=>'form-control',
                             'id' => 'aspek'
                         ]) }}
-                </div>
-            </td>
-            <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
-            </td>
-            <td>
-                {{ Form::select('id',$satuan,null,[
-                      'class'=>'form-control select2',
-                      'id' => 'id'
-                      ]) }}
-            </td>
-            <td>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Rp.</span>
-                    </div>
-                    {{ Form::text('aspek',null,[
-                        'class'=>'form-control',
-                        'id' => 'aspek'
-                    ]) }}
-                </div>
-            </td>
-            <td>
-        {{ Form::select('id',$satuan,null,[
-              'class'=>'form-control select2',
-              'id' => 'id'
-              ]) }}
+                    </td>
+                    <td>
+                        {{ Form::select('id',$satuan,null,[
+                        'class'=>'form-control select2',
+                        'id' => 'id'
+                        ]) }}
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Rp.</span>
+                            </div>
+                            {{ Form::text('aspek',null,[
+                                'class'=>'form-control',
+                                'id' => 'aspek'
+                            ]) }}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
     </div>
-    <td>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Rp.</span>
-            </div>
-            {{ Form::text('aspek',null,[
-                'class'=>'form-control',
-                'id' => 'aspek'
-            ]) }}
-        </div>
-    </td>
-    <td>
-        {{ Form::select('id',$satuan,null,[
-              'class'=>'form-control select2',
-              'id' => 'id'
-              ]) }}
-    </td>
-    <td>
-        {{ Form::text('aspek',null,[
-                  'class'=>'form-control',
-                  'id' => 'aspek'
-              ]) }}
-    </td>
-    <td>
-        {{ Form::text('aspek',null,[
-                  'class'=>'form-control',
-                  'id' => 'aspek'
-              ]) }}</td>
-    <td>
-        <div class="input-group">
-
-            {{ Form::text('aspek',null,[
-                'class'=>'form-control',
-                'id' => 'aspek'
-            ]) }}
-            <div class="input-group-append">
-                <span class="input-group-text">Ton</span>
-            </div>
-        </div>
-    </td>
-    <td>
-        <div class="input-group">
-
-            {{ Form::text('aspek',null,[
-                'class'=>'form-control',
-                'id' => 'aspek'
-            ]) }}
-            <div class="input-group-append">
-                <span class="input-group-text">Kali</span>
-            </div>
-        </div>
-    </td>
-
-    <td>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Rp.</span>
-            </div>
-            {{ Form::text('aspek',null,[
-                'class'=>'form-control',
-                'id' => 'aspek'
-            ]) }}
-        </div>
-    </td>
-    <td>
-        {{ Form::select('id',$jenispakanikan,null,[
-        'class'=>'form-control select2',
-        'id' => 'id'
-        ]) }}
-    </td>
-    <td>
-        {{ Form::text('aspek',null,[
-            'class'=>'form-control',
-            'id' => 'aspek'
-        ]) }}
-    </td>
-    <td>
-        {{ Form::select('id',$satuan,null,[
-        'class'=>'form-control select2',
-        'id' => 'id'
-        ]) }}
-    </td>
-    <td>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Rp.</span>
-            </div>
-            {{ Form::text('aspek',null,[
-                'class'=>'form-control',
-                'id' => 'aspek'
-            ]) }}
-        </div>
-    </td>
+    <!-- /.card -->
 </div>
-<!-- /.card-body -->
 
 
 <div class="form-group">

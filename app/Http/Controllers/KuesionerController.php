@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\DB;
 class KuesionerController extends Controller
 {
     use Resource;
+
     protected $model = Kecamatan::class;
     protected $view = 'kuesioners';
     protected $route = 'kuesioner';
@@ -44,11 +45,11 @@ class KuesionerController extends Controller
         $statuspekerjaan = Md_statuspekerjaan::all();
         $asetusaha = Md_asetusaha::all();
         $perbankan = Md_perbankan::all();
-        $kredit = Md_besaranperbankan::pluck('besaran','id')->all();
-        $bahanbaku = Md_bahanbaku::pluck('bahanbaku','id')->all();
+        $kredit = Md_besaranperbankan::pluck('besaran', 'id')->all();
+        $bahanbaku = Md_bahanbaku::pluck('bahanbaku', 'id')->all();
         $jenisindustri = Md_jenisindustri::all();
-        $suplier = Md_suplier::pluck('suplier','id')->all();
-        $satuan = Md_satuan::pluck('satuan','id')->all();
+        $suplier = Md_suplier::pluck('suplier', 'id')->all();
+        $satuan = Md_satuan::pluck('satuan', 'id')->all();
         $jenistanaman = Md_jenistanaman::all();
         $jenissaprodi = Md_saprodi::all();
         $jenisternak = Md_jenisternak::all();
@@ -57,11 +58,19 @@ class KuesionerController extends Controller
         $jenisikanbudidaya = Md_jenisikanbudidaya::all();
         $jenisikantangkap = Md_jenisikantangkap::all();
         $jenisusahadagang = Md_jenisusahadagang::all();
-        $jenispakanikan = Md_jenispakanikan::pluck('jenispakanikan','id')->all();
+        $jenispakanikan = Md_jenispakanikan::pluck('jenispakanikan', 'id')->all();
         $desa = Desa::select('iddesa', DB::raw('CONCAT(kecamatan, " - ", namadesa) AS desa'))
-        ->join('kecamatan','desa.idkecamatan','=','kecamatan.idkecamatan')->pluck('desa','iddesa')->all();
-        return view($this->view.'.index',compact('bidangusahapekerjaan','statuspekerjaan','asetusaha','perbankan','kredit','jenisindustri',
-        'bahanbaku','suplier','satuan','jenistanaman','desa','jenissaprodi','jenisternak','jenispakanternak','limbahternak','jenisikanbudidaya',
-        'jenispakanikan','jenisikantangkap','jenisusahadagang'));
+            ->join('kecamatan', 'desa.idkecamatan', '=', 'kecamatan.idkecamatan')->pluck('desa', 'iddesa')->all();
+        return view($this->view . '.index', compact('bidangusahapekerjaan', 'statuspekerjaan', 'asetusaha', 'perbankan', 'kredit', 'jenisindustri',
+            'bahanbaku', 'suplier', 'satuan', 'jenistanaman', 'desa', 'jenissaprodi', 'jenisternak', 'jenispakanternak', 'limbahternak', 'jenisikanbudidaya',
+            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang'));
+    }
+
+    public function store(Request $request)
+    {
+//        $this->validate($request, $this->model::$rulesCreate);
+//        $this->model::create($request->all());
+        return $request->all();
+//        return redirect(route($this->route . '.index'));
     }
 }
