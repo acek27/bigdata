@@ -1,19 +1,3 @@
-{{--<div class="form-group">--}}
-{{--    {{ Form::label('aspek', 'ASPEK') }}--}}
-{{--    {{ Form::text('aspek',null,[--}}
-{{--        'class'=>'form-control',--}}
-{{--        'id' => 'aspek'--}}
-{{--    ]) }}--}}
-{{--</div>--}}
-
-{{--<div class="form-group">--}}
-{{--    {{ Form::label('id', 'Sebutkan bidang usaha tambahan (bisa memilih lebih dari 1 bidang)') }}--}}
-{{--    {{ Form::select('id', $bidangusahapekerjaan,null,[--}}
-{{--        'class'=>'form-control select2',--}}
-{{--        'id' => 'id'--}}
-{{--    ]) }}--}}
-{{--</div>--}}
-
 <div class="row">
     <div class="col-sm-12">
         <!-- checkbox -->
@@ -25,13 +9,14 @@
                     <div class="form-check col-lg-6">
                         <div class="row">
                             <div class="col-md-7">
-                                <input onclick="check()" name="bu{{$bidang->id}}" id="bu{{$bidang->id}}" value="{{$bidang->id}}"
+                                <input onclick="check()" name="bu{{$bidang->id}}" id="bu{{$bidang->id}}"
+                                       value="{{$bidang->id}}"
                                        class="form-group-input" type="checkbox">
                                 <label for="bu{{$bidang->id}}" class="form-check-label">{{$bidang->bidangusaha}}</label>
                             </div>
                             <div id="div{{$bidang->id}}" class="col-md-3" style="display: none">
-                                <select id="idstatuspekerjaan{{$bidang->id}}" name="idstatuspekerjaan{{$bidang->id}}" class="col-lg-12">
-                                    <option value="">pilih status</option>
+                                <select id="idstatuspekerjaan{{$bidang->id}}" name="idstatuspekerjaan{{$bidang->id}}"
+                                        class="col-lg-12">
                                     @foreach($statuspekerjaan as $status)
                                         <option value="{{$status->id}}">{{$status->statuspekerjaan}}</option>
                                     @endforeach
@@ -58,12 +43,12 @@
                                 <label>{{$aset->id}}{{'. '}}{{$aset->asetusaha}}</label>
                             </div>
                             <div class="col-md-1">
-                                <input name="idjenisusaha{{$aset->id}}" id="AS{{$aset->id}}" value="{{$aset->id}}"
+                                <input name="idjenisusaha{{$aset->id}}" id="AS{{$aset->id}}" value="1"
                                        class="form-check-input" type="radio">
                                 <label class="form-check-label">Ya</label>
                             </div>
                             <div class="col-md-1">
-                                <input name="idjenisusaha{{$aset->id}}" id="AS{{$aset->id}}" value="{{$aset->id}}"
+                                <input name="idjenisusaha{{$aset->id}}" id="AS{{$aset->id}}" value="0"
                                        class="form-check-input" type="radio">
                                 <label class="form-check-label">Tidak</label>
                             </div>
@@ -72,9 +57,9 @@
                                     <label for="{{$aset->id}}" class="col-sm-6 col-form-label">Jika ya, berapa
                                         jumlahnya?</label>
                                     <div class="col-sm-4">
-                                        {{ Form::text('aspek',null,[
+                                        {{ Form::text('jumlahaset'.$aset->id,null,[
                                         'class'=>'form-control',
-                                        'id' => 'aspek'
+                                        'id' => 'jumlahaset'.$aset->id
                                         ]) }}
                                     </div>
                                     <div class="col-sm-2">
@@ -112,18 +97,18 @@
             <label for="inputStatus">4. Jika ya, Sebutkan:</label>
             <div class="row">
                 <div class="form-check col-lg-6">
-                    {{ Form::label('aspek', 'Nama Sumber Daya') }}
-                    {{ Form::text('aspek',null,[
+                    {{ Form::label('namasumberdaya', 'Nama Sumber Daya') }}
+                    {{ Form::text('namasumberdaya',null,[
                         'class'=>'form-control',
-                        'id' => 'aspek'
+                        'id' => 'namasumberdaya'
                     ]) }}
                 </div>
                 <div class="form-check col-lg-2">
-                    {{ Form::label('aspek', 'Berapa kali panen dalam 1 tahun?') }}
+                    {{ Form::label('panenpertahun', 'Berapa kali panen dalam 1 tahun?') }}
                     <div class="input-group">
-                        {{ Form::text('aspek',null,[
+                        {{ Form::text('panenpertahun',null,[
                         'class'=>'form-control',
-                        'id' => 'aspek'
+                        'id' => 'panenpertahun'
                         ]) }}
                         <div class="input-group-append">
                             <span class="input-group-text">Kali</span>
@@ -131,14 +116,14 @@
                     </div>
                 </div>
                 <div class="form-check col-lg-4">
-                    {{ Form::label('aspek', 'Berapa perkiraan penghasilan per periode panen?') }}
+                    {{ Form::label('hasilperpanen', 'Berapa perkiraan penghasilan per periode panen?') }}
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                    {{ Form::text('aspek',null,[
+                    {{ Form::text('hasilperpanen',null,[
                     'class'=>'form-control',
-                    'id' => 'aspek'
+                    'id' => 'hasilperpanen'
                     ]) }}
                     <!-- <div class="input-group-append">
                     <span class="input-group-text">,00</span>
@@ -152,16 +137,16 @@
 
 
 <div class="form-group">
-    {{ Form::label('aspek', '5. Berapa rata-rata total penghasilan Kepala Rumah Tangga beserta seluruh anggota keluarga yang bekerja dalam satu bulan?') }}
+    {{ Form::label('penghasilan', '5. Berapa rata-rata total penghasilan Kepala Rumah Tangga beserta seluruh anggota keluarga yang bekerja dalam satu bulan?') }}
     <div class="row">
         <div class="form-check col-lg-4">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Rp.</span>
                 </div>
-            {{ Form::text('aspek',null,[
+            {{ Form::text('penghasilan',null,[
             'class'=>'form-control',
-            'id' => 'aspek'
+            'id' => 'penghasilan'
             ]) }}
             <!-- <div class="input-group-append">
                     <span class="input-group-text">,00</span>
@@ -200,20 +185,20 @@
                                 <div class="form-group row">
                                     <label>Bank</label>
                                     <div class="col-sm-10">
-                                        {{ Form::text('aspek',null,[
+                                        {{ Form::text('namabank',null,[
                                         'class'=>'form-control',
-                                        'id' => 'aspek'
+                                        'id' => 'namabank'
                                         ]) }}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group row">
-                                    <label>Alamat/Cabang</label>
+                                    {{ Form::label('cabang', 'Alamat/cabang') }}
                                     <div class="col-sm-10">
-                                        {{ Form::text('aspek',null,[
+                                        {{ Form::text('cabang',null,[
                                         'class'=>'form-control',
-                                        'id' => 'aspek'
+                                        'id' => 'cabang'
                                         ]) }}
                                     </div>
                                 </div>
@@ -231,23 +216,23 @@
     <div class="row">
         <div class="form-check col-lg-3">
             <div class="form-group row">
-                <label>&nbsp;&nbsp;&nbsp;&nbsp;Besaran</label>
+                {{ Form::label('idbesaran', 'Besaran') }}
                 <div class="col-md-10">
                     {{ Form::select('id', $kredit,null,[
                         'class'=>'form-control select2',
-                    'id' => 'id'
+                    'id' => 'idbesaran'
                     ]) }}
                 </div>
             </div>
         </div>
         <div class="col-md-5">
             <div class="form-group row">
-                <label>Lama kredit</label>
+                {{ Form::label('jangkawaktu', 'Lama Kredit') }}
                 <div class="col-md-3">
                     <div class="input-group">
-                        {{ Form::text('aspek',null,[
+                        {{ Form::text('jangkawaktu',null,[
                             'class'=>'form-control',
-                            'id' => 'aspek'
+                            'id' => 'jangkawaktu'
                             ]) }}
                         <div class="input-group-append">
                             <span class="input-group-text">bulan</span>
