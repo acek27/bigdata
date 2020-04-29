@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Http\Traits\GetAttributes;
 use Illuminate\Database\Eloquent\Model;
 
-class Pdbrdankredit extends Model
+class Pdrbdankredit extends Model
 {
     use GetAttributes;
 

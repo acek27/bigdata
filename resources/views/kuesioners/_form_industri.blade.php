@@ -1,407 +1,300 @@
 <!-- Kuesioner Bidang Industri -->
 <div class="form-group">
-    <label for="inputDescription">8. Apakah anda memiliki usaha industri?</label>
+    <label for="inputDescription">9. Apakah anda memiliki usaha industri?</label>
     <div class="col-md-1">
-        <input class="form-group" name="industri" id="industri" value="1" class="form-check-input" type="radio">
+        <input onclick="checkindustri(this.value)" class="form-group" name="bidangindustri" id="bidangindustri"
+               value="1" class="form-check-input" type="radio">
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
-        <input class="form-group" name="industri" id="industri" value="0" class="form-check-input" type="radio">
+        <input onclick="checkindustri(this.value)" class="form-group" name="bidangindustri" id="bidangindustri"
+               value="0" class="form-check-input" type="radio">
         <label class="form-check-label">Tidak</label>
     </div>
 </div>
-<div class="form-group">
-    <label for="inputDescription">Jika Ya, silahkan jawab pertanyaan no.9 dan no.10!</label>
-    <br>
-    <label for="inputDescription">Jika Tidak, silahkan lanjutkan kebidang selanjutnya tanpa menekan tombol
-        simpan!</label>
-</div>
 
 
-<div class="form-group">
-    <label for="inputDescription">9. Pilihlah jenis usaha pembuatan/industri anda dan isikan keterangannya : (bisa
-        mengisi lebih dari satu)</label>
-</div>
-<div class="col-12">
-    <div class="card">
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0" style="height: 500px;">
-            <table class="table table-head-fixed text-nowrap">
-                <thead>
-                <tr>
-                    <th>Jenis Industri</th>
-                    <th>Nama/Jenis Produk</th>
-                    <th>Kapasitas Produksi/Bulan</th>
-                    <th>Bahan Baku Utama</th>
-                    <th>Kebutuhan/Bulan</th>
-                    <th>Satuan Bahan Baku</th>
-                    <th>Harga Kulak Bahan Baku</th>
-                    <th>Satuan Kulak</th>
-                    <th>Asal Suplier Bahan Baku Utama</th>
-                    <th>Harga Jual Produk Hasil Produksi</th>
-                    <th>Satuan Jual</th>
-                    <th>Biaya Operasional Produksi/Bulan</th>
+<div id="divjenisindustri" class="form-group">
+    <label for="inputDescription">10. Pilihlah jenis usaha pembuatan/industri anda dan isikan keterangannya : (bisa
+        memilih dan mengisi lebih dari satu)</label>
+    <div class="col-12">
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 500px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>Jenis Industri</th>
+                        <th>Nama/Jenis Produk</th>
+                        <th>Kapasitas Produksi/Bulan</th>
+                        <th>Bahan Baku Utama</th>
+                        <th>Kebutuhan/Bulan</th>
+                        <th>Satuan Bahan Baku</th>
+                        <th>Harga Kulak Bahan Baku</th>
+                        <th>Satuan Kulak</th>
+                        <th>Asal Suplier Bahan Baku Utama</th>
+                        <th>Nama Suplier Bahan Baku Utama</th>
+                        <th>Harga Jual Produk Hasil Produksi</th>
+                        <th>Satuan Jual</th>
+                        <th>Biaya Operasional Produksi/Bulan</th>
+                        <th>Daerah Pemasaran Produk</th>
 
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($jenisindustri as $industri)
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @php($i= 1)
+                    @foreach($jenisindustri as $industri)
+                        <tr>
+                            <td>
+                                <input onclick="checkjenisindustri()" name="idjenisindustri{{$i}}"
+                                       id="idjenisindustri{{$i}}" value="{{$industri->id}}"
+                                       class="form-group-input" type="checkbox">
+                                <label for="idjenisindustri{{$i}}"
+                                       class="form-check-label">{{$industri->id}}{{'. '}}{{$industri->jenisindustri}}</label>
+                            </td>
+                            <td id="kolom2{{$i}}"
+                                style="display: none">{{ Form::text('namaproduk'.$i,null,['class'=>'form-control','id' => 'namaproduk'.$i]) }}
+                            </td>
+                            <td id="kolom3{{$i}}" style="display: none">
+                                <div class="input-group">
+                                    {{ Form::text('produksiperbulan'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'produksiperbulan'.$i
+                                    ]) }}
+                                    <div class="input-group-append">
+                                        {{ Form::select('satuanproduksi'.$i,$satuan,null,[
+                                        'class'=>'form-control select2','placeholder' => 'Pilih',
+                                        'id' => 'satuanproduksi'.$i
+                                        ]) }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td id="kolom4{{$i}}" style="display: none">{{ Form::select('idbahanbaku'.$i,$bahanbaku,null,[
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'idbahanbaku'.$i
+                            ]) }}
+                            </td>
+                            <td id="kolom5{{$i}}" style="display: none">
+                                {{ Form::text('kebutuhanperbulan'.$i,null,[
+                                    'class'=>'form-control',
+                                    'id' => 'kebutuhanperbulan'.$i
+                                ]) }}
+                            </td>
+                            <td id="kolom6{{$i}}" style="display: none">
+                                {{ Form::select('satuanbahanbaku'.$i,$satuan,null,[
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'satuanbahanbaku'.$i
+                                ]) }}
+                            </td>
+                            <td id="kolom7{{$i}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('hargakulakbahan'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'hargakulakbahan'.$i
+                                    ]) }}
+                                </div>
+                            </td>
+                            <td id="kolom8{{$i}}" style="display: none">
+                                {{ Form::select('satuankulak'.$i,$satuan,null,[
+                               'class'=>'form-control select2','placeholder' => 'Pilih',
+                               'id' => 'satuankulak'.$i
+                               ]) }}
+                            </td>
+                            <td id="kolom9{{$i}}" style="display: none">
+                                {{ Form::select('idsuplier'.$i, $suplier,null,[
+                                      'class'=>'form-control select2','placeholder' => 'Pilih',
+                                      'id' => 'idsuplier'.$i
+                                      ]) }}
+                            </td>
+                            <td id="kolom10{{$i}}" style="display: none">
+                                {{ Form::text('namasuplier'.$i,null,[
+                                            'class'=>'form-control',
+                                            'id' => 'namasuplier'.$i
+                                        ]) }}
+                            </td>
+                            <td id="kolom11{{$i}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('hargajualproduk'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'hargajualproduk'.$i
+                                    ]) }}
+
+                                </div>
+                            </td>
+                            <td id="kolom12{{$i}}" style="display: none">
+
+                                {{ Form::select('satuanjual'.$i,$satuan,null,[
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'satuanjual'.$i
+                                ]) }}
+
+                            </td>
+                            <td id="kolom13{{$i}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('operasionalperbulan'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'operasionalperbulan'.$i
+                                    ]) }}
+                                </div>
+                            </td>
+                            <td id="kolom14{{$i}}" style="display: none">
+                                <input name="pemasarandalamkabupaten{{$i}}" id="pemasarandalamkabupaten{{$i}}" value="1"
+                                       class="form-group-input" type="checkbox">
+                                <label for="pemasarandalamkabupaten{{$i}}" class="form-check-label">Dalam
+                                    Kabupaten</label>
+
+                                <input name="pemasaranluarkabupaten{{$i}}" id="pemasaranluarkabupaten{{$i}}" value="1"
+                                       class="form-group-input" type="checkbox">
+                                <label for="pemasaranluarkabupaten{{$i}}" class="form-check-label">Luar
+                                    Kabupaten</label>
+
+                                <input name="pemasaranluarprovinsi{{$i}}" id="pemasaranluarprovinsi{{$i}}" value="1"
+                                       class="form-group-input" type="checkbox">
+                                <label for="pemasaranluarprovinsi{{$i}}" class="form-check-label">Luar Provinsi</label>
+
+                                <input name="pemasaranluarnegeri{{$i}}" id="pemasaranluarnegeri{{$i}}" value="1"
+                                       class="form-group-input" type="checkbox">
+                                <label for="pemasaranluarnegeri{{$i}}" class="form-check-label">Luar Negeri</label>
+                            </td>
+
+                        </tr>
+                        @php($i++)
+                    @endforeach
                     <tr>
                         <td>
-                            <input name="idjenisusaha{{$industri->id}}" id="JS{{$industri->id}}"
-                                   value="{{$industri->id}}"
-                                   class="form-group-input" type="checkbox">
-                            <label for="JS{{$industri->id}}"
-                                   class="form-check-label">{{$industri->id}}{{'. '}}{{$industri->jenisindustri}}</label>
-                        </td>
-                        <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
-                        </td>
-                        <td>
                             <div class="input-group">
-                                {{ Form::text('aspek',null,[
+                                <input onclick="checkjenisindustri()" name="idjenisindustri{{$i}}"
+                                       id="idjenisindustri{{$i}}" value=""
+                                       class="form-group-input" type="checkbox">
+                                {{ Form::text('idjenisindustri'.$i,null,['class'=>'form-control','id' => 'idjenisindustri'.$i,'placeholder'=>'Ketik Nama Usaha']) }}
+                            </div>
+                        </td>
+                        <td id="kolom2{{$i}}" style="display: none">
+                            {{ Form::text('namaproduk'.$i,null,['class'=>'form-control','id' => 'namaproduk'.$i]) }}
+                        </td>
+                        <td id="kolom3{{$i}}" style="display: none">
+                            <div class="input-group">
+                                {{ Form::text('produksiperbulan'.$i,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'produksiperbulan'.$i
                                 ]) }}
                                 <div class="input-group-append">
-                                    {{ Form::select('id',$satuan,null,[
-                                    'class'=>'form-control select2',
-                                    'id' => 'id'
+                                    {{ Form::select('satuanproduksi'.$i,$satuan,null,[
+                                    'class'=>'form-control select2','placeholder' => 'Pilih',
+                                    'id' => 'satuanproduksi'.$i
                                     ]) }}
                                 </div>
                             </div>
                         </td>
-                        <td>{{ Form::select('id',$bahanbaku,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
+                        <td id="kolom4{{$i}}" style="display: none">{{ Form::select('idbahanbaku'.$i,$bahanbaku,null,[
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'idbahanbaku'.$i
                             ]) }}
                         </td>
-                        <td>
-                            {{ Form::text('aspek',null,[
+                        <td id="kolom5{{$i}}" style="display: none">
+                            {{ Form::text('kebutuhanperbulan'.$i,null,[
                                 'class'=>'form-control',
-                                'id' => 'aspek'
+                                'id' => 'kebutuhanperbulan'.$i
                             ]) }}
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
+                        <td id="kolom6{{$i}}" style="display: none">
+                            {{ Form::select('satuanbahanbaku'.$i,$satuan,null,[
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'satuanbahanbaku'.$i
                             ]) }}
                         </td>
-                        <td>
+                        <td id="kolom7{{$i}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('hargakulakbahan'.$i,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'hargakulakbahan'.$i
                                 ]) }}
                             </div>
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                           'class'=>'form-control select2',
-                           'id' => 'id'
+                        <td id="kolom8{{$i}}" style="display: none">
+                            {{ Form::select('satuankulak'.$i,$satuan,null,[
+                           'class'=>'form-control select2','placeholder' => 'Pilih',
+                           'id' => 'satuankulak'.$i
                            ]) }}
                         </td>
-                        <td>
-                            {{ Form::select('id', $suplier,null,[
-                                  'class'=>'form-control select2',
-                                  'id' => 'id'
+                        <td id="kolom9{{$i}}" style="display: none">
+                            {{ Form::select('idsuplier'.$i, $suplier,null,[
+                                  'class'=>'form-control select2','placeholder' => 'Pilih',
+                                  'id' => 'idsuplier'.$i
                                   ]) }}
                         </td>
-                        <td>
+                        <td id="kolom10{{$i}}" style="display: none">
+                            {{ Form::text('namasuplier'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'namasuplier'.$i
+                                    ]) }}
+                        </td>
+                        <td id="kolom11{{$i}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('hargajualproduk'.$i,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'hargajualproduk'.$i
                                 ]) }}
 
                             </div>
                         </td>
-                        <td>
+                        <td id="kolom12{{$i}}" style="display: none">
 
-                            {{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
+                            {{ Form::select('satuanjual'.$i,$satuan,null,[
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'satuanjual'.$i
                             ]) }}
 
                         </td>
-                        <td>
+                        <td id="kolom13{{$i}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('operasionalperbulan'.$i,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'operasionalperbulan'.$i
                                 ]) }}
                             </div>
+                        </td>
+                        <td id="kolom14{{$i}}" style="display: none">
+                            <input name="pemasarandalamkabupaten{{$i}}" id="pemasarandalamkabupaten{{$i}}" value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasarandalamkabupaten" class="form-check-label">Dalam Kabupaten</label>
+
+                            <input name="pemasaranluarkabupaten{{$i}}" id="pemasaranluarkabupaten{{$i}}" value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasaranluarkabupaten{{$i}}" class="form-check-label">Luar Kabupaten</label>
+
+                            <input name="pemasaranluarprovinsi{{$i}}" id="pemasaranluarprovinsi{{$i}}" value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasaranluarprovinsi{{$i}}" class="form-check-label">Luar Provinsi</label>
+
+                            <input name="pemasaranluarnegeri{{$i}}" id="pemasaranluarnegeri{{$i}}" value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasaranluarnegeri{{$i}}" class="form-check-label">Luar Negeri</label>
                         </td>
                     </tr>
-                @endforeach
-                <tr>
-                    <td>
-                        <div class="input-group">
-                            <input name="idjenisusaha11" id="JS11" value="11"
-                                   class="form-group-input" type="checkbox">
-                            {{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
-                        </div>
-                    </td>
-                    <td>
-                        {{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                            <div class="input-group-append">
-                                {{ Form::select('id',$satuan,null,[
-                                'class'=>'form-control select2',
-                                'id' => 'id'
-                                ]) }}
-                            </div>
-                        </div>
-                    </td>
-                    <td>{{ Form::select('id',$bahanbaku,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
-                            ]) }}
-                    </td>
-                    <td>
-                        {{ Form::text('aspek',null,[
-                            'class'=>'form-control',
-                            'id' => 'aspek'
-                        ]) }}
-                    </td>
-                    <td>
-                        {{ Form::select('id',$satuan,null,[
-                        'class'=>'form-control select2',
-                        'id' => 'id'
-                        ]) }}
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                        </div>
-                    </td>
-                    <td>
-                        {{ Form::select('id',$satuan,null,[
-                       'class'=>'form-control select2',
-                       'id' => 'id'
-                       ]) }}
-                    </td>
-                    <td>
-                        {{ Form::select('id', $suplier,null,[
-                              'class'=>'form-control select2',
-                              'id' => 'id'
-                              ]) }}
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-
-                        </div>
-                    </td>
-                    <td>
-
-                        {{ Form::select('id',$satuan,null,[
-                        'class'=>'form-control select2',
-                        'id' => 'id'
-                        ]) }}
-
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-</div>
-
-
-<!-- <div class="row">
-    <div class="col-sm-12">
-
-        <div class="form-group">
-            <label for="inputProjectLeader">9. Pilihlah jenis usaha pembuatan/industri anda dan isikan keterangannya : (bisa mengisi lebih dari satu)</label>
-            <div class="row">
-                @foreach($jenisindustri as $industri)
-    <div class="form-check col-lg-12">
-        <div class="row">
-            <div class="col-lg-2">
-                <input name="idjenisusaha{{$industri->id}}" id="JS{{$industri->id}}" value="{{$industri->id}}"
-                                       class="form-group-input" type="checkbox">
-                                <label for="JS{{$industri->id}}" class="form-check-label">{{$industri->jenisindustri}}</label>
-                            </div>
-                            <div class="col-lg-2">
-                            {{ Form::label('aspek', 'Produk') }}
-    {{ Form::text('aspek',null,[
-        'class'=>'form-control',
-        'id' => 'aspek'
-    ]) }}
-        </div>
-        <div class="col-lg-2">
-{{ Form::label('aspek', 'Kapasitas Produksi/Bulan') }}
-        <div class="input-group">
-{{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-        <div class="input-group-append">
-{{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
-                            ]) }}
-        </div>
-        </div>
-        </div>
-        <div class="col-lg-1,5">
-{{ Form::label('aspek', 'Bahan Baku Utama') }}
-    {{ Form::select('id',$bahanbaku,null,[
-    'class'=>'form-control select2',
-    'id' => 'id'
-    ]) }}
-        </div>
-        <div class="col-lg-2">
-{{ Form::label('aspek', 'Kebutuhan/Bulan') }}
-        <div class="input-group">
-{{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-        <div class="input-group-append">
-{{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
-                            ]) }}
-        </div>
-        </div>
-        </div>
-        <div class="col-lg-2">
-{{ Form::label('aspek', 'Harga Kulak/Satuan') }}
-        <div class="input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text">Rp.</span>
-        </div>
-{{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-        <div class="input-group-append">
-{{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
-                            ]) }}
-        </div>
-        </div>
-        </div>
-        <div class="col-lg-2">
-{{ Form::label('aspek', 'Asal Suplier') }}
-    {{ Form::select('id', $suplier,null,[
-    'class'=>'form-control select2',
-    'id' => 'id'
-    ]) }}
-        </div>
-        <div class="col-lg-2">
-{{ Form::label('aspek', 'Harga Jual/Satuan') }}
-        <div class="input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text">Rp.</span>
-        </div>
-{{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-        <div class="input-group-append">
-{{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
-                            ]) }}
-        </div>
-        </div>
-        </div>
-        <div class="col-lg-2">
-{{ Form::label('aspek', 'Biaya Operasional Produksi/Bulan') }}
-        <div class="input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text">Rp.</span>
-        </div>
-{{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-        </div>
-        </div>
-    </div>
-</div>
-@endforeach
-    </div>
-</div>
-
-</div>
-</div> -->
-
-<div class="row">
-    <div class="col-sm-12">
-        <!-- checkbox -->
-        <div class="form-group">
-            <label for="inputProjectLeader">10. Kemana daerah pemasaran produk yang anda produksi? (bisa memilih lebih
-                dari satu pilihan)</label>
-            <div class="row">
-                <div class="form-check col-lg-12">
-                    <div class="col-md-3">
-                        <input name="dalamkabupaten" id="dalamkabupaten" value="1"
-                               class="form-group-input" type="checkbox">
-                        <label for="dalamkabupaten" class="form-check-label">Dalam Kabupaten</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input name="luarkabupaten" id="luarkabupaten" value="1"
-                               class="form-group-input" type="checkbox">
-                        <label for="luarkabupaten" class="form-check-label">Luar Kabupaten</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input name="luarprovinsi" id="luarprovinsi" value="1"
-                               class="form-group-input" type="checkbox">
-                        <label for="luarprovinsi" class="form-check-label">Luar Provinsi</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input name="luarnegeri" id="luarnegeri" value="1"
-                               class="form-group-input" type="checkbox">
-                        <label for="luarnegeri" class="form-check-label">Luar Negeri</label>
-                    </div>
-                </div>
-
+                    </tbody>
+                </table>
             </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
     </div>
 </div>

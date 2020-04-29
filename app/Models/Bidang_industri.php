@@ -11,9 +11,9 @@ class Bidang_industri extends Model
 
     protected $with = ['md_bahanbakus', 'md_suplier'];
     protected $fillable = ['nik', 'idjenisindustri', 'namaproduk', 'produksiperbulan',
-        'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan',
-        'namasuplier', 'idsuplier', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
-        'pemasaranluarnegeri', 'tempatpemasaran', 'hargajualproduk', 'operasionalperbulan'];
+        'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan','satuankulak',
+        'namasuplier', 'idsuplier','pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
+        'pemasaranluarnegeri', 'tempatpemasaran', 'hargajualproduk','satuanjual', 'operasionalperbulan'];
 
     public static $rulesCreate = [
         'nik' => 'required',
@@ -25,13 +25,14 @@ class Bidang_industri extends Model
         'kebutuhanperbulan' => 'required',
         'satuanbahanbaku' => 'required',
         'hargakulakbahan' => 'required',
-        'namasuplier' => 'required',
+        'satuankulak' => 'required',
+        // 'namasuplier' => 'required',
         'idsuplier' => 'required',
-        'pemasarandalamkabupaten' => 'required',
-        'pemasaranluarkabupaten' => 'required',
-        'pemasaranluarprovinsi' => 'required',
-        'pemasaranluarnegeri' => 'required',
-        'tempatpemasaran' => 'required',
+        // 'pemasarandalamkabupaten' => 'required',
+        // 'pemasaranluarkabupaten' => 'required',
+        // 'pemasaranluarprovinsi' => 'required',
+        // 'pemasaranluarnegeri' => 'required',
+        // 'tempatpemasaran' => 'required',
         'hargajualproduk' => 'required',
         'operasionalperbulan' => 'required',
     ];

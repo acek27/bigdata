@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['url'=>route('kuesioner.store')]) !!}
+                    {!! Form::open(['url'=>route('simpankuesionerdasar')]) !!}
                     @include('kuesioners._form')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
@@ -69,9 +69,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    {{--                    @include('kuesioners._form_industri')--}}
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
+                    {!! Form::open(['url'=>route('simpanbidangindustri')]) !!}
+                    @include('kuesioners._form_industri')
+                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanindustri'] )  }}
                     {!! Form::close() !!}
                 </div>
                 <!-- /.card-body -->
@@ -94,7 +94,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    {{--                    @include('kuesioners._form_perdagangan')--}}
+                    @include('kuesioners._form_perdagangan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -117,7 +117,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    {{--                    @include('kuesioners._form_pertanian')--}}
+                    @include('kuesioners._form_pertanian')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -140,7 +140,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    {{--                    @include('kuesioners._form_peternakan')--}}
+                    @include('kuesioners._form_peternakan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -163,7 +163,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    {{--                    @include('kuesioners._form_perikanan')--}}
+                    @include('kuesioners._form_perikanan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="card-body">
                     {!! Form::open(['url'=>route('kuesioner.store')]) !!}
-                    {{--                    @include('kuesioners._form_jasa')--}}
+                    @include('kuesioners._form_jasa')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
@@ -211,6 +211,85 @@
                     $('#div' + i).hide();
                     $('#idstatuspekerjaan' + i).val('');
                 }
+            }
+        }
+
+        function checkaset() {
+            var i = 1;
+            var total = {{$asetusaha->count('id')}};
+            for (i = 1; i <= total; i++) {
+                var id = 'idasetusaha' + i;
+                var check = document.getElementById(id)
+                if (check.checked === true) {
+                    $('#divaset' + i).show();
+                } else {
+                    $('#divaset' + i).hide();
+                }
+            }
+        }
+
+        function checksda(hasil) {
+            if (hasil === 1) {
+                $('#divsda').show();
+            } else {
+                $('#divsda').hide();
+            }
+
+        }
+
+        function checkbank(bank) {
+            if (bank === 1) {
+                $('#divbank').show();
+                $('#divkredit').show();
+            } else {
+                $('#divbank').hide();
+                $('#divkredit').hide();
+            }
+
+        }
+
+        function checkjenisbank() {
+            var i = 1;
+            var total = {{$perbankan->count('id')}};
+            for (i = 1; i <= total; i++) {
+                var id = 'idjenisperbankan' + i;
+                var check = document.getElementById(id)
+                if (check.checked === true) {
+                    $('#divnamabank' + i).show();
+                    $('#divalamatbank' + i).show();
+                } else {
+                    $('#divnamabank' + i).hide();
+                    $('#divalamatbank' + i).hide();
+                }
+            }
+        }
+
+        function checkjenisindustri() {
+            var i = 1;
+            var totalindustri = {{$jenisindustri->count('id')}}; // jenis industri tidak boleh lebih dari 20. jika lebih ubah nama kolom2 pada perulangan
+            for (i = 1; i <= totalindustri + 1; i++) {
+                var id = 'idjenisindustri' + i;
+                var check = document.getElementById(id)
+                if (check.checked === true) {
+                    for (a = 2; a <= 14; a++) { //a dimulai dari 2 karena jika dimulai dari 1 akan ada "kolom111" berjumlah 2 yaitu kolom1 ke 11 dan kolom11 ke 1
+                        $('#kolom' + a + i).show();  //a dimulai dari 2 maka max perulangan jumlah Md(master data) = 20 agar tidak ada kolom2 ke11 dan kolom21 ke 1
+                    }
+                } else {
+                    for (a = 2; a <= 14; a++) {
+                        $('#kolom' + a + i).hide();
+                    }
+                }
+            }
+        }
+
+        function checkindustri(industri) {
+            if (industri === 1) {
+                $('#divjenisindustri').show();
+                $('#simpanindustri').show();
+            } else {
+                $('#divjenisindustri').hide();
+                $('#simpanindustri').hide();
+
             }
         }
     </script>

@@ -8,6 +8,6 @@ class Md_besaranperbankan extends Model
 {
     public function pdrbdankredits()
     {
-        return $this->hasMany(Pdbrdankredit::class);
+        return $this->hasMany(Pdrbdankredit::class);
     }
 }

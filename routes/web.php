@@ -19,5 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/map', 'HomeController@map')->name('map');
-Route::resource('kuesioner','KuesionerController');
-Route::resource('homeAdmin','HomeadminController');
+Route::post('simpanbidangindustri', 'KuesionerController@simpanbidangindustri')->name('simpanbidangindustri');
+Route::post('simpankuesionerdasar', 'KuesionerController@simpankuesionerdasar')->name('simpankuesionerdasar');
+Route::resource('kuesioner', 'KuesionerController');
+Route::resource('homeAdmin', 'HomeadminController');

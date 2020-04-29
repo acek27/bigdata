@@ -24,6 +24,11 @@ use App\Models\Md_jenispakanikan;
 use App\Models\Md_jenisusahadagang;
 use App\Models\Desa;
 use App\Models\Pekerjaantambahan;
+use App\Models\Kepemilikanaset;
+use App\Models\Penghasilantambahan;
+use App\Models\Pdrbdankredit;
+use App\Models\Fasilitasperbankan;
+use App\Models\Bidang_industri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,10 +72,13 @@ class KuesionerController extends Controller
             'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang'));
     }
 
-    public function store(Request $request)
+    public function simpankuesionerdasar(Request $request)
     {
         $nik = '132410101085';
+        $iddtdakp = 'DTD-012345-PANJI';
         $total = Md_bidangusahapekerjaan::count();
+        $totalaset = Md_asetusaha::count();
+        $totalfasilitas = Md_perbankan::count();
         $data = array_filter($request->all());
         for ($i = 1; $i <= $total; $i++) {
             $dasar = new Pekerjaantambahan();
@@ -81,6 +89,105 @@ class KuesionerController extends Controller
                 $dasar->save();
             }
         }
+        for ($i = 1; $i <= $totalaset; $i++) {
+            $aset = new Kepemilikanaset();
+            if (array_key_exists('idasetusaha' . $i, $data)) {
+                $aset->nik = $nik;
+                $aset->idasetusaha = $data['idasetusaha' . $i];
+                $aset->jumlahaset = $data['jumlahaset' . $i];
+                $aset->save();
+            }
+        }
+
+        $sda = new Penghasilantambahan();
+        if (array_key_exists('namasumberdaya', $data)) {
+            $sda->nik = $nik;
+            $sda->namasumberdaya = $data['namasumberdaya'];
+            $sda->panenpertahun = $data['panenpertahun'];
+            $sda->hasilperpanen = $data['hasilperpanen'];
+            $sda->save();
+        }
+
+
+        $pdrb = new Pdrbdankredit();
+        $pdrb->nik = $nik;
+        $pdrb->iddtdakp = $iddtdakp;
+        $pdrb->pendapatanperbulan = $data['pendapatanperbulan'];
+        if (array_key_exists('idbesarankredit', $data)) {
+            $pdrb->idbesarankredit = $data['idbesarankredit'];
+            $pdrb->lamakredit = $data['lamakredit'];
+        }
+        $pdrb->save();
+
+        for ($i = 1; $i <= $totalfasilitas; $i++) {
+            $fasilitas = new Fasilitasperbankan();
+            if (array_key_exists('idjenisperbankan' . $i, $data)) {
+                $fasilitas->nik = $nik;
+                $fasilitas->idjenisperbankan = $data['idjenisperbankan' . $i];
+                $fasilitas->namabank = $data['namabank' . $i];
+                $fasilitas->cabang = $data['cabang' . $i];
+                $fasilitas->save();
+            }
+        }
+
         return redirect(route($this->route . '.index'));
+
+        // print_r($data);
     }
+
+    public function simpanbidangindustri(Request $request)
+    {
+        $nik = '132410101085';
+        $iddtdakp = 'DTD-012345-PANJI';
+        $totalindustri = Md_jenisindustri::count();
+        $data = array_filter($request->all());
+        for ($i = 1; $i <= $totalindustri + 1; $i++) {
+            $industri = new Bidang_industri();
+            if (array_key_exists('idjenisindustri' . $i, $data)) {
+                $industri->nik = $nik;
+                $industri->idjenisindustri = $data['idjenisindustri' . $i];
+                $industri->namaproduk = $data['namaproduk' . $i];
+                $industri->produksiperbulan = $data['produksiperbulan' . $i];
+                $industri->satuanproduksi = $data['satuanproduksi' . $i];
+                $industri->idbahanbaku = $data['idbahanbaku' . $i];
+                $industri->kebutuhanperbulan = $data['kebutuhanperbulan' . $i];
+                $industri->satuanbahanbaku = $data['satuanbahanbaku' . $i];
+                $industri->hargakulakbahan = $data['hargakulakbahan' . $i];
+                $industri->satuankulak = $data['satuankulak' . $i];
+                $industri->idsuplier = $data['idsuplier' . $i];
+                $industri->namasuplier = $data['namasuplier' . $i];
+                $industri->hargajualproduk = $data['hargajualproduk' . $i];
+                $industri->satuanjual = $data['satuanjual' . $i];
+                $industri->operasionalperbulan = $data['operasionalperbulan' . $i];
+                if (array_key_exists('pemasarandalamkabupaten' . $i, $data)) {
+                    $industri->pemasarandalamkabupaten = $data['pemasarandalamkabupaten' . $i];
+                } else {
+                    $industri->pemasarandalamkabupaten = 0;
+                }
+                if (array_key_exists('pemasaranluarkabupaten' . $i, $data)) {
+                    $industri->pemasaranluarkabupaten = $data['pemasaranluarkabupaten' . $i];
+                } else {
+                    $industri->pemasaranluarkabupaten = 0;
+                }
+                if (array_key_exists('pemasaranluarprovinsi' . $i, $data)) {
+                    $industri->pemasaranluarprovinsi = $data['pemasaranluarprovinsi' . $i];
+                } else {
+                    $industri->pemasaranluarprovinsi = 0;
+                }
+                if (array_key_exists('pemasaranluarnegeri' . $i, $data)) {
+                    $industri->pemasaranluarnegeri = $data['pemasaranluarnegeri' . $i];
+                } else {
+                    $industri->pemasaranluarnegeri = 0;
+                }
+                $industri->save();
+            }
+
+
+        }
+
+        return redirect(route($this->route . '.index'));
+
+        // print_r($data);
+    }
+
 }
