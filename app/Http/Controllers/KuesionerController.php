@@ -81,6 +81,6 @@ class KuesionerController extends Controller
                 $dasar->save();
             }
         }
-//        return redirect(route($this->route . '.index'));
+        return redirect(route($this->route . '.index'));
     }
 }

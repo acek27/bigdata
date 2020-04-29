@@ -10,7 +10,7 @@ class Fasilitasperbankan extends Model
     use GetAttributes;
 
     protected $with = ['md_perbankans'];
-    protected $fillable = ['nik', 'idjenisperbankan', 'namabank', 'cabang', 'idbesaran', 'jangkawaktu'];
+    protected $fillable = ['nik', 'idjenisperbankan', 'namabank', 'cabang'];
 
     public function md_perbankans()
     {
