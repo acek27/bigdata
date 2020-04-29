@@ -5,19 +5,18 @@
             <label for="inputProjectLeader">1. Sebutkan bidang usaha pekerjaan tambahan anda dan statusnya dalam
                 pekerjaan tersebut (bisa memilih lebih dari 1 bidang)</label>
             <div class="row">
-                @php($i= 1)
+                @php($idr= 1)
                 @foreach($bidangusahapekerjaan as $bidang)
                     <div class="form-check col-lg-6">
                         <div class="row">
                             <div class="col-md-7">
-                                <input onclick="check()" name="bu{{$i}}" id="bu{{$i}}"
+                                <input onclick="check()" name="bu{{$idr}}" id="bu{{$idr}}"
                                        value="{{$bidang->id}}"
                                        class="form-group-input" type="checkbox">
-                                <label for="bu{{$i}}"
-                                       class="form-check-label">{{$bidang->id}}{{'. '}}{{$bidang->bidangusaha}}</label>
+                                <label for="bu{{$idr}}" class="form-check-label">{{$bidang->id}}{{'. '}}{{$bidang->bidangusaha}}</label>
                             </div>
-                            <div id="div{{$i}}" class="col-md-3" style="display: none">
-                                <select id="idstatuspekerjaan{{$i}}" name="idstatuspekerjaan{{$i}}"
+                            <div id="div{{$idr}}" class="col-md-3" style="display: none">
+                                <select id="idstatuspekerjaan{{$idr}}" name="idstatuspekerjaan{{$idr}}"
                                         class="col-lg-12">
                                     <option value="">pilih</option>
                                     @foreach($statuspekerjaan as $status)
@@ -27,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    @php($i++)
+                    @php($idr++)
                 @endforeach
             </div>
         </div>
@@ -40,24 +39,22 @@
         <div class="form-group">
             <label for="inputProjectLeader">2. Kepemilikan Aset Usaha</label>
             <div class="row">
-                @php($i= 1)
+            @php($ids= 1)
                 @foreach($asetusaha as $aset)
                     <div class="form-check col-lg-6">
                         <div class="row">
                             <div class="col-md-3">
-                                <input onclick="checkaset()" name="idasetusaha{{$i}}" id="idasetusaha{{$i}}"
-                                       value="{{$aset->id}}"
+                            <input onclick="checkaset()"  name="idasetusaha{{$ids}}" id="idasetusaha{{$ids}}" value="{{$aset->id}}"
                                        class="form-group-input" type="checkbox">
-                                <label for="idasetusaha{{$i}}"
-                                       class="form-check-label">{{$aset->id}}{{'. '}}{{$aset->asetusaha}}</label>
+                                <label for="idasetusaha{{$ids}}" class="form-check-label">{{$aset->id}}{{'. '}}{{$aset->asetusaha}}</label>
                             </div>
-                            <div id="divaset{{$i}}" style="display: none" class="col-md-6">
+                            <div id="divaset{{$ids}}" style="display: none" class="col-md-6">
                                 <div class="form-group row">
                                     <label>Berapa jumlahnya?</label>
                                     <div class="col-sm-4">
-                                        {{ Form::text('jumlahaset'.$i,null,[
+                                        {{ Form::text('jumlahaset'.$ids,null,[
                                         'class'=>'form-control',
-                                        'id' => 'jumlahaset'.$i
+                                        'id' => 'jumlahaset'.$ids
                                         ]) }}
                                     </div>
                                     <div class="col-sm-2">
@@ -67,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                    @php($i++)
+                    @php($ids++)
                 @endforeach
             </div>
         </div>
@@ -79,14 +76,12 @@
         menghasilkan penghasilan tambahan bagi Rumah Tangga? (contoh: pohon mangga dipekarangan, kolam lele,
         dll) </label>
     <div class="col-md-1">
-        <input onclick="checksda(this.value)" class="form-group" name="penghasilantambahan" id="penghasilantambahan"
-               value="1" class="form-check-input"
+        <input onclick="checksda(this.value)" class="form-group" name="penghasilantambahan" id="penghasilantambahan" value="1" class="form-check-input"
                type="radio">
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
-        <input onclick="checksda(this.value)" class="form-group" name="penghasilantambahan" id="penghasilantambahan"
-               value="0" class="form-check-input"
+        <input onclick="checksda(this.value)" class="form-group" name="penghasilantambahan" id="penghasilantambahan" value="0" class="form-check-input"
                type="radio">
         <label class="form-check-label">Tidak</label>
     </div>
@@ -160,13 +155,11 @@
 <div class="form-group">
     <label for="inputDescription">6. Apakah usaha anda menggunakan fasilitas perbankan/koperasi/kredit/lainnya?</label>
     <div class="col-md-1">
-        <input onclick="checkbank(this.value)" class="form-group" name="perbankan" id="perbankan" value="1"
-               class="form-check-input" type="radio">
+        <input onclick="checkbank(this.value)" class="form-group" name="perbankan" id="perbankan" value="1" class="form-check-input" type="radio">
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
-        <input onclick="checkbank(this.value)" class="form-group" name="perbankan" id="perbankan" value="0"
-               class="form-check-input" type="radio">
+        <input onclick="checkbank(this.value)" class="form-group" name="perbankan" id="perbankan" value="0" class="form-check-input" type="radio">
         <label class="form-check-label">Tidak</label>
     </div>
 </div>
@@ -175,45 +168,43 @@
     <div class="col-sm-12">
         <!-- checkbox -->
         <div class="form-group">
-            <label for="inputProjectLeader">7. Jika ya, pilih dan isikan jenis serta keterangannya: (bisa memilih dan
-                mengisi lebih
+            <label for="inputProjectLeader">7. Jika ya, pilih dan isikan jenis serta keterangannya: (bisa memilih dan mengisi lebih
                 dari satu)</label>
             <div class="row">
-                @php($i= 1)
+                @php($ida= 1)
                 @foreach($perbankan as $bank)
                     <div class="form-check col-lg-12">
                         <div class="row">
                             <div class="col-md-3">
-                                <input onclick="checkjenisbank()" name="idjenisperbankan{{$i}}"
-                                       id="idjenisperbankan{{$i}}" value="{{$bank->id}}"
+                            <input onclick="checkjenisbank()" name="idjenisperbankan{{$ida}}" id="idjenisperbankan{{$ida}}" value="{{$bank->id}}"
                                        class="form-group-input" type="checkbox">
-                                <label>{{$bank->id}}{{'. '}}{{$bank->jenisperbankan}}</label>
+                                <label for="idjenisperbankan{{$ida}}">{{$bank->id}}{{'. '}}{{$bank->jenisperbankan}}</label>
                             </div>
-                            <div id="divnamabank{{$i}}" style="display: none" class="col-md-3">
+                            <div id="divnamabank{{$ida}}" style="display: none" class="col-md-3">
                                 <div class="form-group row">
                                     <label>Bank</label>
                                     <div class="col-sm-10">
-                                        {{ Form::text('namabank'.$i,null,[
+                                        {{ Form::text('namabank'.$ida,null,[
                                         'class'=>'form-control',
-                                        'id' => 'namabank'.$i
+                                        'id' => 'namabank'.$ida
                                         ]) }}
                                     </div>
                                 </div>
                             </div>
-                            <div id="divalamatbank{{$i}}" style="display: none" class="col-md-5">
+                            <div id="divalamatbank{{$ida}}" style="display: none" class="col-md-5">
                                 <div class="form-group row">
-                                    {{ Form::label('cabang'.$i, 'Alamat/cabang') }}
+                                    {{ Form::label('cabang'.$ida, 'Alamat/cabang') }}
                                     <div class="col-sm-10">
-                                        {{ Form::text('cabang'.$i,null,[
+                                        {{ Form::text('cabang'.$ida,null,[
                                         'class'=>'form-control',
-                                        'id' => 'cabang'.$i
+                                        'id' => 'cabang'.$ida
                                         ]) }}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @php($i++)
+                    @php($ida++)
                 @endforeach
             </div>
         </div>

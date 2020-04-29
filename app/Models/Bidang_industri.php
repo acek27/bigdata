@@ -10,10 +10,10 @@ class Bidang_industri extends Model
     use GetAttributes;
 
     protected $with = ['md_bahanbakus', 'md_suplier'];
-    protected $fillable = ['nik', 'idjenisindustri', 'namaproduk', 'produksiperbulan',
-        'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan','satuankulak',
-        'namasuplier', 'idsuplier','pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
-        'pemasaranluarnegeri', 'tempatpemasaran', 'hargajualproduk','satuanjual', 'operasionalperbulan'];
+    protected $fillable = ['nik', 'idjenisindustri', 'jenisindustri', 'namaproduk', 'produksiperbulan',
+        'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan', 'satuankulak',
+        'namasuplier', 'idsuplier', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
+        'pemasaranluarnegeri', 'tempatpemasaran', 'hargajualproduk', 'satuanjual', 'operasionalperbulan'];
 
     public static $rulesCreate = [
         'nik' => 'required',

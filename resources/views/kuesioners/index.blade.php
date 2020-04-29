@@ -44,7 +44,7 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="display: none">
                     {!! Form::open(['url'=>route('simpankuesionerdasar')]) !!}
                     @include('kuesioners._form')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
@@ -198,6 +198,8 @@
 @endsection
 @push('script')
     <script>
+
+        // KUESIONER DASAR
         function check() {
             var i = 1;
             var total = {{$bidangusahapekerjaan->count('id')}};
@@ -224,28 +226,47 @@
                     $('#divaset' + i).show();
                 } else {
                     $('#divaset' + i).hide();
+                    $('#jumlahaset' + i).val('');
                 }
             }
         }
 
         function checksda(hasil) {
-            if (hasil === 1) {
+            if (hasil == 1) {
                 $('#divsda').show();
             } else {
                 $('#divsda').hide();
+                $('#namasumberdaya').val('');
+                $('#panenpertahun').val('');
+                $('#hasilperpanen').val('');
             }
 
         }
 
         function checkbank(bank) {
-            if (bank === 1) {
+            if (bank == 1) {
                 $('#divbank').show();
                 $('#divkredit').show();
             } else {
                 $('#divbank').hide();
                 $('#divkredit').hide();
+                $('#idbesarankredit').val('');
+                $('#lamakredit').val('');
+                uncheck();
             }
 
+        }
+
+        function uncheck() {
+            var i = 1;
+            var total = {{$perbankan->count('id')}};
+            for (i = 1; i <= total; i++) {
+                $('#idjenisperbankan' + i).prop('checked', false);
+                $('#namabank' + i).val('');
+                $('#cabang' + i).val('');
+                $('#divnamabank' + i).hide();
+                $('#divalamatbank' + i).hide();
+            }
         }
 
         function checkjenisbank() {
@@ -260,10 +281,13 @@
                 } else {
                     $('#divnamabank' + i).hide();
                     $('#divalamatbank' + i).hide();
+                    $('#namabank' + i).val('');
+                    $('#cabang' + i).val('');
                 }
             }
         }
 
+        // BIDANG INDUSTRI
         function checkjenisindustri() {
             var i = 1;
             var totalindustri = {{$jenisindustri->count('id')}}; // jenis industri tidak boleh lebih dari 20. jika lebih ubah nama kolom2 pada perulangan
@@ -274,22 +298,89 @@
                     for (a = 2; a <= 14; a++) { //a dimulai dari 2 karena jika dimulai dari 1 akan ada "kolom111" berjumlah 2 yaitu kolom1 ke 11 dan kolom11 ke 1
                         $('#kolom' + a + i).show();  //a dimulai dari 2 maka max perulangan jumlah Md(master data) = 20 agar tidak ada kolom2 ke11 dan kolom21 ke 1
                     }
+                    $("#jenisindustri" + i).prop("disabled", false);
                 } else {
                     for (a = 2; a <= 14; a++) {
                         $('#kolom' + a + i).hide();
+                        $('#namaproduk' + i).val('');
+                        $('#produksiperbulan' + i).val('');
+                        $('#satuanproduksi' + i).val('');
+                        $('#idbahanbaku' + i).val('');
+                        $('#kebutuhanperbulan' + i).val('');
+                        $('#satuanbahanbaku' + i).val('');
+                        $('#hargakulakbahan' + i).val('');
+                        $('#satuankulak' + i).val('');
+                        $('#idsuplier' + i).val('');
+                        $('#namasuplier' + i).val('');
+                        $('#hargajualproduk' + i).val('');
+                        $('#satuanjual' + i).val('');
+                        $('#operasionalperbulan' + i).val('');
+                        $('#pemasarandalamkabupaten' + i).prop('checked', false);
+                        $('#pemasaranluarkabupaten' + i).prop('checked', false);
+                        $('#pemasaranluarprovinsi' + i).prop('checked', false);
+                        $('#pemasaranluarnegeri' + i).prop('checked', false);
+                        $('#idjenisindustriu' + i).val('');
                     }
+                    $("#jenisindustri" + i).prop("disabled", true);
                 }
             }
         }
 
         function checkindustri(industri) {
-            if (industri === 1) {
+            if (industri == 1) {
                 $('#divjenisindustri').show();
                 $('#simpanindustri').show();
             } else {
                 $('#divjenisindustri').hide();
                 $('#simpanindustri').hide();
+                var i = 1;
+                var totalindustri = {{$jenisindustri->count('id')}};
+                for (i = 1; i <= totalindustri + 1; i++) {
+                    $('#idjenisindustri' + i).prop('checked', false);
+                    for (a = 2; a <= 14; a++) {
+                        $('#kolom' + a + i).hide();
+                        $('#namaproduk' + i).val('');
+                        $('#produksiperbulan' + i).val('');
+                        $('#satuanproduksi' + i).val('');
+                        $('#idbahanbaku' + i).val('');
+                        $('#kebutuhanperbulan' + i).val('');
+                        $('#satuanbahanbaku' + i).val('');
+                        $('#hargakulakbahan' + i).val('');
+                        $('#satuankulak' + i).val('');
+                        $('#idsuplier' + i).val('');
+                        $('#namasuplier' + i).val('');
+                        $('#hargajualproduk' + i).val('');
+                        $('#satuanjual' + i).val('');
+                        $('#operasionalperbulan' + i).val('');
+                        $('#pemasarandalamkabupaten' + i).prop('checked', false);
+                        $('#pemasaranluarkabupaten' + i).prop('checked', false);
+                        $('#pemasaranluarprovinsi' + i).prop('checked', false);
+                        $('#pemasaranluarnegeri' + i).prop('checked', false);
+                    }
+                }
+            }
 
+        }
+
+        // BIDANG PETERNAKAN
+        function checkjenisternak() {
+            var i = 1;
+            var totalternak = {{$jenisternak->count('id')}};
+            for (i = 1; i <= totalternak + 1; i++) {
+                var id = 'idjenisternak' + i;
+                var check = document.getElementById(id)
+                if (check.checked === true) {
+                    for (a = 3; a <= 12; a++) {
+                        $('#col' + a + i).show();
+                    }
+                    $("#jenisternak" + i).prop("disabled", false);
+                } else {
+                    for (a = 2; a <= 12; a++) {
+                        $('#col' + a + i).hide();
+                        $('#namaproduk' + i).val('');
+                    }
+                    $("#jenisternak" + i).prop("disabled", true);
+                }
             }
         }
     </script>
