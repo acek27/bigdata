@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/map', 'HomeController@map')->name('map');
 Route::post('simpanbidangindustri', 'KuesionerController@simpanbidangindustri')->name('simpanbidangindustri');
 Route::post('simpankuesionerdasar', 'KuesionerController@simpankuesionerdasar')->name('simpankuesionerdasar');
+Route::post('simpanbidangpeternakan', 'KuesionerController@simpanbidangpeternakan')->name('simpanbidangpeternakan');
 Route::resource('kuesioner', 'KuesionerController');
 Route::resource('homeAdmin', 'HomeadminController');

@@ -139,7 +139,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['url'=>route('kuesioner.store')]) !!}
+                    {!! Form::open(['url'=>route('simpanbidangpeternakan')]) !!}
                     @include('kuesioners._form_peternakan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
