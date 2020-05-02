@@ -14,7 +14,7 @@ class Bidang_perdagangan extends Model
         'hargakulak', 'hargajual', 'satuanjual', 'idsuplier', 'pemasarandalamkecamatan', 'pemasarandalamkabupaten',
         'pemasaranluarprovinsi', 'pemasaranluarnegeri'];
 
-    public function kepemilikanusahadagangs()
+    public function kepemilikanusahadagangs() //ganti
     {
         return $this->belongsTo(Kepemilikanusahadagang::class, 'idkepemilikandagang', 'id');
     }

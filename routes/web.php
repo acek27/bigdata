@@ -18,7 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/map', 'HomeController@map')->name('map');
+Route::get('/hasilkuesioner', 'KuesionerController@hasilkuesioner')->name('hasil.kuesioner');
+Route::get('/datakuesioner', 'KuesionerController@anyData')->name('kuesioner.data');
 Route::post('simpanbidangindustri', 'KuesionerController@simpanbidangindustri')->name('simpanbidangindustri');
 Route::post('simpankuesionerdasar', 'KuesionerController@simpankuesionerdasar')->name('simpankuesionerdasar');
 Route::post('simpanbidangpeternakan', 'KuesionerController@simpanbidangpeternakan')->name('simpanbidangpeternakan');

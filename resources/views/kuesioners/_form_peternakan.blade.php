@@ -255,17 +255,17 @@
 <div class="form-group">
     <label for="inputProjectLeader">33. Bagaimana cara anda mengelola usaha peternakan anda?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input class="form-group" name="statuspengelolaan" id="statuspengoellaan" value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dikelola sendiri</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input class="form-group" name="statuspengelolaan" id="statuspengelolaann" value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dikelola orang lain</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="3"
+        <input class="form-group" name="statuspengelolaan" id="statuspengelolaan" value="3"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dikelola secara komunal (tempat penitipan ternak)</label>
     </div>
@@ -274,17 +274,17 @@
 <div class="form-group">
     <label for="inputProjectLeader">34. Jika dikelola orang lain, siapa pemilik kandang ternak?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input class="form-group" name="kepemilikankandang" id="kepemilikankandang" value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Pemilik ternak</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input class="form-group" name="kepemilikankandang" id="kepemilikankandang" value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">pengelola ternak</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="3"
+        <input class="form-group" name="kepemilikankandang" id="kepemilikankandang" value="3"
                class="form-check-input" type="radio">
         <label class="form-check-label">Kandang komunal</label>
     </div>
@@ -293,27 +293,27 @@
 <div class="form-group">
     <label for="inputProjectLeader">35. Apakah peruntukan ternak?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input class="form-group" name="peruntukanternak" id="peruntukanternak" value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Pembibitan</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input class="form-group" name="peruntukanternak" id="peruntukanternak" value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">Pembudidaya</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="3"
+        <input class="form-group" name="peruntukanternak" id="peruntukanternak" value="3"
                class="form-check-input" type="radio">
         <label class="form-check-label">Penggemukan</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="4"
+        <input class="form-group" name="peruntukanternak" id="peruntukanternak" value="4"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dianakkan</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="5"
+        <input class="form-group" name="peruntukanternak" id="peruntukanternak" value="5"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dijual hidup</label>
     </div>
@@ -322,22 +322,22 @@
 <div class="form-group">
     <label for="inputProjectLeader">36. Bagaimana cara memperoleh pakan ternak?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input class="form-group" name="sumberpakanternak" id="sumberpakanternak" value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Mempunyai lahan hijauan pakan ternak (HPT) sendiri</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input class="form-group" name="sumberpakanternak" id="sumberpakanternak" value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">Mencari</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="3"
+        <input class="form-group" name="sumberpakanternak" id="sumberpakanternak" value="3"
                class="form-check-input" type="radio">
         <label class="form-check-label">Membuat sendiri (silase)</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="4"
+        <input class="form-group" name="sumberpakanternak" id="sumberpakanternak" value="4"
                class="form-check-input" type="radio">
         <label class="form-check-label">Membeli</label>
     </div>
@@ -351,9 +351,9 @@
                 <div class="form-group row">
                     <label>&nbsp;&nbsp;&nbsp;&nbsp;Nama Toko/Suplier</label>
                     <div class="col-md-8">
-                        {{ Form::text('aspek',null,[
+                        {{ Form::text('namasuplier',null,[
                         'class'=>'form-control',
-                        'id' => 'aspek'
+                        'id' => 'namasuplier'
                         ]) }}
                     </div>
                 </div>
@@ -362,9 +362,9 @@
                 <div class="form-group row">
                     <label>Desa/Kelurahan</label>
                     <div class="col-sm-6">
-                        {{ Form::select('id',$desa,null,[
+                        {{ Form::select('iddesasuplier',$desa,null,[
                             'class'=>'form-control select2',
-                            'id' => 'id'
+                            'id' => 'iddesasuplier'
                             ]) }}
                     </div>
                 </div>
@@ -376,14 +376,21 @@
 <div class="form-group">
     <label for="inputProjectLeader">37. Pernahkan ternak anda terserang penyakit?</label>
     <div class="col-md-4">
-        {{ Form::select('id',array('1' => 'Tidak pernah', '2' => 'Pernah, penyakit individu', '3' => 'Pernah, penyakit menular'),null,['class'=>'form-control select2','id' => 'id']) }}
+        {{ Form::select('statusterserangpenyakit',
+            array('1' => 'Tidak pernah',
+            '2' => 'Pernah, penyakit individu',
+            '3' => 'Pernah, penyakit menular'),null,[
+                'class'=>'form-control select2',
+                'id' => 'statusterserangpenyakit']) }}
     </div>
     <div class="form-group">
         <div class="col-md-4">
             <label>Jika pernah, sebutkan nama penyakitnya:</label>
         </div>
         <div class="col-md-4">
-            {{ Form::select('id',array('1' => 'Sakek Cetak', '2' => 'Sakek tabuk', '3' => 'Jurut'),null,['class'=>'form-control select2','id' => 'id']) }}
+            {{ Form::select('idpenyakitternak',$penyakitternak,null,[
+            'class'=>'form-control select2',
+            'id' => 'idpenyakitternak']) }}
         </div>
     </div>
 </div>
@@ -392,36 +399,40 @@
     <label for="inputProjectLeader">38. Kemana penjualan hasil produksi peternakan anda?</label>
     <div class="form-group">
         <div class="col-md-4">
-            {{ Form::select('id',array('1' => 'Pedagang', '2' => 'Pasar'),null,['class'=>'form-control select2','id' => 'id']) }}
+            {{ Form::select('pemasaranhasilproduksi',array('1' => 'Pedagang', '2' => 'Pasar'),null,[
+    'class'=>'form-control select2',
+    'id' => 'pemasaranhasilproduksi']) }}
         </div>
         <div class="col-md-8">
-            <input name="pasar1" id="pasar1" value="1" class="form-group-input" type="checkbox">
-            <label for="pasar1" class="form-check-label"> Dalam Kecamatan</label>
-            <input name="pasar2" id="pasar2" value="2" class="form-group-input" type="checkbox">
-            <label for="pasar2" class="form-check-label"> Dalam Kabupaten</label>
-            <input name="pasar3" id="pasar3" value="3" class="form-group-input" type="checkbox">
-            <label for="pasar3" class="form-check-label"> Luar Kabupaten</label>
-            <input name="pasar4" id="pasar4" value="4" class="form-group-input" type="checkbox">
-            <label for="pasar4" class="form-check-label"> Luar Provinsi</label>
-            <input name="pasar5" id="pasar5" value="5" class="form-group-input" type="checkbox">
-            <label for="pasar5" class="form-check-label"> Luar Negeri</label>
+            <input name="pemasarandalamkabupaten" id="pemasarandalamkabupaten" value="1" class="form-group-input"
+                   type="checkbox">
+            <label for="pemasarandalamkabupaten" class="form-check-label"> Dalam Kabupaten</label>
+            <input name="pemasaranluarkabupaten" id="pemasaranluarkabupaten" value="1" class="form-group-input"
+                   type="checkbox">
+            <label for="pemasaranluarkabupaten" class="form-check-label"> Luar Kabupaten</label>
+            <input name="pemasaranluarprovinsi" id="pemasaranluarprovinsi" value="1" class="form-group-input"
+                   type="checkbox">
+            <label for="pemasaranluarprovinsi" class="form-check-label"> Luar Provinsi</label>
+            <input name="pemasaranluarnegeri" id="pemasaranluarnegeri" value="1" class="form-group-input"
+                   type="checkbox">
+            <label for="pemasaranluarnegeri" class="form-check-label"> Luar Negeri</label>
         </div>
     </div>
 </div>
 <div class="form-group">
     <label for="inputProjectLeader">39. Bagaimana anda mengelola limbah hasil peternakan anda?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input class="form-group" name="pengolahanlimbah" id="pengolahanlimbah" value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dibuang</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input class="form-group" name="pengolahanlimbah" id="pengolahanlimbah" value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">Diolah sendiri</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="3"
+        <input class="form-group" name="pengolahanlimbah" id="pengolahanlimbah" value="3"
                class="form-check-input" type="radio">
         <label class="form-check-label">Dijual</label>
     </div>
@@ -435,9 +446,9 @@
                     <label>&nbsp;&nbsp;&nbsp;&nbsp;Kapasitas Limbah</label>
                     <div class="col-sm-6">
                         <div class="input-group">
-                            {{ Form::text('aspek',null,[
+                            {{ Form::text('kapasitaslimbahperbulan',null,[
                             'class'=>'form-control',
-                            'id' => 'aspek'
+                            'id' => 'kapasitaslimbahperbulan'
                             ]) }}
                             <div class="input-group-append">
                                 <span class="input-group-text">Kg/Bulan</span>
@@ -454,9 +465,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp.</span>
                             </div>
-                            {{ Form::text('aspek',null,[
+                            {{ Form::text('hargasebelumolah',null,[
                                 'class'=>'form-control',
-                                'id' => 'aspek'
+                                'id' => 'hargasebelumolah'
                                 ]) }}
                             <div class="input-group-append">
                                 <span class="input-group-text">/Kg</span>
@@ -473,9 +484,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp.</span>
                             </div>
-                            {{ Form::text('aspek',null,[
+                            {{ Form::text('hargasetelaholah',null,[
                                 'class'=>'form-control',
-                                'id' => 'aspek'
+                                'id' => 'hargasetelaholah'
                                 ]) }}
                             <div class="input-group-append">
                                 <span class="input-group-text">/Kg</span>
@@ -491,7 +502,115 @@
     <div class="col-sm-12">
         <!-- checkbox -->
         <div class="form-group">
-            <label for="inputProjectLeader">41. Jenis pakan ternak yang digunakan</label>
+            <label for="inputProjectLeader">41. Jika diolah, sebutkan untuk apa?</label>
+            <div class="row">
+                @php($i = 1)
+                @foreach($limbahternak as $limbah)
+                    <div class="form-check col-lg-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="idlimbahternak{{$i}}" onclick="checklimbahternak()"
+                                       id="idlimbahternak{{$i}}" value="{{$limbah->id}}"
+                                       class="form-group-input" type="checkbox">
+                                <label for="idlimbahternak{{$i}}"
+                                       class="form-check-label">{{$limbah->limbahternak}}</label>
+                            </div>
+                            <div class="col-md-3" id="divkapasitasperbulan{{$i}}" style="display: none">
+                                <div class="form-group row">
+                                    {{ Form::label('kapasitasperbulan'.$i, 'Produksi/bulan') }}
+                                    <div class="col-sm-4">
+                                        {{ Form::text('kapasitasperbulan'.$i,null,[
+                                        'class'=>'form-control',
+                                            'id' => 'kapasitasperbulan'.$i
+                                         ]) }}
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{ Form::select('satuanlimbah'.$i,$satuan,null,[
+                                                       'class'=>'form-control select2',
+                                                       'id' => 'satuanlimbah'.$i
+                                                       ]) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" id="divhargajual{{$i}}" style="display: none">
+                                <div class="form-group row">
+                                    {{ Form::label('hargajual'.$i, 'Harga jual') }}
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Rp.</span>
+                                            </div>
+                                            {{ Form::text('hargajual'.$i,null,[
+                                            'class'=>'form-control',
+                                                'id' => 'hargajual'.$i
+                                             ]) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @php($i++)
+                @endforeach
+                <div class="form-check col-lg-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="input-group">
+                                <input name="idlimbahternak{{$i}}" onclick="checklimbahternak()"
+                                       id="idlimbahternak{{$i}}" value="99"
+                                       class="form-group-input" type="checkbox">
+                                {{ Form::text('jenislimbahternak'.$i,null,[
+                                    'disabled' =>'disabled',
+                                    'class'=>'form-control',
+                                    'id' => 'jenislimbahternak'.$i]) }}
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="divkapasitasperbulan{{$i}}" style="display: none">
+                            <div class="form-group row">
+                                {{ Form::label('kapasitasperbulan'.$i, 'Produksi/bulan') }}
+                                <div class="col-sm-4">
+                                    {{ Form::text('kapasitasperbulan'.$i,null,[
+                                    'class'=>'form-control',
+                                        'id' => 'kapasitasperbulan'.$i
+                                     ]) }}
+                                </div>
+                                <div class="col-sm-3">
+                                    {{ Form::select('satuanlimbah'.$i,$satuan,null,[
+                                                   'class'=>'form-control select2',
+                                                   'id' => 'satuanlimbah'.$i
+                                                   ]) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="divhargajual{{$i}}" style="display: none">
+                            <div class="form-group row">
+                                {{ Form::label('hargajual'.$i, 'Harga jual') }}
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp.</span>
+                                        </div>
+                                        {{ Form::text('hargajual'.$i,null,[
+                                        'class'=>'form-control',
+                                            'id' => 'hargajual'.$i
+                                         ]) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <!-- checkbox -->
+        <div class="form-group">
+            <label for="inputProjectLeader">42. Jenis pakan ternak yang digunakan</label>
             <div class="row">
                 @foreach($jenispakanternak as $pakan)
                     <div class="form-check col-lg-12">
@@ -567,106 +686,6 @@
                         <div class="col-md-3">
                             <div class="form-group row">
                                 {{ Form::label('aspek', 'Harga beli') }}
-                                <div class="col-sm-8">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Rp.</span>
-                                        </div>
-                                        {{ Form::text('aspek',null,[
-                                        'class'=>'form-control',
-                                            'id' => 'aspek'
-                                         ]) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <!-- checkbox -->
-        <div class="form-group">
-            <label for="inputProjectLeader">42. Jika diolah, sebutkan untuk apa?</label>
-            <div class="row">
-                @foreach($limbahternak as $limbah)
-                    <div class="form-check col-lg-12">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <input name="limbah{{$limbah->id}}" id="limbah{{$limbah->id}}" value="{{$limbah->id}}"
-                                       class="form-group-input" type="checkbox">
-                                <label for="limbah{{$limbah->id}}"
-                                       class="form-check-label">{{$limbah->limbahternak}}</label>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group row">
-                                    {{ Form::label('aspek', 'Produksi/bulan') }}
-                                    <div class="col-sm-4">
-                                        {{ Form::text('aspek',null,[
-                                        'class'=>'form-control',
-                                            'id' => 'aspek'
-                                         ]) }}
-                                    </div>
-                                    <div class="col-sm-3">
-                                        {{ Form::select('id',$satuan,null,[
-                                                       'class'=>'form-control select2',
-                                                       'id' => 'id'
-                                                       ]) }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group row">
-                                    {{ Form::label('aspek', 'Harga jual') }}
-                                    <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Rp.</span>
-                                            </div>
-                                            {{ Form::text('aspek',null,[
-                                            'class'=>'form-control',
-                                                'id' => 'aspek'
-                                             ]) }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                <div class="form-check col-lg-12">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="input-group">
-                                <input name="limbah5" id="limbah5" value="5"
-                                       class="form-group-input" type="checkbox">
-                                {{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group row">
-                                {{ Form::label('aspek', 'Produksi/bulan') }}
-                                <div class="col-sm-4">
-                                    {{ Form::text('aspek',null,[
-                                    'class'=>'form-control',
-                                        'id' => 'aspek'
-                                     ]) }}
-                                </div>
-                                <div class="col-sm-3">
-                                    {{ Form::select('id',$satuan,null,[
-                                                   'class'=>'form-control select2',
-                                                   'id' => 'id'
-                                                   ]) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group row">
-                                {{ Form::label('aspek', 'Harga jual') }}
                                 <div class="col-sm-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">

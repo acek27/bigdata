@@ -10,7 +10,7 @@ class Pengolahanlimbahternak extends Model
     use GetAttributes;
 
     protected $with = ['md_limbahternaks'];
-    protected $fillable = ['nik', 'idlimbahternak', 'kapasitasperbulan', 'satuanlimbah', 'hargajual'];
+    protected $fillable = ['nik', 'idlimbahternak','jenislimbahternak', 'kapasitasperbulan', 'satuanlimbah', 'hargajual'];
 
     public function md_limbahternaks()
     {

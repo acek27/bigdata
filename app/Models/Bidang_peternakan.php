@@ -12,8 +12,21 @@ class Bidang_peternakan extends Model
     protected $with = ['desa', 'md_penyakitternaks'];
     protected $fillable = ['nik', 'statuspengelolaan', 'kepemilikankandang', 'peruntukanternak',
         'sumberpakanternak', 'namasuplier', 'iddesasuplier', 'statusterserangpenyakit', 'idpenyakitternak',
-        'pemasaranhasilproduksi', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi', 'pemasaranluarnegeri',
+        'pemasaranhasilproduksi', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi', 'pemasaranluarnegeri',
         'pengolahanlimbah', 'kapasitaslimbahperbulan', 'hargasebelumolah', 'hargasetelaholah'];
+    protected $attributes = [
+        'pemasarandalamkabupaten' => 0,
+        'pemasaranluarkabupaten' => 0,
+        'pemasaranluarprovinsi' => 0,
+        'pemasaranluarnegeri' => 0,
+        'kepemilikankandang' => null,
+        'namasuplier' => null,
+        'iddesasuplier' => null,
+        'idpenyakitternak' => null,
+        'kapasitaslimbahperbulan' => null,
+        'hargasebelumolah' => null,
+        'hargasetelaholah' => null
+    ];
 
     public function desa()
     {
@@ -24,4 +37,5 @@ class Bidang_peternakan extends Model
     {
         return $this->belongsTo(Md_penyakitternak::class, 'idpenyakitternak', 'id');
     }
+
 }

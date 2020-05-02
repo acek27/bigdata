@@ -382,6 +382,23 @@
                     $("#jenisternak" + i).prop("disabled", true);
                 }
             }
+
+        }
+
+        function checklimbahternak() {
+            var i = 1;
+            var totallimbah = {{$limbahternak->count('id')}};
+            for (i = 1; i <= totallimbah + 1; i++) {
+                var id = 'idlimbahternak' + i;
+                var check = document.getElementById(id)
+                if (check.checked === true) {
+                    $('#divkapasitasperbulan'+i).show();
+                    $('#divhargajual'+i).show();
+                    $("#jenislimbahternak" + i).prop("disabled", false);
+                } else {
+                    $("#jenislimbahternak" + i).prop("disabled", true);
+                }
+            }
         }
     </script>
 @endpush

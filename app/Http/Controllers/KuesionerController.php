@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\Resource;
+use App\Models\Bidang_peternakan;
 use App\Models\Kecamatan;
 use App\Models\Md_bidangusahapekerjaan;
+use App\Models\Md_penyakitternak;
 use App\Models\Md_statuspekerjaan;
 use App\Models\Md_asetusaha;
 use App\Models\Md_perbankan;
@@ -30,8 +32,10 @@ use App\Models\Penghasilantambahan;
 use App\Models\Pdrbdankredit;
 use App\Models\Fasilitasperbankan;
 use App\Models\Bidang_industri;
+use App\Models\Pengolahanlimbahternak;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
 
 class KuesionerController extends Controller
 {
@@ -56,6 +60,7 @@ class KuesionerController extends Controller
         $bahanbaku = Md_bahanbaku::pluck('bahanbaku', 'id')->all();
         $jenisindustri = Md_jenisindustri::all();
         $suplier = Md_suplier::pluck('suplier', 'id')->all();
+        $penyakitternak = Md_penyakitternak::pluck('penyakitternak', 'id')->all();
         $satuan = Md_satuan::pluck('satuan', 'id')->all();
         $jenistanaman = Md_jenistanaman::all();
         $jenissaprodi = Md_saprodi::all();
@@ -70,7 +75,7 @@ class KuesionerController extends Controller
             ->join('kecamatan', 'desa.idkecamatan', '=', 'kecamatan.idkecamatan')->pluck('desa', 'iddesa')->all();
         return view($this->view . '.index', compact('bidangusahapekerjaan', 'statuspekerjaan', 'asetusaha', 'perbankan', 'kredit', 'jenisindustri',
             'bahanbaku', 'suplier', 'satuan', 'jenistanaman', 'desa', 'jenissaprodi', 'jenisternak', 'jenispakanternak', 'limbahternak', 'jenisikanbudidaya',
-            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang'));
+            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang', 'penyakitternak'));
     }
 
     public function simpankuesionerdasar(Request $request)
@@ -185,8 +190,6 @@ class KuesionerController extends Controller
                 }
                 $industri->save();
             }
-
-
         }
 
         return redirect(route($this->route . '.index'));
@@ -199,7 +202,9 @@ class KuesionerController extends Controller
     {
         $nik = '132410101085';
         $totalternak = Md_jenisternak::count();
+        $totallimbah = Md_limbahternak::count();
         $data = array_filter($request->all());
+        //kelola ternak
         for ($i = 1; $i <= $totalternak + 1; $i++) {
             $kelolaternak = new Pengelolaanternak();
             if (array_key_exists('idjenisternak' . $i, $data)) {
@@ -224,8 +229,43 @@ class KuesionerController extends Controller
                 $kelolaternak->save();
             }
         }
-        return redirect(route($this->route . '.index'));
+        //bidang peternakan
+        $request->merge(['nik' => $nik]);
+        Bidang_peternakan::create($request->all());
 
+        //kelola limbah
+        for ($i = 1; $i <= $totallimbah + 1; $i++) {
+            $olahlimbah = new Pengolahanlimbahternak();
+            if (array_key_exists('idlimbahternak' . $i, $data)) {
+                $olahlimbah->nik = $nik;
+                $olahlimbah->idlimbahternak = $data['idlimbahternak' . $i];
+                if (array_key_exists('jenislimbahternak' . $i, $data)) {
+                    $olahlimbah->jenislimbahternak = $data['jenislimbahternak' . $i];
+                }
+                $olahlimbah->kapasitasperbulan = $data['kapasitasperbulan' . $i];
+                $olahlimbah->satuanlimbah = $data['satuanlimbah' . $i];
+                $olahlimbah->hargajual = $data['hargajual' . $i];
+                $olahlimbah->save();
+            }
+        }
+
+        return redirect(route($this->route . '.index'));
+    }
+
+    public function hasilkuesioner()
+    {
+        return view($this->view . '.hasilkuesioner');
+    }
+
+    public function anyData()
+    {
+        return DataTables::of(Penghasilantambahan::GetYear())
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
+                $edit = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
+                return $edit . '&nbsp' . '&nbsp' . $del;
+            })
+            ->make(true);
     }
 
 }
