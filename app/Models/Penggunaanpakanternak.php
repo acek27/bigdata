@@ -10,7 +10,7 @@ class Penggunaanpakanternak extends Model
     use GetAttributes;
 
     protected $with = ['md_jenispakanternaks'];
-    protected $fillable = ['nik', 'idjenispakanternak', 'kebutuhanperhari', 'satuanpakan', 'hargapakan'];
+    protected $fillable = ['nik', 'idjenispakanternak', 'namapakanternak', 'kebutuhanperhari', 'satuanpakan', 'hargapakan'];
 
     public function md_jenispakanternaks()
     {

@@ -10,4 +10,8 @@ class Md_saprodi extends Model
     {
         return $this->hasMany(Bidang_pertanian::class);
     }
+    public function kepemilikansaprodis()
+    {
+        return $this->hasMany(Kepemilikansaprodi::class);
+    }
 }

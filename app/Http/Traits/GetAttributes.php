@@ -4,8 +4,49 @@ namespace App\Http\Traits;
 
 trait GetAttributes
 {
-    public function scopeGetYear($query)
+    public function scopeAnyData($query)
     {
         return $query->whereYear('created_at', date('Y'));
+    }
+
+    public function scopePersonalData($query, $nik)
+    {
+        return $query->whereYear('created_at', date('Y'))
+            ->where('nik', $nik);
+    }
+
+    public function getPemasarandalamkabupatenAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getPemasaranluarkabupatenAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getPemasaranluarprovinsiAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+    public function getPemasaranluarnegeriAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
     }
 }

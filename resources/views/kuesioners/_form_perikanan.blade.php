@@ -1,134 +1,264 @@
 <!-- Kuesioner Bidang Perikanan-->
 
 <div class="form-group">
-    <label for="inputDescription">43. Apakah anda memiliki kegiatan dibidang perikanan?</label>
+    <label for="inputDescription">42. Apakah anda memiliki kegiatan dibidang perikanan?</label>
     <div class="col-md-1">
-        <input class="form-group" name="perikanan" id="perikanan" value="1" class="form-check-input" type="radio">
+        <input onclick="checkperikanan(this.value)" class="form-group" name="perikanan" id="perikanan" value="1"
+               class="form-check-input" type="radio">
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
-        <input class="form-group" name="perikanan" id="perikanan" value="0" class="form-check-input" type="radio">
+        <input onclick="checkperikanan(this.value)" class="form-group" name="perikanan" id="perikanan" value="0"
+               class="form-check-input" type="radio">
         <label class="form-check-label">Tidak</label>
     </div>
 </div>
 
-<div class="form-group">
-    <label for="inputDescription">Jika Ya, silahkan jawab pertanyaan no.15 sampai dengan no.30!</label>
-    <br>
-    <label for="inputDescription">Jika Tidak, silahkan lanjutkan kebidang selanjutnya tanpa menekan tombol
-        simpan!</label>
-</div>
 
-<div class="form-group">
-    <label for="inputDescription">44. Isikan informasi jenis budidaya perikanan yang sedang anda kerjakan: (bisa mengisi
+<div id="divikan1" class="form-group">
+    <label for="inputDescription">43. Isikan informasi jenis budidaya perikanan yang sedang anda kerjakan: (bisa mengisi
         lebih dari satu)</label>
-</div>
-<div class="col-12">
-    <div class="card">
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0" style="height: 500px;">
-            <table class="table table-head-fixed text-nowrap">
-                <thead>
-                <tr>
-                    <th>Jenis Ikan</th>
-                    <th>Luasan Budidaya</th>
-                    <th>satuan luas</th>
-                    <th>Harga beli bibit ikan</th>
-                    <th>Satuan bibit</th>
-                    <th>Harga jual hasil produksi</th>
-                    <th>Satuan jual</th>
-                    <th>Tanggal tebar benih</th>
-                    <th>Tanggal perikanan panen</th>
-                    <th>Kapasitas produksi/tahun</th>
-                    <th>periode produksi/tahun</th>
-                    <th>Biaya operasional/produksi</th>
-                    <th>Jenis Pakan Ikan</th>
-                    <th>Kebutuhan Pakan/hari</th>
-                    <th>Satuan Pakan</th>
-                    <th>Harga Pakan Ikan/satuan</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($jenisikanbudidaya as $ikanbudidaya)
+    <div class="col-12">
+        <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 500px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>Jenis Ikan</th>
+                        <th>Luasan Budidaya</th>
+                        <th>satuan luas</th>
+                        <th>Harga beli bibit ikan</th>
+                        <th>Satuan bibit</th>
+                        <th>Harga jual hasil produksi</th>
+                        <th>Satuan jual</th>
+                        <th>Tanggal tebar benih</th>
+                        <th>Tanggal perikanan panen</th>
+                        <th>Kapasitas produksi/tahun</th>
+                        <th>periode produksi/tahun</th>
+                        <th>Biaya operasional/produksi</th>
+                        <th>Jenis Pakan Ikan</th>
+                        <th>Kebutuhan Pakan/hari</th>
+                        <th>Satuan Pakan</th>
+                        <th>Harga Pakan Ikan/satuan</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @php($ikan=1)
+                    @foreach($jenisikanbudidaya as $ikanbudidaya)
+                        <tr>
+                            <td>
+                                <input onclick="checkjenisikanbudidaya()" name="idikanbudidaya{{$ikan}}"
+                                       id="idikanbudidaya{{$ikan}}"
+                                       value="{{$ikanbudidaya->id}}"
+                                       class="form-group-input" type="checkbox">
+                                <label for="idikanbudidaya{{$ikan}}"
+                                       class="form-check-label">{{$ikanbudidaya->id}}{{'. '}}{{$ikanbudidaya->jenisikan}}</label>
+                            </td>
+                            <td id="kolom1ikan{{$ikan}}"
+                                style="display: none">{{ Form::text('luaskolam'.$ikan,null,['class'=>'form-control','id' => 'luaskolam'.$ikan]) }}
+                            </td>
+                            <td id="kolom2ikan{{$ikan}}" style="display: none">
+                                {{ Form::select('satuanluas'.$ikan,$satuan,null,[
+                                      'class'=>'form-control select2','placeholder' => 'Pilih',
+                                      'id' => 'satuanluaskolam'.$ikan
+                                      ]) }}
+                            </td>
+                            <td id="kolom3ikan{{$ikan}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('hargabibit'.$ikan,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'hargabibitikan'.$ikan
+                                    ]) }}
+                                </div>
+                            </td>
+                            <td id="kolom4ikan{{$ikan}}" style="display: none">
+                                {{ Form::select('satuanbibit'.$ikan,$satuan,null,[
+                                      'class'=>'form-control select2','placeholder' => 'Pilih',
+                                      'id' => 'satuanbibitikan'.$ikan
+                                      ]) }}
+                            </td>
+                            <td id="kolom5ikan{{$ikan}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('hargajual'.$ikan,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'hargajualikan'.$ikan
+                                    ]) }}
+                                </div>
+                            </td>
+                            <td id="kolom6ikan{{$ikan}}" style="display: none">
+                                {{ Form::select('satuanjual'.$ikan,$satuan,null,[
+                                      'class'=>'form-control select2','placeholder' => 'Pilih',
+                                      'id' => 'satuanjualikan'.$ikan
+                                      ]) }}
+                            </td>
+                            <td id="kolom7ikan{{$ikan}}" style="display: none">
+                                {{ Form::text('tanggaltebar'.$ikan,null,[
+                                          'class'=>'form-control datepicker',
+                                          'id' => 'tanggaltebarikan'.$ikan
+                                      ]) }}
+                            </td>
+                            <td id="kolom8ikan{{$ikan}}" style="display: none">
+                                {{ Form::text('tanggalpanen'.$ikan,null,[
+                                          'class'=>'form-control datepicker',
+                                          'id' => 'tanggalpanenikan'.$ikan
+                                      ]) }}</td>
+                            <td id="kolom9ikan{{$ikan}}" style="display: none">
+                                <div class="input-group">
+
+                                    {{ Form::text('kapasitasperpanen'.$ikan,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'kapasitasperpanenikan'.$ikan
+                                    ]) }}
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Ton</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td id="kolom10ikan{{$ikan}}" style="display: none">
+                                <div class="input-group">
+
+                                    {{ Form::text('panenpertahun'.$ikan,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'panenpertahunikan'.$ikan
+                                    ]) }}
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Kali</span>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td id="kolom11ikan{{$ikan}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('biayaproduksi'.$ikan,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'biayaproduksiikan'.$ikan
+                                    ]) }}
+                                </div>
+                            </td>
+                            <td id="kolom12ikan{{$ikan}}" style="display: none">
+                                {{ Form::select('idjenispakan'.$ikan,$jenispakanikan,null,[
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'idjenispakanikan'.$ikan
+                                ]) }}
+                            </td>
+                            <td id="kolom13ikan{{$ikan}}" style="display: none">
+                                {{ Form::text('kebutuhanpakanperhari'.$ikan,null,[
+                                    'class'=>'form-control',
+                                    'id' => 'kebutuhanpakanperhariikan'.$ikan
+                                ]) }}
+                            </td>
+                            <td id="kolom14ikan{{$ikan}}" style="display: none">
+                                {{ Form::select('satuanpakan'.$ikan,$satuan,null,[
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'satuanpakanikan'.$ikan
+                                ]) }}
+                            </td>
+                            <td id="kolom15ikan{{$ikan}}" style="display: none">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    {{ Form::text('hargapakan'.$ikan,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'hargapakanikan'.$ikan
+                                    ]) }}
+                                </div>
+                            </td>
+                        </tr>
+                        @php($ikan++)
+                    @endforeach
                     <tr>
                         <td>
-                            <input name="ikanbudidaya{{$ikanbudidaya->id}}" id="ikanbudidaya{{$ikanbudidaya->id}}"
-                                   value="{{$ikanbudidaya->id}}"
-                                   class="form-group-input" type="checkbox">
-                            <label for="ikanbudidaya{{$ikanbudidaya->id}}"
-                                   class="form-check-label">{{$ikanbudidaya->id}}{{'. '}}{{$ikanbudidaya->jenisikan}}</label>
+                            <div class="input-group">
+                                <input onclick="checkjenisikanbudidaya()" name="idikanbudidaya{{$ikan}}"
+                                       id="idikanbudidaya{{$ikan}}"
+                                       value="99"
+                                       class="form-group-input" type="checkbox">
+                                {{ Form::text('jenisikanbudidaya'.$ikan,null,['disabled' =>'disabled','class'=>'form-control','id' => 'jenisikanbudidaya'.$ikan]) }}
+                            </div>
                         </td>
-                        <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
+                        <td id="kolom1ikan{{$ikan}}"
+                            style="display: none">{{ Form::text('luaskolam'.$ikan,null,['class'=>'form-control','id' => 'luaskolam'.$ikan]) }}
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                                  'class'=>'form-control select2',
-                                  'id' => 'id'
+                        <td id="kolom2ikan{{$ikan}}" style="display: none">
+                            {{ Form::select('satuanluas'.$ikan,$satuan,null,[
+                                  'class'=>'form-control select2','placeholder' => 'Pilih',
+                                  'id' => 'satuanluaskolam'.$ikan
                                   ]) }}
                         </td>
-                        <td>
+                        <td id="kolom3ikan{{$ikan}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('hargabibit'.$ikan,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'hargabibitikan'.$ikan
                                 ]) }}
                             </div>
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                                  'class'=>'form-control select2',
-                                  'id' => 'id'
+                        <td id="kolom4ikan{{$ikan}}" style="display: none">
+                            {{ Form::select('satuanbibit'.$ikan,$satuan,null,[
+                                  'class'=>'form-control select2','placeholder' => 'Pilih',
+                                  'id' => 'satuanbibitikan'.$ikan
                                   ]) }}
                         </td>
-                        <td>
+                        <td id="kolom5ikan{{$ikan}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('hargajual'.$ikan,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'hargajualikan'.$ikan
                                 ]) }}
                             </div>
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                                  'class'=>'form-control select2',
-                                  'id' => 'id'
+                        <td id="kolom6ikan{{$ikan}}" style="display: none">
+                            {{ Form::select('satuanjual'.$ikan,$satuan,null,[
+                                  'class'=>'form-control select2','placeholder' => 'Pilih',
+                                  'id' => 'satuanjualikan'.$ikan
                                   ]) }}
                         </td>
-                        <td>
-                            {{ Form::text('aspek',null,[
+                        <td id="kolom7ikan{{$ikan}}" style="display: none">
+                            {{ Form::text('tanggaltebar'.$ikan,null,[
                                       'class'=>'form-control',
-                                      'id' => 'aspek'
+                                      'id' => 'tanggaltebarikan'.$ikan
                                   ]) }}
                         </td>
-                        <td>
-                            {{ Form::text('aspek',null,[
+                        <td id="kolom8ikan{{$ikan}}" style="display: none">
+                            {{ Form::text('tanggalpanen'.$ikan,null,[
                                       'class'=>'form-control',
-                                      'id' => 'aspek'
+                                      'id' => 'tanggalpanenikan'.$ikan
                                   ]) }}</td>
-                        <td>
+                        <td id="kolom9ikan{{$ikan}}" style="display: none">
                             <div class="input-group">
 
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('kapasitasperpanen'.$ikan,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'kapasitasperpanenikan'.$ikan
                                 ]) }}
                                 <div class="input-group-append">
                                     <span class="input-group-text">Ton</span>
                                 </div>
                             </div>
                         </td>
-                        <td>
+                        <td id="kolom10ikan{{$ikan}}" style="display: none">
                             <div class="input-group">
 
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('panenpertahun'.$ikan,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'panenpertahunikan'.$ikan
                                 ]) }}
                                 <div class="input-group-append">
                                     <span class="input-group-text">Kali</span>
@@ -136,300 +266,156 @@
                             </div>
                         </td>
 
-                        <td>
+                        <td id="kolom11ikan{{$ikan}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('biayaproduksi'.$ikan,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'biayaproduksiikan'.$ikan
                                 ]) }}
                             </div>
                         </td>
-                        <td>
-                            {{ Form::select('id',$jenispakanikan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
+                        <td id="kolom12ikan{{$ikan}}" style="display: none">
+                            {{ Form::select('idjenispakan'.$ikan,$jenispakanikan,null,[
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'idjenispakanikan'.$ikan
                             ]) }}
                         </td>
-                        <td>
-                            {{ Form::text('aspek',null,[
+                        <td id="kolom13ikan{{$ikan}}" style="display: none">
+                            {{ Form::text('kebutuhanpakanperhari'.$ikan,null,[
                                 'class'=>'form-control',
-                                'id' => 'aspek'
+                                'id' => 'kebutuhanpakanperhariikan'.$ikan
                             ]) }}
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
+                        <td id="kolom14ikan{{$ikan}}" style="display: none">
+                            {{ Form::select('satuanpakan'.$ikan,$satuan,null,[
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'satuanpakanikan'.$ikan
                             ]) }}
                         </td>
-                        <td>
+                        <td id="kolom15ikan{{$ikan}}" style="display: none">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('aspek',null,[
+                                {{ Form::text('hargapakan'.$ikan,null,[
                                     'class'=>'form-control',
-                                    'id' => 'aspek'
+                                    'id' => 'hargapakanikan'.$ikan
                                 ]) }}
                             </div>
                         </td>
                     </tr>
-                @endforeach
-                <tr>
-                    <td>
-                        <div class="input-group">
-                            <input name="jenisikanbudidaya11" id="jenisikanbudidaya11" value="11"
-                                   class="form-group-input" type="checkbox">
-                            {{ Form::text('aspek',null,[
-                                    'class'=>'form-control',
-                                    'id' => 'aspek'
-                                ]) }}
-                        </div>
-                    </td>
-                    <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
-                    </td>
-                    <td>
-                        {{ Form::select('id',$satuan,null,[
-                              'class'=>'form-control select2',
-                              'id' => 'id'
-                              ]) }}
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                        </div>
-                    </td>
-                    <td>
-                        {{ Form::select('id',$satuan,null,[
-                              'class'=>'form-control select2',
-                              'id' => 'id'
-                              ]) }}
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                        </div>
-                    </td>
-                    <td>
-                        {{ Form::select('id',$satuan,null,[
-                              'class'=>'form-control select2',
-                              'id' => 'id'
-                              ]) }}
-                    </td>
-                    <td>
-                        {{ Form::text('aspek',null,[
-                                  'class'=>'form-control',
-                                  'id' => 'aspek'
-                              ]) }}
-                    </td>
-                    <td>
-                        {{ Form::text('aspek',null,[
-                                  'class'=>'form-control',
-                                  'id' => 'aspek'
-                              ]) }}</td>
-                    <td>
-                        <div class="input-group">
-
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                            <div class="input-group-append">
-                                <span class="input-group-text">Ton</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="input-group">
-
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                            <div class="input-group-append">
-                                <span class="input-group-text">Kali</span>
-                            </div>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                        </div>
-                    </td>
-                    <td>
-                        {{ Form::select('id',$jenispakanikan,null,[
-                        'class'=>'form-control select2',
-                        'id' => 'id'
-                        ]) }}
-                    </td>
-                    <td>
-                        {{ Form::text('aspek',null,[
-                            'class'=>'form-control',
-                            'id' => 'aspek'
-                        ]) }}
-                    </td>
-                    <td>
-                        {{ Form::select('id',$satuan,null,[
-                        'class'=>'form-control select2',
-                        'id' => 'id'
-                        ]) }}
-                    </td>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp.</span>
-                            </div>
-                            {{ Form::text('aspek',null,[
-                                'class'=>'form-control',
-                                'id' => 'aspek'
-                            ]) }}
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
+        <!-- /.card -->
     </div>
-    <!-- /.card -->
 </div>
 
-
-<div class="form-group">
-    <label for="inputProjectLeader">45. Bagaimana cara memperoleh pakan ikan?</label>
+<div id="divikan2" class="form-group">
+    <label for="inputProjectLeader">44. Bagaimana cara memperoleh pakan ikan?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input onclick="checkpakanikan(this.value)" class="form-group" name="perolehanpakan" id="perolehanpakan1"
+               value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Membuat sendiri</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input onclick="checkpakanikan(this.value)" class="form-group" name="perolehanpakan" id="perolehanpakan2"
+               value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">Membeli</label>
     </div>
 </div>
-<div class="form-group">
-    <label for="inputProjectLeader">46. Jika membeli, Sebutkan :</label>
+<div id="divikan3" class="form-group">
+    <label for="inputProjectLeader">45. Jika membeli, Sebutkan :</label>
     <div class="form-check col-lg-12">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group row">
-                    <label>&nbsp;&nbsp;&nbsp;&nbsp;Nama Toko/Suplier</label>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;Asal Suplier</label>
                     <div class="col-md-8">
-                        {{ Form::text('aspek',null,[
-                        'class'=>'form-control',
-                        'id' => 'aspek'
-                        ]) }}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group row">
-                    <label>Desa/Kelurahan</label>
-                    <div class="col-sm-6">
-                        {{ Form::select('id',$desa,null,[
-                            'class'=>'form-control select2',
-                            'id' => 'id'
+                        {{ Form::select('idsuplier',$suplier,null,['disabled' =>'disabled',
+                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'id' => 'idsuplier'
                             ]) }}
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;Nama Toko/Suplier</label>
+                    <div class="col-md-8">
+                        {{ Form::text('namasuplier',null,['disabled' =>'disabled',
+                        'class'=>'form-control',
+                        'id' => 'namasuplier'
+                        ]) }}
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="col-md-4">
+                <div class="form-group row">
+                    <label>Desa/Kelurahan</label>
+                    <div class="col-sm-6">
+                        {{ Form::select('iddesasuplier',$desa,null,[
+                            'class'=>'form-control select2',
+                            'id' => 'iddesasuplier'
+                            ]) }}
+            </div>
         </div>
-    </div>
-    <div class="form-check col-lg-12">
-        <div class="row">
-            <div class="col-md-2">
-                <input class="form-group" name="suplierpasarikan" id="suplierpasarikan" value="1"
-                       class="form-check-input" type="radio">
-                <label class="form-check-label">Dalam Kecamatan</label>
-            </div>
-            <div class="col-md-2">
-                <input class="form-group" name="suplierpasarikan" id="suplierpasarikan" value="2"
-                       class="form-check-input" type="radio">
-                <label class="form-check-label">Dalam Kabupaten</label>
-            </div>
-            <div class="col-md-2">
-                <input class="form-group" name="suplierpasarikan" id="suplierpasarikan" value="3"
-                       class="form-check-input" type="radio">
-                <label class="form-check-label">Luar Kabupaten</label>
-            </div>
-            <div class="col-md-2">
-                <input class="form-group" name="suplierpasarikan" id="suplierpasarikan" value="4"
-                       class="form-check-input" type="radio">
-                <label class="form-check-label">Luar Provinsi</label>
-            </div>
-            <div class="col-md-2">
-                <input class="form-group" name="suplierpasarikan" id="suplierpasarikan" value="5"
-                       class="form-check-input" type="radio">
-                <label class="form-check-label">Luar Negeri</label>
-            </div>
+    </div> -->
         </div>
     </div>
 </div>
 
-<div class="form-group">
-    <label for="inputProjectLeader">47. Apakah ada pengolahan lanjutan dari budidaya ikan yang anda kerjakan?</label>
+<div id="divikan4" class="form-group">
+    <label for="inputProjectLeader">46. Apakah ada pengolahan lanjutan dari budidaya ikan yang anda kerjakan?</label>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="1"
+        <input onclick="checkolahanikan(this.value)" class="form-group" name="olahanlanjutan" id="olahanlanjutan1"
+               value="1"
                class="form-check-input" type="radio">
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-12">
-        <input class="form-group" name="pengelolaanpertanian" id="pengelolaanpertanian" value="2"
+        <input onclick="checkolahanikan(this.value)" class="form-group" name="olahanlanjutan" id="olahanlanjutan2"
+               value="2"
                class="form-check-input" type="radio">
         <label class="form-check-label">Tidak, langsung dijual</label>
     </div>
 </div>
-<div class="form-group">
-    <label for="inputProjectLeader">48. Jika diolah, sebutkan:</label>
+
+<div id="divikan5" class="form-group">
+    <label for="inputProjectLeader">47. Jika diolah, sebutkan:</label>
     <div class="form-check col-lg-12">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group row">
                     <label>&nbsp;&nbsp;&nbsp;&nbsp;Nama Olahan</label>
                     <div class="col-sm-8">
-                        {{ Form::text('aspek',null,[
+                        {{ Form::text('namaolahan',null,['disabled' =>'disabled',
                         'class'=>'form-control',
-                        'id' => 'aspek'
+                        'id' => 'namaolahan'
                         ]) }}
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group row">
                     <label>Kapasitas Produksi/Bulan</label>
                     <div class="col-sm-6">
                         <div class="input-group">
-                            {{ Form::text('aspek',null,[
+                            {{ Form::text('produksiperbulan',null,['disabled' =>'disabled',
                             'class'=>'form-control',
-                            'id' => 'aspek'
+                            'id' => 'produksiperbulan'
                             ]) }}
                             <div class="input-group-append">
-                                {{ Form::select('id',$satuan,null,[
-                                'class'=>'form-control select2',
-                                'id' => 'id'
+                                {{ Form::select('satuanproduksi',$satuan,null,['disabled' =>'disabled',
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'satuanproduksi'
                                 ]) }}
                             </div>
                         </div>
@@ -444,14 +430,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Rp.</span>
                             </div>
-                            {{ Form::text('aspek',null,[
+                            {{ Form::text('hargajual',null,['disabled' =>'disabled',
                                 'class'=>'form-control',
-                                'id' => 'aspek'
+                                'id' => 'hargajual'
                                 ]) }}
                             <div class="input-group-append">
-                                {{ Form::select('id',$satuan,null,[
-                                'class'=>'form-control select2',
-                                'id' => 'id'
+                                {{ Form::select('satuanjual',$satuan,null,['disabled' =>'disabled',
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'satuanjual'
                                 ]) }}
                             </div>
                         </div>
@@ -461,8 +447,8 @@
         </div>
     </div>
 </div>
-<div class="form-group">
-    <label for="inputProjectLeader">49. Kemana pemasaran hasil produksi/olahan?</label>
+<div id="divikan6" class="form-group">
+    <label for="inputProjectLeader">48. Kemana pemasaran hasil produksi/olahan?</label>
     <div class="row">
         <div class="form-check col-lg-12">
             <div class="col-md-3">
@@ -490,8 +476,8 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label for="inputProjectLeader">50. Bila anda bergerak dibidang perikanan tangkap, sebutkan berapa perkiraan
+<div id="divikan7" class="form-group">
+    <label for="inputProjectLeader">49. Bila anda bergerak dibidang perikanan tangkap, sebutkan berapa perkiraan
         kapasitas penangkapan dalam satu hari</label>
     <div class="col-12">
         <div class="card">
@@ -502,56 +488,57 @@
                     <tr>
                         <th>Jenis Ikan Tangkap</th>
                         <th>Kapasitas Tangkapan/hari</th>
-                        <th>satuan</th>
                         <th>Pemasaran Hasil Tangkapan</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @php($it=1)
                     @foreach($jenisikantangkap as $ikantangkap)
                         <tr>
                             <td>
-                                <input name="ikantangkap{{$ikantangkap->id}}" id="ikantangkap{{$ikantangkap->id}}"
+                                <input onclick="checkjenisikantangkap()" name="idikantangkap{{$it}}"
+                                       id="idikantangkap{{$it}}"
                                        value="{{$ikantangkap->id}}"
                                        class="form-group-input" type="checkbox">
-                                <label for="ikantangkap{{$ikantangkap->id}}"
+                                <label for="idikantangkap{{$it}}"
                                        class="form-check-label">{{$ikantangkap->id}}{{'. '}}{{$ikantangkap->jenisikan}}</label>
                             </td>
-                            <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
+                            <td id="kolom1tangkap{{$it}}" style="display: none">
+                                <div class="input-group">
+                                    {{ Form::text('kapasitasperhari'.$it,null,['class'=>'form-control','id' => 'kapasitasperhari'.$it]) }}
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </div>
                             </td>
-                            <td>
-                                {{ Form::select('id',$satuan,null,[
-                                      'class'=>'form-control select2',
-                                      'id' => 'id'
-                                      ]) }}
-                            </td>
-                            <td>
+                            <td id="kolom2tangkap{{$it}}" style="display: none">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <input name="pemasarantangkap1{{$ikantangkap->id}}"
-                                               id="pemasarantangkap1{{$ikantangkap->id}}" value="1"
+                                        <input name="pemasarantangkap1{{$it}}"
+                                               id="pemasarantangkap1{{$it}}" value="1"
                                                class="form-group-input" type="checkbox">
-                                        <label for="pemasarantangkap1{{$ikantangkap->id}}" class="form-check-label">Dalam
+                                        <label for="pemasarantangkap1{{$it}}" class="form-check-label">Dalam
                                             Kabupaten</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input name="pemasarantangkap2{{$ikantangkap->id}}"
-                                               id="pemasarantangkap2{{$ikantangkap->id}}" value="1"
+                                        <input name="pemasarantangkap2{{$it}}"
+                                               id="pemasarantangkap2{{$it}}" value="1"
                                                class="form-group-input" type="checkbox">
-                                        <label for="pemasarantangkap2{{$ikantangkap->id}}" class="form-check-label">Luar
+                                        <label for="pemasarantangkap2{{$it}}" class="form-check-label">Luar
                                             Kabupaten</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input name="pemasarantangkap3{{$ikantangkap->id}}"
-                                               id="pemasarantangkap3{{$ikantangkap->id}}" value="1"
+                                        <input name="pemasarantangkap3{{$it}}"
+                                               id="pemasarantangkap3{{$it}}" value="1"
                                                class="form-group-input" type="checkbox">
-                                        <label for="pemasarantangkap3{{$ikantangkap->id}}" class="form-check-label">Luar
+                                        <label for="pemasarantangkap3{{$it}}" class="form-check-label">Luar
                                             Provinsi</label>
                                     </div>
                                     <div class="col-md-3">
-                                        <input name="pemasarantangkap4{{$ikantangkap->id}}"
-                                               id="pemasarantangkap4{{$ikantangkap->id}}" value="1"
+                                        <input name="pemasarantangkap4{{$it}}"
+                                               id="pemasarantangkap4{{$it}}" value="1"
                                                class="form-group-input" type="checkbox">
-                                        <label for="pemasarantangkap4{{$ikantangkap->id}}" class="form-check-label">Luar
+                                        <label for="pemasarantangkap4{{$it}}" class="form-check-label">Luar
                                             Negeri</label>
                                     </div>
 
@@ -559,44 +546,55 @@
                                 </div>
                             </td>
                         </tr>
+                        @php($it++)
                     @endforeach
                     <tr>
                         <td>
                             <div class="input-group">
-                                <input name="ikantangkap14" id="ikantangkap14" value="14"
+                                <input onclick="checkjenisikantangkap()" name="idikantangkap{{$it}}"
+                                       id="idikantangkap{{$it}}"
+                                       value="{{$ikantangkap->id}}"
                                        class="form-group-input" type="checkbox">
-                                {{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
+                                {{ Form::text('jenisikantangkap'.$it,null,['disabled' =>'disabled','class'=>'form-control','id' => 'jenisikantangkap'.$it]) }}
                             </div>
                         </td>
-                        <td>{{ Form::text('aspek',null,['class'=>'form-control','id' => 'aspek']) }}
+                        <td id="kolom1tangkap{{$it}}" style="display: none">
+                            <div class="input-group">
+                                {{ Form::text('kapasitasperhari'.$it,null,['class'=>'form-control','id' => 'kapasitasperhari'.$it]) }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Kg</span>
+                                </div>
+                            </div>
                         </td>
-                        <td>
-                            {{ Form::select('id',$satuan,null,[
-                                  'class'=>'form-control select2',
-                                  'id' => 'id'
-                                  ]) }}
-                        </td>
-                        <td>
+                        <td id="kolom2tangkap{{$it}}" style="display: none">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <input name="pemasarantangkap114}" id="pemasarantangkap114" value="1"
+                                    <input name="pemasarantangkap1{{$it}}"
+                                           id="pemasarantangkap1{{$it}}" value="1"
                                            class="form-group-input" type="checkbox">
-                                    <label for="pemasarantangkap114" class="form-check-label">Dalam Kabupaten</label>
+                                    <label for="pemasarantangkap1{{$it}}" class="form-check-label">Dalam
+                                        Kabupaten</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="pemasarantangkap214" id="pemasarantangkap214" value="1"
+                                    <input name="pemasarantangkap2{{$it}}"
+                                           id="pemasarantangkap2{{$it}}" value="1"
                                            class="form-group-input" type="checkbox">
-                                    <label for="pemasarantangkap214" class="form-check-label">Luar Kabupaten</label>
+                                    <label for="pemasarantangkap2{{$it}}" class="form-check-label">Luar
+                                        Kabupaten</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="pemasarantangkap314" id="pemasarantangkap314" value="1"
+                                    <input name="pemasarantangkap3{{$it}}"
+                                           id="pemasarantangkap3{{$it}}" value="1"
                                            class="form-group-input" type="checkbox">
-                                    <label for="pemasarantangkap314" class="form-check-label">Luar Provinsi</label>
+                                    <label for="pemasarantangkap3{{$it}}" class="form-check-label">Luar
+                                        Provinsi</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <input name="pemasarantangkap414" id="pemasarantangkap414" value="1"
+                                    <input name="pemasarantangkap4{{$it}}"
+                                           id="pemasarantangkap4{{$it}}" value="1"
                                            class="form-group-input" type="checkbox">
-                                    <label for="pemasarantangkap414" class="form-check-label">Luar Negeri</label>
+                                    <label for="pemasarantangkap4{{$it}}" class="form-check-label">Luar
+                                        Negeri</label>
                                 </div>
 
 

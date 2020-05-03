@@ -14,6 +14,17 @@ class Pengelolaanternak extends Model
         'hargajualternak', 'hargajualhasilpeternakan', 'satuanhasilpeternakan', 'kapasitasproduksipertahun',
         'kapasitasproduksiperperiode', 'periodepertahun', 'operasionalproduksi'];
 
+    public function getStatuskepemilikanAttribute($value)
+    {
+        if ($value == 1) {
+            return "Milik sendiri";
+        } elseif ($value == 2) {
+            return "Menggaduh";
+        } elseif ($value == 3) {
+            return "Campuran";
+        }
+    }
+
     public function md_jenisternaks()
     {
         return $this->belongsTo(Md_jenisternak::class, 'idjenisternak', 'id');
