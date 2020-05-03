@@ -826,12 +826,13 @@
                 $("#kepemilikankandang2").prop("checked", false);
                 $("#kepemilikankandang3").prop("disabled", true);
                 $("#kepemilikankandang3").prop("checked", false);
-            } else if(value == 2){
+            } else if (value == 2) {
                 $("#kepemilikankandang1").prop("disabled", false);
                 $("#kepemilikankandang2").prop("disabled", false);
                 $("#kepemilikankandang3").prop("disabled", false);
             }
         }
+
         function checkjenisternak() {
             var i = 1;
             var totalternak = {{$jenisternak->count('id')}};

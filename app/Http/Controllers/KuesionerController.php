@@ -573,11 +573,11 @@ class KuesionerController extends Controller
     public function anyData()
     {
         return DataTables::of(Bidang_pertanian::AnyData())
-            ->addColumn('action', function ($data) {
-                $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
-                $edit = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
-                return $edit . '&nbsp' . '&nbsp' . $del;
-            })
+//            ->addColumn('action', function ($data) {
+//                $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
+//                $edit = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
+//                return $edit . '&nbsp' . '&nbsp' . $del;
+//            })
             ->make(true);
     }
 

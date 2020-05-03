@@ -63,7 +63,8 @@
                                     '1' => 'Milik Sendiri',
                                     '2' => 'Menggaduh',
                                     '3' => 'Campuran'],null,[
-                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'class'=>'form-control select2',
+                                'placeholder' => 'Pilih',
                                 'id' => 'satuanjual'.$i
                                 ]) }}
 
@@ -107,6 +108,7 @@
                             <td id="col8{{$i}}" style="display:none;">
                                 {{ Form::select('satuanhasilpeternakan'.$i,$satuan,null,[
                                       'class'=>'form-control select2',
+                                      'placeholder' => 'Pilih',
                                       'id' => 'satuanhasilpeternakan'.$i
                                       ]) }}
                             </td>
@@ -163,7 +165,8 @@
                                 '1' => 'Milik Sendiri',
                                 '2' => 'Menggaduh',
                                 '3' => 'Campuran'],null,[
-                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                            'class'=>'form-control select2',
+                            'placeholder' => 'Pilih',
                             'id' => 'satuanjual'.$i
                             ]) }}
 
@@ -367,6 +370,7 @@
                         <div class="col-sm-6">
                             {{ Form::select('iddesasuplier',$desa,null,[
                                 'class'=>'form-control select2',
+                                'placeholder' => 'Pilih',
                                 'id' => 'iddesasuplier'
                                 ]) }}
                         </div>
@@ -384,6 +388,7 @@
                 '2' => 'Pernah, penyakit individu',
                 '3' => 'Pernah, penyakit menular'),null,[
                     'class'=>'form-control select2',
+                    'placeholder' => 'Pilih',
                     'id' => 'statusterserangpenyakit']) }}
         </div>
         <div class="form-group">
@@ -393,6 +398,7 @@
             <div class="col-md-4">
                 {{ Form::select('idpenyakitternak',$penyakitternak,null,[
                 'class'=>'form-control select2',
+                'placeholder' => 'Pilih',
                 'id' => 'idpenyakitternak']) }}
             </div>
         </div>
@@ -404,6 +410,7 @@
             <div class="col-md-4">
                 {{ Form::select('pemasaranhasilproduksi',array('1' => 'Pedagang', '2' => 'Pasar'),null,[
         'class'=>'form-control select2',
+        'placeholder' => 'Pilih',
         'id' => 'pemasaranhasilproduksi']) }}
             </div>
             <div class="col-md-8">
@@ -530,6 +537,7 @@
                                         <div class="col-sm-3">
                                             {{ Form::select('satuanlimbah'.$i,$satuan,null,[
                                                            'class'=>'form-control select2',
+                                                           'placeholder' => 'Pilih',
                                                            'id' => 'satuanlimbah'.$i
                                                            ]) }}
                                         </div>
@@ -580,6 +588,7 @@
                                     <div class="col-sm-3">
                                         {{ Form::select('satuanlimbah'.$i,$satuan,null,[
                                                        'class'=>'form-control select2',
+                                                       'placeholder' => 'Pilih',
                                                        'id' => 'satuanlimbah'.$i
                                                        ]) }}
                                     </div>
@@ -638,6 +647,7 @@
                                         <div class="col-sm-3">
                                             {{ Form::select('satuanpakan'.$i,$satuan,null,[
                                                            'class'=>'form-control select2',
+                                                           'placeholder' => 'Pilih',
                                                            'id' => 'satuanpakan'.$i
                                                            ]) }}
                                         </div>
@@ -688,6 +698,7 @@
                                     <div class="col-sm-3">
                                         {{ Form::select('satuanpakan'.$i,$satuan,null,[
                                                        'class'=>'form-control select2',
+                                                       'placeholder' => 'Pilih',
                                                        'id' => 'satuanpakan'.$i
                                                        ]) }}
                                     </div>
