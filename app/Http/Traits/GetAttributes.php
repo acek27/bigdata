@@ -41,7 +41,53 @@ trait GetAttributes
             return "Tidak";
         }
     }
+
     public function getPemasaranluarnegeriAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getKonsumendalamkabupatenAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getKonsumenluarkabupatenAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getKonsumenluarprovinsiAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getKonsumenluarnegeriAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 0) {
+            return "Tidak";
+        }
+    }
+
+    public function getKonsumendalamkecamatanAttribute($value)
     {
         if ($value == 1) {
             return "Ya";

@@ -14,6 +14,24 @@ class Bidang_perikanan extends Model
         'produksiperbulan', 'satuanproduksi', 'hargajual', 'pemasarandalamkabupaten',
         'pemasaranluarprovinsi', 'pemasaranluarnegeri'];
 
+    public function getPerolehanpakanAttribute($value)
+    {
+        if ($value == 1) {
+            return "Membuat sendiri";
+        } elseif ($value == 2) {
+            return "Membeli";
+        }
+    }
+
+    public function getOlahanlanjutanAttribute($value)
+    {
+        if ($value == 1) {
+            return "Ya";
+        } elseif ($value == 2) {
+            return "Tidak (Langsung dijual)";
+        }
+    }
+
     public function md_supliers()
     {
         return $this->belongsTo(Md_suplier::class, 'idsuplier', 'id');

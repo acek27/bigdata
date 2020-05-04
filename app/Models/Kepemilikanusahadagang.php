@@ -10,7 +10,14 @@ class Kepemilikanusahadagang extends Model
     use GetAttributes;
 
     protected $with = ['md_jenisusahadagangs'];
-    protected $fillable = ['nik', 'idjenisusahadagang'];
+    protected $fillable = ['nik', 'idjenisusahadagang', 'jenisusahadagang', 'konsumendalamkecamatan',
+        'konsumendalamkabupaten', 'konsumenluarkabupaten', 'konsumenluarprovinsi'];
+    protected $attributes = [
+        'konsumendalamkecamatan' => 0,
+        'konsumendalamkabupaten' => 0,
+        'konsumenluarkabupaten' => 0,
+        'konsumenluarprovinsi' => 0
+    ];
 
     public function bidang_perdagangans()
     {

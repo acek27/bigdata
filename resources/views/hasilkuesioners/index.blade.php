@@ -22,10 +22,15 @@
                                        aria-describedby="example2_info">
                                     <thead>
                                     <tr role="row">
+                                        <th>ID</th>
                                         <th>NIK</th>
-                                        <th>Nama Sumber Daya</th>
-                                        <th>Panen Pertahun</th>
-                                        <th>Hasil Perpanen</th>
+                                        <th>Kuesioner Dasar</th>
+                                        <th>Bidang Industri</th>
+                                        <th>Bidang Perdagangan</th>
+                                        <th>Bidang Pertanian</th>
+                                        <th>Bidang Peternakan</th>
+                                        <th>Bidang Perikanan</th>
+                                        <th>Bidang Jasa</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -37,6 +42,9 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
+
+
+
             </div>
         </div>
         <!-- /.col -->
@@ -51,10 +59,51 @@
                 serverSide: true,
                 ajax: '{{route('kuesioner.data')}}',
                 columns: [
+                    {data: 'id', name: 'id'},
                     {data: 'nik', name: 'nik'},
-                    {data: 'namasumberdaya', name: 'namasumberdaya'},
-                    {data: 'panenpertahun', name: 'panenpertahun'},
-                    {data: 'hasilperpanen', name: 'hasilperpanen'},
+                    {
+                        data: 'kuesionerdasar',
+                        name: 'kuesionerdasar',
+                        orderable: false,
+                        searchable: false,
+                        align: 'center'
+                    },
+                    {
+                        data: 'bidangindustri',
+                        name: 'bidangindustri',
+                        orderable: false,
+                        searchable: false,
+                        align: 'center'
+                    },
+                    {
+                        data: 'bidangperdagangan',
+                        name: 'bidangperdagangan',
+                        orderable: false,
+                        searchable: false,
+                        align: 'center'
+                    },
+                    {
+                        data: 'bidangpertanian',
+                        name: 'bidangpertanian',
+                        orderable: false,
+                        searchable: false,
+                        align: 'center'
+                    },
+                    {
+                        data: 'bidangpeternakan',
+                        name: 'bidangpeternakan',
+                        orderable: false,
+                        searchable: false,
+                        align: 'center'
+                    },
+                    {
+                        data: 'bidangperikanan',
+                        name: 'bidangperikanan',
+                        orderable: false,
+                        searchable: false,
+                        align: 'center'
+                    },
+                    {data: 'bidangjasa', name: 'bidangjasa', orderable: false, searchable: false, align: 'center'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, align: 'center'},
                 ]
             });

@@ -36,7 +36,10 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @php($jud= 1)
+                    @php
+                        $bar="bar";
+                        $jud= 1;
+                    @endphp
                     @foreach($jenisusahadagang as $dagang)
                         <tr>
                             <td>
@@ -123,13 +126,9 @@
                                        class="form-group-input" type="checkbox">
                                 <label for="pemasaranluarprovinsi1bar{{$jud}}" class="form-check-label">Luar
                                     Provinsi</label>
-
-
                             </td>
-
                         </tr>
-                        @for($i=2;$i<=10;$i++)
-                            @php($bar="bar")
+                        @for($i=2;$i<=20;$i++)
                             <tr>
                                 <td id="kolom1baris{{$i}}jenis{{$jud}}" style="display: none">
                                 </td>
@@ -261,7 +260,7 @@
                             <label for="pemasarandalamkecamatan1bar{{$jud}}" class="form-check-label">Dalam
                                 Kecamatan</label>
 
-                            <input name="pemasarandalamkabupaten1bar{{$jud}}" id="pemasarandalamkabupaten1bar{{$jud}}"
+                            <input name="pemasaran12dalamkabupaten1bar{{$jud}}" id="pemasarandalamkabupaten1bar{{$jud}}"
                                    value="1"
                                    class="form-group-input" type="checkbox">
                             <label for="pemasarandalamkabupaten1bar{{$jud}}" class="form-check-label">Dalam

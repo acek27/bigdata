@@ -9,7 +9,7 @@ class Bidang_industri extends Model
 {
     use GetAttributes;
 
-    protected $with = ['md_bahanbakus', 'md_supliers'];
+    protected $with = ['md_bahanbakus', 'md_supliers','md_jenisindustris'];
     protected $fillable = ['nik', 'idjenisindustri', 'jenisindustri', 'namaproduk', 'produksiperbulan',
         'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan', 'satuankulak',
         'namasuplier', 'idsuplier', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
@@ -59,10 +59,9 @@ class Bidang_industri extends Model
             'operasionalperbulan' => 'required',
         ];
     }
-
-    public function scopeTahun($query)
+    public function md_jenisindustris()
     {
-        return $query->whereYear('created_at', '2018');
+        return $this->belongsTo(Md_jenisindustri::class, 'idjenisindustri', 'id');
     }
 
     public function md_bahanbakus()

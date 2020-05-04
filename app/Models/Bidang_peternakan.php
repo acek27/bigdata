@@ -35,18 +35,20 @@ class Bidang_peternakan extends Model
         } elseif ($value == 2) {
             return "Dikelola orang lain";
         } elseif ($value == 3) {
-            return "Dikelola secara manual";
+            return "Dikelola secara Komunal (Tempat penitipan ternak)";
         }
     }
 
     public function getKepemilikankandangAttribute($value)
     {
-        if ($value == 1 || $value == null) {
+        if ($value == 1) {
             return "Pemilik ternak";
         } elseif ($value == 2) {
             return "Pengelola ternak";
         } elseif ($value == 3) {
             return "Kandang komunal";
+        } elseif ($value == null) {
+            return "Milik sendiri";
         }
     }
 
@@ -100,7 +102,7 @@ class Bidang_peternakan extends Model
 
     public function getPengolahanlimbahAttribute($value)
     {
-        if ($value == 1 || $value == null) {
+        if ($value == 1) {
             return "Dibuang";
         } elseif ($value == 2) {
             return "Diolah sendiri";

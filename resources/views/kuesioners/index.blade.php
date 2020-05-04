@@ -19,15 +19,15 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputEstimatedBudget">Nama</label>
-                        <input type="number" id="inputEstimatedBudget" class="form-control">
+                        <input value="" type="text" id="inputEstimatedBudget" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="inputSpentBudget">Alamat</label>
-                        <input type="number" id="inputSpentBudget" class="form-control">
+                        <input type="text" id="inputSpentBudget" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="inputEstimatedDuration">Desa - Kecamatan</label>
-                        <input type="number" id="inputEstimatedDuration" class="form-control">
+                        <input type="text" id="inputEstimatedDuration" class="form-control">
                     </div>
                 </div>
                 <!-- /.card-body -->

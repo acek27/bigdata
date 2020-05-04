@@ -230,7 +230,7 @@ class KuesionerController extends Controller
                         $perdagangan->satuanjual = $data['satuanjual' . $b . $bar . $i];
                         $perdagangan->idsuplier = $data['idsuplier' . $b . $bar . $i];
                         $perdagangan->namasuplier = $data['namasuplier' . $b . $bar . $i];
-                        $perdagangan->save();
+//                        $perdagangan->save();
                     }
                 }
 
@@ -260,12 +260,12 @@ class KuesionerController extends Controller
                 } else {
                     $milikdagang->konsumenluarprovinsi = 0;
                 }
-                $milikdagang->save();
+//                $milikdagang->save();
             }
 
         }
-
-        return redirect(route($this->route . '.index'));
+        dd($request->all());
+//        return redirect(route($this->route . '.index'));
     }
 
     public function simpanbidangpertanian(Request $request)
@@ -567,19 +567,95 @@ class KuesionerController extends Controller
 
     public function hasilkuesioner()
     {
-        return view($this->view . '.hasilkuesioner');
+        $totaldagang = Md_jenisusahadagang::count();
+        return $totaldagang;
+//        return view('hasilkuesioners.index');
     }
 
     public function anyData()
     {
-        return DataTables::of(Bidang_pertanian::AnyData())
-//            ->addColumn('action', function ($data) {
-//                $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
-//                $edit = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
-//                return $edit . '&nbsp' . '&nbsp' . $del;
-//            })
+        return DataTables::of(Pdrbdankredit::AnyData())
+            ->addColumn('kuesionerdasar', function ($data) {
+                $kuesionerdasar = Pdrbdankredit::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('bidangindustri', function ($data) {
+                $kuesionerdasar = Bidang_industri::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('bidangperdagangan', function ($data) {
+                $kuesionerdasar = Bidang_perdagangan::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('bidangpertanian', function ($data) {
+                $kuesionerdasar = Bidang_pertanian::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('bidangpeternakan', function ($data) {
+                $kuesionerdasar = Bidang_peternakan::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('bidangperikanan', function ($data) {
+                $kuesionerdasar = Bidang_perikanan::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('bidangjasa', function ($data) {
+                $kuesionerdasar = Bidang_jasa::PersonalData($data->nik);
+                if ($kuesionerdasar->exists()) {
+                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
+                    return 'ada' . '&nbsp' . '&nbsp' . $view;
+                } else {
+                    return 'Tidak ada';
+                }
+            })
+            ->addColumn('action', function ($data) {
+                $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
+                $edit = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
+                return $edit . '&nbsp' . '&nbsp' . $del;
+            })
+            ->rawColumns([
+                'kuesionerdasar',
+                'bidangindustri',
+                'bidangperdagangan',
+                'bidangpertanian',
+                'bidangpeternakan',
+                'bidangperikanan',
+                'bidangjasa', 'action'])
             ->make(true);
     }
 
 
 }
+
+
+
