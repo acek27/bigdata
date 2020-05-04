@@ -567,9 +567,7 @@ class KuesionerController extends Controller
 
     public function hasilkuesioner()
     {
-        $totaldagang = Md_jenisusahadagang::count();
-        return $totaldagang;
-//        return view('hasilkuesioners.index');
+        return view('hasilkuesioners.index');
     }
 
     public function anyData()

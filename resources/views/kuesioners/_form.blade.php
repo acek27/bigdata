@@ -192,7 +192,7 @@
                             </div>
                             <div id="divnamabank{{$ida}}" style="display: none" class="col-md-3">
                                 <div class="form-group row">
-                                    <label>Bank</label>
+                                    {{ Form::label('namabank'.$ida, 'Bank') }}
                                     <div class="col-sm-10">
                                         {{ Form::text('namabank'.$ida,null,[
                                         'class'=>'form-control',
