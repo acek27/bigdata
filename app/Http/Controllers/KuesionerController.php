@@ -153,8 +153,6 @@ class KuesionerController extends Controller
         }
 
         return redirect(route($this->route . '.index'));
-
-        // print_r($data);
     }
 
     public function simpanbidangindustri(Request $request)

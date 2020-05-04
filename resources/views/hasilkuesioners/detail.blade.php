@@ -1,4 +1,4 @@
 @extends('layouts.master')
 @section('content')
-       {{$bidangpeternakan}}
+       {{$bidangpeternakan->statuspengelolaan}}
 @endsection

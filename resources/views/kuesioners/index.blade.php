@@ -833,6 +833,32 @@
             }
         }
 
+        function checkperolehanpakanternak(value) {
+            if (value == 4) {
+                $("#namasuplier").prop("disabled", false);
+                $("#iddesasuplier").prop("disabled", false);
+            } else {
+                $("#namasuplier").prop("disabled", true);
+                $("#namasuplier").val('');
+                $("#iddesasuplier").prop("disabled", true);
+                $("#iddesasuplier").val('');
+            }
+        }
+        function checklimbahhasilternak(value) {
+            if (value == 3) {
+                $("#kapasitaslimbahperbulan").prop("disabled", false);
+                $("#hargasebelumolah").prop("disabled", false);
+                $("#hargasetelaholah").prop("disabled", false);
+            } else {
+                $("#kapasitaslimbahperbulan").prop("disabled", true);
+                $("#kapasitaslimbahperbulan").val('');
+                $("#hargasebelumolah").prop("disabled", true);
+                $("#hargasebelumolah").val('');
+                $("#hargasetelaholah").prop("disabled", true);
+                $("#hargasetelaholah").val('')
+            }
+        }
+
         function checkjenisternak() {
             var i = 1;
             var totalternak = {{$jenisternak->count('id')}};
@@ -890,6 +916,15 @@
                 }
             }
         }
+        $("#statusterserangpenyakit").change(function(){
+            var jenis = $("#statusterserangpenyakit").val();
+            if (jenis == 1){
+            $("#idpenyakitternak").prop("disabled", true);
+            $("#idpenyakitternak").val('');
+            }else {
+            $("#idpenyakitternak").prop("disabled", false);
+            }
+        });
 
     </script>
 @endpush
