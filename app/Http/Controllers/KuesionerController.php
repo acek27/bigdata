@@ -88,6 +88,12 @@ class KuesionerController extends Controller
             'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang', 'penyakitternak'));
     }
 
+    public function show($id)
+    {
+        $bidangpeternakan = Bidang_peternakan::PersonalData($id)->first();
+        return view('hasilkuesioners.detail', compact('bidangpeternakan'));
+    }
+
     public function simpankuesionerdasar(Request $request)
     {
         $nik = '132410101085';
@@ -638,8 +644,8 @@ class KuesionerController extends Controller
             })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
-                $edit = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
-                return $edit . '&nbsp' . '&nbsp' . $del;
+                $detail = '<a href="' . route($this->route . '.show', [$this->route => $data->nik]) . '"<i class="fas fa-search" style="color:#17a2b8"></i></a>';
+                return $detail . '&nbsp' . '&nbsp' . $del;
             })
             ->rawColumns([
                 'kuesionerdasar',

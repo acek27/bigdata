@@ -55,7 +55,7 @@ trait Resource
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
