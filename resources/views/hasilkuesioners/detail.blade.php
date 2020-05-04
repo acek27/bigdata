@@ -1,4 +1,8 @@
 @extends('layouts.master')
 @section('content')
-       {{$bidangpeternakan->statuspengelolaan}}
+    @if(empty($bidangpeternakan))
+        <p>Data tidak ditemukan</p>
+    @else
+    {{$bidangpeternakan->statuspengelolaan}}
+    @endif
 @endsection

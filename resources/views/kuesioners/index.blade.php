@@ -844,6 +844,7 @@
                 $("#iddesasuplier").val('');
             }
         }
+
         function checklimbahhasilternak(value) {
             if (value == 3) {
                 $("#kapasitaslimbahperbulan").prop("disabled", false);
@@ -916,13 +917,14 @@
                 }
             }
         }
-        $("#statusterserangpenyakit").change(function(){
+
+        $("#statusterserangpenyakit").change(function () {
             var jenis = $("#statusterserangpenyakit").val();
-            if (jenis == 1){
-            $("#idpenyakitternak").prop("disabled", true);
-            $("#idpenyakitternak").val('');
-            }else {
-            $("#idpenyakitternak").prop("disabled", false);
+            if (jenis == 1) {
+                $("#idpenyakitternak").prop("disabled", true);
+                $("#idpenyakitternak").val('');
+            } else {
+                $("#idpenyakitternak").prop("disabled", false);
             }
         });
 
