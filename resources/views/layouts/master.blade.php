@@ -134,8 +134,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('hasil.kuesioner')}}"
-                               class="nav-link {{request()->route()->named('hasil.kuesioner') ? 'active' : '' }}">
+                            <a href="{{route('hasilkuesioner.index')}}"
+                               class="nav-link {{request()->route()->named('hasilkuesioner.index') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-id-card"></i>
                                 <p>
                                     Hasil Kuesioner

@@ -4,5 +4,6 @@
         <p>Data tidak ditemukan</p>
     @else
     {{$bidangpeternakan->statuspengelolaan}}
+    {{$bidangpeternakan->status()}}
     @endif
 @endsection

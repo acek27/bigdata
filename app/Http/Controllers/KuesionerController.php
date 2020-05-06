@@ -51,16 +51,21 @@ class KuesionerController extends Controller
 {
     use Resource;
 
-    protected $model = Kecamatan::class;
+//    protected $model = Kecamatan::class;
     protected $view = 'kuesioners';
     protected $route = 'kuesioner';
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('can:pencacah');
     }
 
     public function index()
+    {
+        return view($this->view . '.index');
+    }
+
+    public function show($id)
     {
         $bidangusahapekerjaan = Md_bidangusahapekerjaan::all();
         $statuspekerjaan = Md_statuspekerjaan::all();
@@ -81,17 +86,12 @@ class KuesionerController extends Controller
         $jenisusahadagang = Md_jenisusahadagang::all();
         $penyakitternak = Md_penyakitternak::pluck('penyakitternak', 'id')->all();
         $jenispakanikan = Md_jenispakanikan::pluck('jenispakanikan', 'id')->all();
+        $stternak = 0;
         $desa = Desa::select('iddesa', DB::raw('CONCAT(kecamatan, " - ", namadesa) AS desa'))
             ->join('kecamatan', 'desa.idkecamatan', '=', 'kecamatan.idkecamatan')->pluck('desa', 'iddesa')->all();
-        return view($this->view . '.index', compact('bidangusahapekerjaan', 'statuspekerjaan', 'asetusaha', 'perbankan', 'kredit', 'jenisindustri',
+        return view($this->view . '.show', compact('bidangusahapekerjaan', 'statuspekerjaan', 'asetusaha', 'perbankan', 'kredit', 'jenisindustri',
             'bahanbaku', 'suplier', 'satuan', 'jenistanaman', 'desa', 'jenissaprodi', 'jenisternak', 'jenispakanternak', 'limbahternak', 'jenisikanbudidaya',
-            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang', 'penyakitternak'));
-    }
-
-    public function show($id)
-    {
-        $bidangpeternakan = Bidang_peternakan::PersonalData($id)->first();
-        return view('hasilkuesioners.detail', compact('bidangpeternakan'));
+            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang', 'penyakitternak', 'stternak'));
     }
 
     public function simpankuesionerdasar(Request $request)
@@ -565,99 +565,23 @@ class KuesionerController extends Controller
                 $pakanternak->save();
             }
         }
+        $st = Bidang_peternakan::PersonalData($nik)->first();
+        $stternak = $st->status();
 
-        return redirect(route($this->route . '.index'));
-    }
-
-    public function hasilkuesioner()
-    {
-        return view('hasilkuesioners.index');
+        \Session::flash("flash_notification", [
+            "message" => " Data bidang peternakan berhasil disimpan."
+        ]);
+        return redirect(route($this->route . '.index'))->with(['stternak' => $stternak]);
     }
 
     public function anyData()
     {
         return DataTables::of(Pdrbdankredit::AnyData())
-            ->addColumn('kuesionerdasar', function ($data) {
-                $kuesionerdasar = Pdrbdankredit::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
-            ->addColumn('bidangindustri', function ($data) {
-                $kuesionerdasar = Bidang_industri::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
-            ->addColumn('bidangperdagangan', function ($data) {
-                $kuesionerdasar = Bidang_perdagangan::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
-            ->addColumn('bidangpertanian', function ($data) {
-                $kuesionerdasar = Bidang_pertanian::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
-            ->addColumn('bidangpeternakan', function ($data) {
-                $kuesionerdasar = Bidang_peternakan::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
-            ->addColumn('bidangperikanan', function ($data) {
-                $kuesionerdasar = Bidang_perikanan::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->id]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
-            ->addColumn('bidangjasa', function ($data) {
-                $kuesionerdasar = Bidang_jasa::PersonalData($data->nik);
-                if ($kuesionerdasar->exists()) {
-                    $view = '<a href="' . route($this->route . '.edit', [$this->route => $data->nik]) . '"<i class="fas fa-edit"></i></a>';
-                    return 'ada' . '&nbsp' . '&nbsp' . $view;
-                } else {
-                    return 'Tidak ada';
-                }
-            })
             ->addColumn('action', function ($data) {
                 $del = '<a href="#" data-id="' . $data->id . '" class="hapus-data"><i class="fas fa-times" style="color: #dc3545"></i></a>';
                 $detail = '<a href="' . route($this->route . '.show', [$this->route => $data->nik]) . '"<i class="fas fa-search" style="color:#17a2b8"></i></a>';
                 return $detail . '&nbsp' . '&nbsp' . $del;
             })
-            ->rawColumns([
-                'kuesionerdasar',
-                'bidangindustri',
-                'bidangperdagangan',
-                'bidangpertanian',
-                'bidangpeternakan',
-                'bidangperikanan',
-                'bidangjasa', 'action'])
             ->make(true);
     }
-
-
 }
-
-
-

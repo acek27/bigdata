@@ -95,4 +95,10 @@ trait GetAttributes
             return "Tidak";
         }
     }
+
+    public function status()
+    {
+        $data = ($this->count()) > 0 ? 1 : 0;
+        return $data;
+    }
 }
