@@ -24,6 +24,8 @@
                                     <tr role="row">
                                         <th>ID</th>
                                         <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -53,6 +55,8 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'nik', name: 'nik'},
+                    {data: 'nama', name: 'nama'},
+                    {data: 'alamat', name: 'alamat'},
                     {data: 'action', name: 'action', orderable: false, searchable: false, align: 'center'},
                 ]
             });

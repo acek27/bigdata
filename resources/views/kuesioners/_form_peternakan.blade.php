@@ -536,7 +536,7 @@
                                 <div class="col-md-3">
                                     <input name="idlimbahternak{{$i}}" onclick="checklimbahternak()"
                                            id="idlimbahternak{{$i}}" value="{{$limbah->id}}"
-                                           class="form-group-input" type="checkbox">
+                                           class="form-group-input" type="checkbox" disabled="disabled">
                                     <label for="idlimbahternak{{$i}}"
                                            class="form-check-label">{{$limbah->limbahternak}}</label>
                                 </div>
@@ -584,7 +584,7 @@
                                 <div class="input-group">
                                     <input name="idlimbahternak{{$i}}" onclick="checklimbahternak()"
                                            id="idlimbahternak{{$i}}" value="99"
-                                           class="form-group-input" type="checkbox">
+                                           class="form-group-input" type="checkbox" disabled="disabled">
                                     {{ Form::text('jenislimbahternak'.$i,null,[
                                         'disabled' =>'disabled',
                                         'class'=>'form-control',

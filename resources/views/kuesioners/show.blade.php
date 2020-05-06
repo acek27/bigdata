@@ -5,15 +5,12 @@
 @endpush
 @section('content')
     @if (session()->has('flash_notification.message'))
-        <div id="card-alert" class="card blue">
-            <div class="card-content white-text">
-                <p>
-                    <i class="mdi-navigation-check"></i> {!! session()->get('flash_notification.message') !!}
-                </p>
-            </div>
-            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i> Sukses!</h5>
+            <p>
+                <i class="mdi-navigation-check"></i> {!! session()->get('flash_notification.message') !!}
+            </p>
         </div>
     @endif
     <div class="row">
@@ -30,16 +27,16 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="inputEstimatedBudget">Nama</label>
-                        <input value="" type="text" id="inputEstimatedBudget" class="form-control">
+                        <label for="inputEstimatedBudget">NIK</label>
+                        <input value="{{$penduduk->nik}}" type="text" id="inputSpentBudget" class="form-control" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="inputSpentBudget">Alamat</label>
-                        <input type="text" id="inputSpentBudget" class="form-control">
+                        <label for="inputSpentBudget">Nama</label>
+                        <input value="{{$penduduk->nama}}" type="text" id="inputSpentBudget" class="form-control" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="inputEstimatedDuration">Desa - Kecamatan</label>
-                        <input type="text" id="inputEstimatedDuration" class="form-control">
+                        <label for="inputEstimatedDuration">Alamat</label>
+                        <input type="text" value="{{$penduduk->alamat}}" id="inputEstimatedDuration" class="form-control" disabled>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -49,7 +46,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card @if($stkuesdasar >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Kuesioner Dasar</h3>
 
@@ -59,21 +56,24 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
+                @if($stkuesdasar  == 0)
                 <div class="card-body">
                     {!! Form::open(['url'=>route('simpankuesionerdasar')]) !!}
+                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
                     {!! Form::close() !!}
                 </div>
+            @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </div>
 
-    <div class="row">
+    <div class="row"> <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card @if($stindustri >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Bidang Industri</h3>
 
@@ -83,12 +83,15 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
+                @if($stindustri  == 0)
                 <div class="card-body">
                     {!! Form::open(['url'=>route('simpanbidangindustri')]) !!}
+                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form_industri')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanindustri'] )  }}
                     {!! Form::close() !!}
                 </div>
+                @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -97,7 +100,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card @if($stperdagangan >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Bidang Perdagangan</h3>
 
@@ -107,12 +110,15 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
+                @if($stperdagangan  == 0)
                 <div class="card-body">
                     {!! Form::open(['url'=>route('simpanbidangperdagangan')]) !!}
+                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form_perdagangan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpandagang'] )  }}
                     {!! Form::close() !!}
                 </div>
+            @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -120,7 +126,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card @if($stpertanian >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Bidang Pertanian/Perkebunan</h3>
 
@@ -130,12 +136,15 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
+                @if($stpertanian  == 0)
                 <div class="card-body">
                     {!! Form::open(['url'=>route('simpanbidangpertanian')]) !!}
+                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form_pertanian')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanpertanian'] )  }}
                     {!! Form::close() !!}
                 </div>
+            @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -143,8 +152,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card  @php($stternak = Session::get('stternak'))
-            @if($stternak == 1) card-success collapsed-card @else card-primary @endif ">
+            <div class="card @if($stternak >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Bidang Peternakan</h3>
                     <div class="card-tools">
@@ -153,20 +161,23 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpanbidangpeternakan')]) !!}
-                    @include('kuesioners._form_peternakan')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary saveternak'] )  }}
-                    {!! Form::close() !!}
-                </div>
-                <!-- /.card-body -->
+                @if($stternak  == 0)
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpanbidangpeternakan')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form_peternakan')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary saveternak'] )  }}
+                        {!! Form::close() !!}
+                    </div>
+            @endif
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card @if($stperikanan >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Bidang Perikanan</h3>
 
@@ -176,12 +187,15 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
+                @if($stperikanan  == 0)
                 <div class="card-body">
                     {!! Form::open(['url'=>route('simpanbidangperikanan')]) !!}
+                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form_perikanan')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanperikanan'] )  }}
                     {!! Form::close() !!}
                 </div>
+            @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -189,7 +203,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card @if($stjasa >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
                     <h3 class="card-title">Bidang Jasa</h3>
 
@@ -199,12 +213,15 @@
                             <i class="fas fa-minus"></i></button>
                     </div>
                 </div>
+                @if($stjasa  == 0)
                 <div class="card-body">
                     {!! Form::open(['url'=>route('simpanbidangjasa')]) !!}
+                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form_jasa')
                     {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanjasa'] )  }}
                     {!! Form::close() !!}
                 </div>
+            @endif
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -858,10 +875,25 @@
         }
 
         function checklimbahhasilternak(value) {
-            if (value == 3) {
+            if (value == 2) {
+                var totallimbahternak = {{$limbahternak->count('id')}};
+                for (i = 1; i <= totallimbahternak + 1; i++) {
+                    $("#idlimbahternak" + i).prop("disabled", false);
+                }
+                $("#kapasitaslimbahperbulan").prop("disabled", true);
+                $("#kapasitaslimbahperbulan").val('');
+                $("#hargasebelumolah").prop("disabled", true);
+                $("#hargasebelumolah").val('');
+                $("#hargasetelaholah").prop("disabled", true);
+                $("#hargasetelaholah").val('')
+            } else if (value == 3) {
                 $("#kapasitaslimbahperbulan").prop("disabled", false);
                 $("#hargasebelumolah").prop("disabled", false);
                 $("#hargasetelaholah").prop("disabled", false);
+                var totallimbahternak = {{$limbahternak->count('id')}};
+                for (i = 1; i <= totallimbahternak + 1; i++) {
+                    $("#idlimbahternak" + i).prop("disabled", true);
+                }
             } else {
                 $("#kapasitaslimbahperbulan").prop("disabled", true);
                 $("#kapasitaslimbahperbulan").val('');
@@ -869,6 +901,10 @@
                 $("#hargasebelumolah").val('');
                 $("#hargasetelaholah").prop("disabled", true);
                 $("#hargasetelaholah").val('')
+                var totallimbahternak = {{$limbahternak->count('id')}};
+                for (i = 1; i <= totallimbahternak + 1; i++) {
+                    $("#idlimbahternak" + i).prop("disabled", true);
+                }
             }
         }
 

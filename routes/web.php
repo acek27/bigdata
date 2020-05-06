@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('homeAdmin', 'HomeadminController');
 //KuesionerController
 Route::get('/datapenduduk', 'KuesionerController@anyData')->name('penduduk.data');
-Route::post('simpankuesionerda=sar', 'KuesionerController@simpankuesionerdasar')->name('simpankuesionerdasar');
+Route::post('simpankuesionerdasar', 'KuesionerController@simpankuesionerdasar')->name('simpankuesionerdasar');
 Route::post('simpanbidangindustri', 'KuesionerController@simpanbidangindustri')->name('simpanbidangindustri');
 Route::post('simpanbidangperdagangan', 'KuesionerController@simpanbidangperdagangan')->name('simpanbidangperdagangan');
 Route::post('simpanbidangpertanian', 'KuesionerController@simpanbidangpertanian')->name('simpanbidangpertanian');

@@ -98,7 +98,7 @@ trait GetAttributes
 
     public function status()
     {
-        $data = ($this->count()) > 0 ? 1 : 0;
+        $data = ($this->whereYear('created_at', date('Y'))->count());
         return $data;
     }
 }

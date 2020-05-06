@@ -9,18 +9,26 @@ class Bidang_perdagangan extends Model
 {
     use GetAttributes;
 
-    protected $with = ['kepemilikanusahadagangs', 'md_supliers'];
-    protected $fillable = ['idkepemilikandagang', 'produkunggulan', 'jumlahkulakperbulan', 'satuankulak',
-        'hargakulak', 'hargajual', 'satuanjual', 'idsuplier', 'pemasarandalamkecamatan', 'pemasarandalamkabupaten',
-        'pemasaranluarprovinsi', 'pemasaranluarnegeri'];
+    protected $with = ['md_supliers','md_satuankulaks','md_satuanjuals','md_jenisusahadagangs'];
+    protected $fillable = ['nik','idjenisusahadagang', 'produkunggulan', 'jumlahkulakperbulan', 'satuankulak',
+        'hargakulak', 'hargajual', 'satuanjual', 'idsuplier','namasuplier'];
 
-    public function kepemilikanusahadagangs() //ganti
+   
+    public function md_jenisusahadagangs()
     {
-        return $this->belongsTo(Kepemilikanusahadagang::class, 'idkepemilikandagang', 'id');
+        return $this->belongsTo(Md_jenisusahadagang::class, 'idjenisusahadagang', 'id');
     }
-
     public function md_supliers()
     {
         return $this->belongsTo(Md_suplier::class, 'idsuplier', 'id');
+    }
+
+    public function md_satuankulaks()
+    {
+        return $this->belongsTo(Md_satuan::class, 'satuankulak', 'id');
+    }
+    public function md_satuanjuals()
+    {
+        return $this->belongsTo(Md_satuan::class, 'satuanjual', 'id');
     }
 }

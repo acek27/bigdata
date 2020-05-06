@@ -9,8 +9,13 @@ use App\Models\Bidang_perdagangan;
 use App\Models\Bidang_perikanan;
 use App\Models\Bidang_pertanian;
 use App\Models\Bidang_peternakan;
+use App\Models\Fasilitasperbankan;
 use App\Models\Kecamatan;
+use App\Models\Kepemilikanaset;
+use App\Models\Kepemilikanusahadagang;
 use App\Models\Pdrbdankredit;
+use App\Models\Pekerjaantambahan;
+use App\Models\Penghasilantambahan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -66,8 +71,16 @@ class HasilkuesionerController extends Controller
      */
     public function show($id)
     {
-        $bidangpeternakan = Bidang_peternakan::PersonalData($id)->first();
-        return view('hasilkuesioners.detail', compact('bidangpeternakan'));
+        $pdrb = Pdrbdankredit::PersonalData($id)->first();
+        $asetusaha = Kepemilikanaset::PersonalData($id)->get();
+        $pekerjaantambahan = Pekerjaantambahan::PersonalData($id)->get();
+        $hasiltambahan = Penghasilantambahan::PersonalData($id)->get();
+        $perbankan = Fasilitasperbankan::PersonalData($id)->get();
+        $kepemilikandagang = Kepemilikanusahadagang::PersonalData($id)->get();
+        $industri = Bidang_industri::PersonalData($id)->get();
+        $perdagangan = Bidang_perdagangan::PersonalData($id)->get();
+        return view('hasilkuesioners.detail', compact('pdrb','pekerjaantambahan','asetusaha','hasiltambahan','perbankan','industri',
+            'perdagangan','kepemilikandagang'));
     }
 
     /**
