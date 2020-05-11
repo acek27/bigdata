@@ -16,4 +16,8 @@ class Pengolahanlimbahternak extends Model
     {
         return $this->belongsTo(Md_limbahternak::class, 'idlimbahternak', 'id');
     }
+    public function md_satuanlimbahs()
+    {
+        return $this->belongsTo(Md_satuan::class, 'satuanlimbah', 'id');
+    }
 }

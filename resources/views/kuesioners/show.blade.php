@@ -3,6 +3,16 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 @endpush
+@section('title')
+    DASHBOARD | KUESIONER
+@endsection
+@section('header')
+    KUESIONER
+@endsection
+@section('bar')
+    <li class="breadcrumb-item"><a href="{{route('home')}}">DASHBOARD</a></li>
+    <li class="breadcrumb-item active">KUESIONER</li>
+@endsection
 @section('content')
     @if (session()->has('flash_notification.message'))
         <div class="alert alert-success alert-dismissible">

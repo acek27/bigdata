@@ -5,12 +5,8 @@
 @section('header')
     DASHBOARD
 @endsection
-@section('bar1')
-    BIGDATA
-@endsection
-@section('bar2')
-    DASHBOARD
-@endsection
+<li class="breadcrumb-item"><a href="#">BIGDATA</a></li>
+<li class="breadcrumb-item active">DASHBOARD</li>
 @section('content')
 
     <div class="row">

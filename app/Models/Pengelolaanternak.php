@@ -9,7 +9,7 @@ class Pengelolaanternak extends Model
 {
     use GetAttributes;
 
-    protected $with = ['md_jenisternaks'];
+    protected $with = ['md_jenisternaks','md_satuanhasils'];
     protected $fillable = ['nik', 'idjenisternak', 'statuskepemilikan', 'jumlahternak', 'hargabibitternak',
         'hargajualternak', 'hargajualhasilpeternakan', 'satuanhasilpeternakan', 'kapasitasproduksipertahun',
         'kapasitasproduksiperperiode', 'periodepertahun', 'operasionalproduksi'];
@@ -28,5 +28,9 @@ class Pengelolaanternak extends Model
     public function md_jenisternaks()
     {
         return $this->belongsTo(Md_jenisternak::class, 'idjenisternak', 'id');
+    }
+    public function md_satuanhasils()
+    {
+        return $this->belongsTo(Md_satuan::class, 'satuanhasilpeternakan', 'id');
     }
 }

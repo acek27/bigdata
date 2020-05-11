@@ -9,7 +9,7 @@ class Bidang_perikanan extends Model
 {
     use GetAttributes;
 
-    protected $with = ['md_supliers'];
+    protected $with = ['md_supliers','md_satuanproduksis','md_satuanjuals'];
     protected $fillable = ['nik', 'perolehanpakan', 'idsuplier', 'olahanlanjutan', 'namaolahan',
         'produksiperbulan', 'satuanproduksi', 'hargajual', 'pemasarandalamkabupaten',
         'pemasaranluarprovinsi', 'pemasaranluarnegeri'];
@@ -36,4 +36,13 @@ class Bidang_perikanan extends Model
     {
         return $this->belongsTo(Md_suplier::class, 'idsuplier', 'id');
     }
+    public function md_satuanjuals()
+    {
+        return $this->belongsTo(Md_satuan::class, 'satuanjual', 'id');
+    }
+    public function md_satuanproduksis()
+    {
+        return $this->belongsTo(Md_satuan::class, 'satuanproduksi', 'id');
+    }
+
 }

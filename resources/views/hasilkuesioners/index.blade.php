@@ -2,6 +2,16 @@
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
 @endpush
+@section('title')
+    HASIL KUESIONER
+@endsection
+@section('header')
+    TABEL HASIL KUESIONER
+@endsection
+@section('bar')
+    <li class="breadcrumb-item"><a href="{{route('hasilkuesioner.index')}}">HASIL KUESIONER</a></li>
+    <li class="breadcrumb-item active">TABEL HASIL KUESIONER</li>
+@endsection
 @section('content')
     <div class="row">
         <div class="col-12">
@@ -42,7 +52,6 @@
                     </div>
                 </div>
                 <!-- /.card-body -->
-
 
 
             </div>

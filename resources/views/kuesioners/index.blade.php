@@ -2,6 +2,16 @@
 @push('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
 @endpush
+@section('title')
+    BIGDATA | DASHBOARD
+@endsection
+@section('header')
+    DASHBOARD
+@endsection
+@section('bar')
+    <li class="breadcrumb-item"><a href="{{route('home')}}">BIGDATA</a></li>
+    <li class="breadcrumb-item active">DASHBOARD</li>
+@endsection
 @section('content')
     <div class="row">
         <div class="col-12">

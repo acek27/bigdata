@@ -2,8 +2,11 @@
 
 namespace App\Http\Traits;
 
+use Illuminate\Support\Facades\Auth;
+
 trait GetAttributes
 {
+
     public function scopeAnyData($query)
     {
         return $query->whereYear('created_at', date('Y'));

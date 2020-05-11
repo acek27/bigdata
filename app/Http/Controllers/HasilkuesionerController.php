@@ -16,6 +16,14 @@ use App\Models\Kepemilikanusahadagang;
 use App\Models\Pdrbdankredit;
 use App\Models\Pekerjaantambahan;
 use App\Models\Penghasilantambahan;
+use App\Models\Garapanpertanian;
+use App\Models\Kepemilikansaprodi;
+use App\Models\Pengelolaanternak;
+use App\Models\Penggunaanpakanternak;
+use App\Models\Pengolahanlimbahternak;
+use App\Models\Perikanantangkap;
+use App\Models\Budidayaikan;
+
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -79,8 +87,21 @@ class HasilkuesionerController extends Controller
         $kepemilikandagang = Kepemilikanusahadagang::PersonalData($id)->get();
         $industri = Bidang_industri::PersonalData($id)->get();
         $perdagangan = Bidang_perdagangan::PersonalData($id)->get();
+        $pertanian = Bidang_pertanian::PersonalData($id)->first();
+        $garapanpertanian = Garapanpertanian::PersonalData($id)->get();
+        $kepemilikansaprodi = Kepemilikansaprodi::PersonalData($id)->get();
+        $peternakan = Bidang_peternakan::PersonalData($id)->first();
+        $pengelolaanternak = Pengelolaanternak::PersonalData($id)->get();
+        $penggunaanpakanternak = Penggunaanpakanternak::PersonalData($id)->get();
+        $pengolahanlimbahternak = Pengolahanlimbahternak::PersonalData($id)->get();
+        $perikanan = Bidang_perikanan::PersonalData($id)->first();
+        $perikanantangkap = Perikanantangkap::PersonalData($id)->get();
+        $budidayaikan = Budidayaikan::PersonalData($id)->get();
+        $jasa = Bidang_jasa::PersonalData($id)->get();
+
         return view('hasilkuesioners.detail', compact('pdrb','pekerjaantambahan','asetusaha','hasiltambahan','perbankan','industri',
-            'perdagangan','kepemilikandagang'));
+            'perdagangan','kepemilikandagang','pertanian','peternakan','perikanan','jasa','garapanpertanian','kepemilikansaprodi',
+        'pengelolaanternak','penggunaanpakanternak','pengolahanlimbahternak','perikanantangkap','budidayaikan'));
     }
 
     /**

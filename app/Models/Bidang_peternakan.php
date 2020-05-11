@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Traits\GetAttributes;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Bidang_peternakan extends Model
 {
@@ -13,7 +14,7 @@ class Bidang_peternakan extends Model
     protected $fillable = ['nik', 'statuspengelolaan', 'kepemilikankandang', 'peruntukanternak',
         'sumberpakanternak', 'namasuplier', 'iddesasuplier', 'statusterserangpenyakit', 'idpenyakitternak',
         'pemasaranhasilproduksi', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi', 'pemasaranluarnegeri',
-        'pengolahanlimbah', 'kapasitaslimbahperbulan', 'hargasebelumolah', 'hargasetelaholah'];
+        'pengolahanlimbah', 'kapasitaslimbahperbulan', 'hargasebelumolah', 'hargasetelaholah','user_id'];
     protected $attributes = [
         'pemasarandalamkabupaten' => 0,
         'pemasaranluarkabupaten' => 0,
@@ -25,7 +26,7 @@ class Bidang_peternakan extends Model
         'idpenyakitternak' => null,
         'kapasitaslimbahperbulan' => null,
         'hargasebelumolah' => null,
-        'hargasetelaholah' => null
+        'hargasetelaholah' => null,
     ];
 
     public function getStatuspengelolaanAttribute($value)
@@ -48,7 +49,7 @@ class Bidang_peternakan extends Model
         } elseif ($value == 3) {
             return "Kandang komunal";
         } elseif ($value == null) {
-            return "Milik sendiri";
+            return "-";
         }
     }
 

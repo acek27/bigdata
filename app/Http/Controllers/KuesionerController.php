@@ -44,6 +44,7 @@ use App\Models\Perikanantangkap;
 use App\Models\Bidang_perikanan;
 use App\Models\Bidang_jasa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\DataTables;
@@ -598,7 +599,8 @@ class KuesionerController extends Controller
             }
         }
         //bidang peternakan
-        $request->merge(['nik' => $request->get('nik')]);
+        $user_id = Auth::user()->id;
+        $request->merge(['user_id' => $user_id ]);
         Bidang_peternakan::create($request->all());
 
         //kelola limbah
@@ -632,8 +634,7 @@ class KuesionerController extends Controller
                 $pakanternak->save();
             }
         }
-        $st = Bidang_peternakan::PersonalData($nik)->first();
-        $stternak = $st->status();
+
 
         \Session::flash("flash_notification", [
             "message" => " Data bidang peternakan berhasil disimpan."
