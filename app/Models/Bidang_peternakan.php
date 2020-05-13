@@ -14,7 +14,7 @@ class Bidang_peternakan extends Model
     protected $fillable = ['nik', 'statuspengelolaan', 'kepemilikankandang', 'peruntukanternak',
         'sumberpakanternak', 'namasuplier', 'iddesasuplier', 'statusterserangpenyakit', 'idpenyakitternak',
         'pemasaranhasilproduksi', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi', 'pemasaranluarnegeri',
-        'pengolahanlimbah', 'kapasitaslimbahperbulan', 'hargasebelumolah', 'hargasetelaholah','user_id'];
+        'pengolahanlimbah', 'kapasitaslimbahperbulan', 'hargasebelumolah', 'hargasetelaholah', 'user_id'];
     protected $attributes = [
         'pemasarandalamkabupaten' => 0,
         'pemasaranluarkabupaten' => 0,

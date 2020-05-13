@@ -3,16 +3,6 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 @endpush
-@section('title')
-    DASHBOARD | KUESIONER
-@endsection
-@section('header')
-    KUESIONER
-@endsection
-@section('bar')
-    <li class="breadcrumb-item"><a href="{{route('home')}}">DASHBOARD</a></li>
-    <li class="breadcrumb-item active">KUESIONER</li>
-@endsection
 @section('content')
     @if (session()->has('flash_notification.message'))
         <div class="alert alert-success alert-dismissible">
@@ -71,7 +61,7 @@
                     {!! Form::open(['url'=>route('simpankuesionerdasar')]) !!}
                     <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
                     @include('kuesioners._form')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary'] )  }}
+                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanKD'] )  }}
                     {!! Form::close() !!}
                 </div>
             @endif
@@ -242,6 +232,7 @@
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script>
+
         $(function () {
             $('.datepicker').datepicker({
                 format: 'yyyy-mm-dd',
@@ -249,7 +240,10 @@
             });
         });
 
+        
         // KUESIONER DASAR
+
+   
         function check() {
             var i = 1;
             var total = {{$bidangusahapekerjaan->count('id')}};
@@ -259,11 +253,15 @@
                 if (check.checked === true) {
                     // $('#idstatuspekerjaan' + i).val('1');
                     $('#div' + i).show();
+                    document.getElementById("idstatuspekerjaan"+i).required = true;
+                    document.getElementById("tidakpunyapekerjaan").required = false;
                 } else {
                     $('#div' + i).hide();
                     $('#idstatuspekerjaan' + i).val('');
+                    
                 }
             }
+
         }
 
         function checkaset() {
@@ -274,6 +272,10 @@
                 var check = document.getElementById(id)
                 if (check.checked === true) {
                     $('#divaset' + i).show();
+                    var input = document.getElementById ("jumlahaset"+i);
+                    input.focus ();
+                    document.getElementById("jumlahaset"+i).required = true;
+                    document.getElementById("tidakpunyaaset").required = false;
                 } else {
                     $('#divaset' + i).hide();
                     $('#jumlahaset' + i).val('');
@@ -283,23 +285,55 @@
 
         function checksda(hasil) {
             if (hasil == 1) {
-                $('#divsda').show();
+                $("#namasumberdaya").prop("disabled", false);
+                $("#panenpertahun").prop("disabled", false);
+                $("#hasilperpanen").prop("disabled", false);
+                document.getElementById("namasumberdaya").required = true;
+                document.getElementById("panenpertahun").required = true;
+                document.getElementById("hasilperpanen").required = true;
+                var input = document.getElementById ("namasumberdaya");
+                    input.focus ();
             } else {
-                $('#divsda').hide();
+                $("#namasumberdaya").prop("disabled", true);
+                $("#panenpertahun").prop("disabled", true);
+                $("#hasilperpanen").prop("disabled", true);
+                document.getElementById("namasumberdaya").required = false;
+                document.getElementById("panenpertahun").required = false;
+                document.getElementById("hasilperpanen").required = false;
                 $('#namasumberdaya').val('');
                 $('#panenpertahun').val('');
                 $('#hasilperpanen').val('');
+                var input2 = document.getElementById ("pendapatanperbulan");
+                    input2.focus ();
             }
 
         }
 
         function checkbank(bank) {
             if (bank == 1) {
-                $('#divbank').show();
-                $('#divkredit').show();
+                $('#idjenisperbankan1').prop('disabled', false);
+                $('#idjenisperbankan2').prop('disabled', false);
+                $('#idjenisperbankan3').prop('disabled', false);
+                $('#idjenisperbankan4').prop('disabled', false);
+                $('#idjenisperbankan5').prop('disabled', false);
+                $('#idjenisperbankan6').prop('disabled', false);
+                // $('#idbesarankredit').prop('disabled', false);
+                // $('#lamakredit').prop('disabled', false);
+                document.getElementById('idjenisperbankan1').required = true;
+                document.getElementById('idjenisperbankan2').required = true;
+                document.getElementById('idjenisperbankan3').required = true;
+                document.getElementById('idjenisperbankan4').required = true;
+                document.getElementById('idjenisperbankan5').required = true;
+                document.getElementById('idjenisperbankan6').required = true;
             } else {
-                $('#divbank').hide();
-                $('#divkredit').hide();
+                $('#idjenisperbankan1').prop('disabled', true);
+                $('#idjenisperbankan2').prop('disabled', true);
+                $('#idjenisperbankan3').prop('disabled', true);
+                $('#idjenisperbankan4').prop('disabled', true);
+                $('#idjenisperbankan5').prop('disabled', true);
+                $('#idjenisperbankan6').prop('disabled', true);
+                $('#idbesarankredit').prop('disabled', true);
+                $('#lamakredit').prop('disabled', true);
                 $('#idbesarankredit').val('');
                 $('#lamakredit').val('');
                 uncheck();
@@ -321,6 +355,7 @@
 
         function checkjenisbank() {
             var i = 1;
+            var o = 1;
             var total = {{$perbankan->count('id')}};
             for (i = 1; i <= total; i++) {
                 var id = 'idjenisperbankan' + i;
@@ -328,51 +363,92 @@
                 if (check.checked === true) {
                     $('#divnamabank' + i).show();
                     $('#divalamatbank' + i).show();
+                    document.getElementById("namabank"+i).required = true;
+                    document.getElementById("cabang"+i).required = true;
+                    document.getElementById('idjenisperbankan1').required = false;
+                    document.getElementById('idjenisperbankan2').required = false;
+                    document.getElementById('idjenisperbankan3').required = false;
+                    document.getElementById('idjenisperbankan4').required = false;
+                    document.getElementById('idjenisperbankan5').required = false;
+                    document.getElementById('idjenisperbankan6').required = false;
+                    var input = document.getElementById ("namabank"+i);
+                    input.focus ();
                 } else {
                     $('#divnamabank' + i).hide();
                     $('#divalamatbank' + i).hide();
                     $('#namabank' + i).val('');
                     $('#cabang' + i).val('');
+                    $('#idbesarankredit').val('');
+                    $('#lamakredit').val('');
+                    document.getElementById("namabank"+i).required = false;
+                    document.getElementById("cabang"+i).required = false;
+                    $('#idbesarankredit').prop('disabled', true);
+                    $('#lamakredit').prop('disabled', true);
+                    document.getElementById('idbesarankredit').required = false;
+                    document.getElementById('lamakredit').required = false;
                 }
             }
+
+            for (o= 3; o <= total; o++) {
+                var idm = 'idjenisperbankan' + o;
+                var check2 = document.getElementById(idm)
+                if (check2.checked === true) {
+                    $('#idbesarankredit').prop('disabled', false);
+                    $('#lamakredit').prop('disabled', false);
+                    document.getElementById('idbesarankredit').required = true;
+                    document.getElementById('lamakredit').required = true;
+                } 
+            }
+            
         }
+
+        $(document).ready(function () {
+            $('#idbesarankredit').change(function () {
+                var input = document.getElementById ("lamakredit");
+                    input.focus ();
+            });
+        });
 
         // BIDANG INDUSTRI
         function checkjenisindustri() {
             var i = 1;
             var totalindustri = {{$jenisindustri->count('id')}};
             for (i = 1; i <= totalindustri + 1; i++) {
-                var id = 'idjenisindustri' + i;
+                var id = 'idjenisindustri1bar' + i;
                 var check = document.getElementById(id)
                 if (check.checked === true) {
-                    for (a = 1; a <= 13; a++) {
-                        $('#kolom' + a + 'industri' + i).show();
+                    for (a = 0; a <= 13; a++) {
+                        for (x = 1; x <= 3; x++) {
+                        $('#kolom' + a + 'baris' + x +'industri' + i).show();
+                        }
                     }
-                    $("#jenisindustri" + i).prop("disabled", false);
+                    $("#jenisindustri1bar" + i).prop("disabled", false);
                 } else {
-                    for (a = 1; a <= 13; a++) {
-                        $('#kolom' + a + 'industri' + i).hide();
-                        $('#jenisindustri' + i).val('');
-                        $('#namaproduk' + i).val('');
-                        $('#produksiperbulan' + i).val('');
-                        $('#satuanproduksi' + i).val('');
-                        $('#idbahanbaku' + i).val('');
-                        $('#kebutuhanperbulan' + i).val('');
-                        $('#satuanbahanbaku' + i).val('');
-                        $('#hargakulakbahan' + i).val('');
-                        $('#satuankulak' + i).val('');
-                        $('#idsuplier' + i).val('');
-                        $('#namasuplier' + i).val('');
-                        $('#hargajualproduk' + i).val('');
-                        $('#satuanjual' + i).val('');
-                        $('#operasionalperbulan' + i).val('');
-                        $('#pemasarandalamkabupaten' + i).prop('checked', false);
-                        $('#pemasaranluarkabupaten' + i).prop('checked', false);
-                        $('#pemasaranluarprovinsi' + i).prop('checked', false);
-                        $('#pemasaranluarnegeri' + i).prop('checked', false);
-                        $('#idjenisindustriu' + i).val('');
+                    for (a = 1; a <= 3; a++) {
+                        for (x = 0; x <= 13; x++) {
+                        $('#kolom' + x +'baris' + a + 'industri' + i).hide();
+                        }
+                        $('#jenisindustri'+ a + 'bar' + i).val('');
+                        $('#namaproduk'+ a + 'bar' + i).val('');
+                        $('#produksiperbulan'+ a + 'bar' + i).val('');
+                        $('#satuanproduksi'+ a + 'bar' + i).val('');
+                        $('#idbahanbaku'+ a + 'bar' + i).val('');
+                        $('#kebutuhanperbulan'+ a + 'bar' + i).val('');
+                        $('#satuanbahanbaku'+ a + 'bar' + i).val('');
+                        $('#hargakulakbahan'+ a + 'bar' + i).val('');
+                        $('#satuankulak'+ a + 'bar' + i).val('');
+                        $('#idsuplier'+ a + 'bar' + i).val('');
+                        $('#namasuplier'+ a + 'bar' + i).val('');
+                        $('#hargajualproduk'+ a + 'bar' + i).val('');
+                        $('#satuanjual'+ a + 'bar' + i).val('');
+                        $('#operasionalperbulan'+ a + 'bar' + i).val('');
+                        $('#pemasarandalamkabupaten'+ a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarkabupaten'+ a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarprovinsi'+ a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarnegeri'+ a + 'bar' + i).prop('checked', false);
+                        $('#idjenisindustriu'+ a + 'bar' + i).val('');
                     }
-                    $("#jenisindustri" + i).prop("disabled", true);
+                    $("#jenisindustri1bar" + i).prop("disabled", true);
                 }
             }
         }
@@ -387,32 +463,434 @@
                 var i = 1;
                 var totalindustri = {{$jenisindustri->count('id')}};
                 for (i = 1; i <= totalindustri + 1; i++) {
-                    $('#idjenisindustri' + i).prop('checked', false);
-                    for (a = 1; a <= 13; a++) {
-                        $('#kolom' + a + 'industri' + i).hide();
-                        $('#jenisindustri' + i).val('');
-                        $('#namaproduk' + i).val('');
-                        $('#produksiperbulan' + i).val('');
-                        $('#satuanproduksi' + i).val('');
-                        $('#idbahanbaku' + i).val('');
-                        $('#kebutuhanperbulan' + i).val('');
-                        $('#satuanbahanbaku' + i).val('');
-                        $('#hargakulakbahan' + i).val('');
-                        $('#satuankulak' + i).val('');
-                        $('#idsuplier' + i).val('');
-                        $('#namasuplier' + i).val('');
-                        $('#hargajualproduk' + i).val('');
-                        $('#satuanjual' + i).val('');
-                        $('#operasionalperbulan' + i).val('');
-                        $('#pemasarandalamkabupaten' + i).prop('checked', false);
-                        $('#pemasaranluarkabupaten' + i).prop('checked', false);
-                        $('#pemasaranluarprovinsi' + i).prop('checked', false);
-                        $('#pemasaranluarnegeri' + i).prop('checked', false);
+                    $('#idjenisindustri1bar' + i).prop('checked', false);
+                    for (a = 1; a <= 3; a++) {
+                        for (x = 0; x <= 13; x++) {
+                        $('#kolom' + x + 'baris' + a + 'industri' + i).hide();
+                        }
+                        $('#jenisindustri'+ a + 'bar' + i).val('');
+                        $('#namaproduk'+ a + 'bar' + i).val('');
+                        $('#produksiperbulan'+ a + 'bar' + i).val('');
+                        $('#satuanproduksi'+ a + 'bar' + i).val('');
+                        $('#idbahanbaku'+ a + 'bar' + i).val('');
+                        $('#kebutuhanperbulan'+ a + 'bar' + i).val('');
+                        $('#satuanbahanbaku'+ a + 'bar' + i).val('');
+                        $('#hargakulakbahan'+ a + 'bar' + i).val('');
+                        $('#satuankulak'+ a + 'bar' + i).val('');
+                        $('#idsuplier'+ a + 'bar' + i).val('');
+                        $('#namasuplier'+ a + 'bar' + i).val('');
+                        $('#hargajualproduk'+ a + 'bar' + i).val('');
+                        $('#satuanjual'+ a + 'bar' + i).val('');
+                        $('#operasionalperbulan'+ a + 'bar' + i).val('');
+                        $('#pemasarandalamkabupaten'+ a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarkabupaten'+ a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarprovinsi'+ a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarnegeri'+ a + 'bar' + i).prop('checked', false);
                     }
                 }
             }
 
         }
+//Tidak Bisa dengan Perulangan (Manual)
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar1').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar1').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar1').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar1').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar1').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar1').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar2').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar2').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar2').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar2').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar2').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar2').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar3').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar3').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar3').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar3').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar3').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar3').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar4').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar4').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar4').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar4').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar4').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar4').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar5').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar5').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar5').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar5').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar5').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar5').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar6').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar6').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar6').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar6').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar6').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar6').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar7').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar7').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar7').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar7').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar7').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar7').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar8').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar8').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar8').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar8').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar8').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar8').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar9').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar9').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar9').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar9').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar9').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar9').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar10').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar10').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar10').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar10').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar10').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar10').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku1bar11').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak1bar11').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku2bar11').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak2bar11').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanbahanbaku3bar11').change(function () {
+                    var gg = $(this).val();
+                    $('#satuankulak3bar11').val(gg);
+            });
+        });
+// end manual
+//Tidak Bisa dengan Perulangan (Manual)
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar1').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar1').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar1').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar1').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar1').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar1').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar2').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar2').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar2').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar2').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar2').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar2').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar3').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar3').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar3').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar3').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar3').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar3').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar4').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar4').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar4').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar4').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar4').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar4').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar5').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar5').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar5').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar5').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar5').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar5').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar6').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar6').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar6').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar6').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar6').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar6').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar7').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar7').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar7').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar7').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar7').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar7').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar8').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar8').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar8').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar8').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar8').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar8').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar9').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar9').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar9').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar9').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar9').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar9').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar10').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar10').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar10').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar10').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar10').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar10').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi1bar11').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual1bar11').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi2bar11').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual2bar11').val(gg);
+            });
+        });
+        $(document).ready(function () {
+                    $('#satuanproduksi3bar11').change(function () {
+                    var gg = $(this).val();
+                    $('#satuanjual3bar11').val(gg);
+            });
+        });
+// end manual
 
         // BIDANG PERDAGANGAN
         function checkjenisdagang() {

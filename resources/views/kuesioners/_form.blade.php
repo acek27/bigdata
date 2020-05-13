@@ -29,6 +29,17 @@
                     </div>
                     @php($idr++)
                 @endforeach
+                    <div class="form-check col-lg-6">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <input onclick="check()" name="tidakpunyapekerjaan" id="tidakpunyapekerjaan"
+                                       value="0"
+                                       class="form-group-input" type="checkbox" required>
+                                <label for="tidakpunyapekerjaan"
+                                       class="form-check-label">Tidak Punya</label>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -69,6 +80,17 @@
                     </div>
                     @php($ids++)
                 @endforeach
+                    <div class="form-check col-lg-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input onclick="checkaset()" name="tidakpunyaaset" id="tidakpunyaaset"
+                                       value="0"
+                                       class="form-group-input" type="checkbox" required>
+                                <label for="tidakpunyaaset"
+                                       class="form-check-label">Tidak Punya</label>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -81,25 +103,25 @@
     <div class="col-md-1">
         <input onclick="checksda(this.value)" class="form-group" name="penghasilantambahan" id="penghasilantambahan"
                value="1" class="form-check-input"
-               type="radio">
+               type="radio" required>
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
         <input onclick="checksda(this.value)" class="form-group" name="penghasilantambahan" id="penghasilantambahan"
                value="0" class="form-check-input"
-               type="radio">
+               type="radio" required>
         <label class="form-check-label">Tidak</label>
     </div>
 </div>
 
-<div id="divsda" class="row">
+<div class="row">
     <div class="col-sm-12">
         <div class="form-group">
             <label for="inputStatus">4. Jika ya, Sebutkan:</label>
             <div class="row">
                 <div class="form-check col-lg-5">
                     {{ Form::label('namasumberdaya', 'Nama Sumber Daya') }}
-                    {{ Form::text('namasumberdaya',null,[
+                    {{ Form::text('namasumberdaya',null,['disabled'=>'disabled',
                         'class'=>'form-control',
                         'id' => 'namasumberdaya'
                     ]) }}
@@ -107,7 +129,7 @@
                 <div class="form-check col-lg-2">
                     {{ Form::label('panenpertahun', 'Panen/tahun?') }}
                     <div class="input-group">
-                        {{ Form::text('panenpertahun',null,[
+                        {{ Form::text('panenpertahun',null,['disabled'=>'disabled',
                         'class'=>'form-control',
                         'id' => 'panenpertahun'
                         ]) }}
@@ -122,7 +144,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Rp.</span>
                         </div>
-                    {{ Form::text('hasilperpanen',null,[
+                    {{ Form::text('hasilperpanen',null,['disabled'=>'disabled',
                     'class'=>'form-control',
                     'id' => 'hasilperpanen'
                     ]) }}
@@ -138,14 +160,14 @@
 
 
 <div class="form-group">
-    {{ Form::label('penghasilan', '5. Berapa rata-rata total penghasilan Kepala Rumah Tangga beserta seluruh anggota keluarga yang bekerja dalam satu bulan?') }}
+    {{ Form::label('penghasilan', '5. Berapa besaran penghasilan anda dalam satu bulan?') }}
     <div class="row">
         <div class="form-check col-lg-4">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Rp.</span>
                 </div>
-            {{ Form::text('pendapatanperbulan',null,array('required' => 'required'),[
+            {{ Form::text('pendapatanperbulan',null,['required' => 'required',
             'class'=>'form-control',
             'id' => 'pendapatanperbulan'
             ]) }}
@@ -161,17 +183,17 @@
     <label for="inputDescription">6. Apakah usaha anda menggunakan fasilitas perbankan/koperasi/kredit/lainnya?</label>
     <div class="col-md-1">
         <input onclick="checkbank(this.value)" class="form-group" name="perbankan" id="perbankan" value="1"
-               class="form-check-input" type="radio">
+               class="form-check-input" type="radio" required>
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
         <input onclick="checkbank(this.value)" class="form-group" name="perbankan" id="perbankan" value="0"
-               class="form-check-input" type="radio">
+               class="form-check-input" type="radio" required>
         <label class="form-check-label">Tidak</label>
     </div>
 </div>
 
-<div id="divbank" class="row">
+<div class="row">
     <div class="col-sm-12">
         <!-- checkbox -->
         <div class="form-group">
@@ -186,7 +208,7 @@
                             <div class="col-md-3">
                                 <input onclick="checkjenisbank()" name="idjenisperbankan{{$ida}}"
                                        id="idjenisperbankan{{$ida}}" value="{{$bank->id}}"
-                                       class="form-group-input" type="checkbox">
+                                       class="form-group-input" type="checkbox" disabled>
                                 <label
                                     for="idjenisperbankan{{$ida}}">{{$bank->id}}{{'. '}}{{$bank->jenisperbankan}}</label>
                             </div>
@@ -228,7 +250,7 @@
             <div class="form-group row">
                 {{ Form::label('idbesarankredit', '&nbsp;&nbsp;&nbsp;&nbsp;Besaran') }}
                 <div class="col-md-8">
-                    {{ Form::select('idbesarankredit', $kredit,null,[
+                    {{ Form::select('idbesarankredit', $kredit,null,['disabled'=>'disabled',
                         'class'=>'form-control select2','placeholder' => 'Pilih',
                     'id' => 'idbesarankredit'
                     ]) }}
@@ -240,7 +262,7 @@
                 {{ Form::label('lamakredit', 'Lama Kredit') }}
                 <div class="col-md-4">
                     <div class="input-group">
-                        {{ Form::text('lamakredit',null,[
+                        {{ Form::text('lamakredit',null,['disabled'=>'disabled',
                             'class'=>'form-control',
                             'id' => 'lamakredit'
                             ]) }}

@@ -9,9 +9,9 @@ class Bidang_industri extends Model
 {
     use GetAttributes;
 
-    protected $with = ['md_bahanbakus', 'md_supliers','md_jenisindustris','md_satuanproduks','md_satuankulaks','md_satuanbahans'];
+    protected $with = ['md_bahanbakus', 'md_supliers','md_jenisindustris','md_satuanproduks','md_satuanbahans'];
     protected $fillable = ['nik', 'idjenisindustri', 'jenisindustri', 'namaproduk', 'produksiperbulan',
-        'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan', 'satuankulak',
+        'satuanproduksi', 'idbahanbaku', 'kebutuhanperbulan', 'satuanbahanbaku', 'hargakulakbahan',
         'namasuplier', 'idsuplier', 'pemasarandalamkabupaten', 'pemasaranluarkabupaten', 'pemasaranluarprovinsi',
         'pemasaranluarnegeri', 'hargajualproduk', 'satuanjual', 'operasionalperbulan'];
 
@@ -81,10 +81,6 @@ class Bidang_industri extends Model
     public function md_satuanbahans()
     {
         return $this->belongsTo(Md_satuan::class, 'satuanbahanbaku', 'id');
-    }
-    public function md_satuankulaks()
-    {
-        return $this->belongsTo(Md_satuan::class, 'satuankulak', 'id');
     }
    
 }
