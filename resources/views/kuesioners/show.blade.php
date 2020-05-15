@@ -28,15 +28,18 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputEstimatedBudget">NIK</label>
-                        <input value="{{$penduduk->nik}}" type="text" id="inputSpentBudget" class="form-control" disabled>
+                        <input value="{{$penduduk->nik}}" type="text" id="inputSpentBudget" class="form-control"
+                               disabled>
                     </div>
                     <div class="form-group">
                         <label for="inputSpentBudget">Nama</label>
-                        <input value="{{$penduduk->nama}}" type="text" id="inputSpentBudget" class="form-control" disabled>
+                        <input value="{{$penduduk->nama}}" type="text" id="inputSpentBudget" class="form-control"
+                               disabled>
                     </div>
                     <div class="form-group">
                         <label for="inputEstimatedDuration">Alamat</label>
-                        <input type="text" value="{{$penduduk->alamat}}" id="inputEstimatedDuration" class="form-control" disabled>
+                        <input type="text" value="{{$penduduk->alamat}}" id="inputEstimatedDuration"
+                               class="form-control" disabled>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -57,21 +60,21 @@
                     </div>
                 </div>
                 @if($stkuesdasar  == 0)
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpankuesionerdasar')]) !!}
-                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
-                    @include('kuesioners._form')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanKD'] )  }}
-                    {!! Form::close() !!}
-                </div>
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpankuesionerdasar')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanKD'] )  }}
+                        {!! Form::close() !!}
+                    </div>
             @endif
-                <!-- /.card-body -->
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </div>
 
-    <div class="row"> <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+    <div class="row"><input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
         <div class="col-md-12">
             <div class="card @if($stindustri >= 1) card-success collapsed-card @else card-primary @endif  ">
                 <div class="card-header">
@@ -84,15 +87,15 @@
                     </div>
                 </div>
                 @if($stindustri  == 0)
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpanbidangindustri')]) !!}
-                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
-                    @include('kuesioners._form_industri')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanindustri'] )  }}
-                    {!! Form::close() !!}
-                </div>
-                @endif
-                <!-- /.card-body -->
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpanbidangindustri')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form_industri')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanindustri'] )  }}
+                        {!! Form::close() !!}
+                    </div>
+            @endif
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
@@ -111,15 +114,15 @@
                     </div>
                 </div>
                 @if($stperdagangan  == 0)
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpanbidangperdagangan')]) !!}
-                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
-                    @include('kuesioners._form_perdagangan')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpandagang'] )  }}
-                    {!! Form::close() !!}
-                </div>
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpanbidangperdagangan')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form_perdagangan')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpandagang'] )  }}
+                        {!! Form::close() !!}
+                    </div>
             @endif
-                <!-- /.card-body -->
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
@@ -137,15 +140,15 @@
                     </div>
                 </div>
                 @if($stpertanian  == 0)
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpanbidangpertanian')]) !!}
-                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
-                    @include('kuesioners._form_pertanian')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanpertanian'] )  }}
-                    {!! Form::close() !!}
-                </div>
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpanbidangpertanian')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form_pertanian')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanpertanian'] )  }}
+                        {!! Form::close() !!}
+                    </div>
             @endif
-                <!-- /.card-body -->
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
@@ -188,15 +191,15 @@
                     </div>
                 </div>
                 @if($stperikanan  == 0)
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpanbidangperikanan')]) !!}
-                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
-                    @include('kuesioners._form_perikanan')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanperikanan'] )  }}
-                    {!! Form::close() !!}
-                </div>
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpanbidangperikanan')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form_perikanan')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanperikanan'] )  }}
+                        {!! Form::close() !!}
+                    </div>
             @endif
-                <!-- /.card-body -->
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
@@ -214,15 +217,15 @@
                     </div>
                 </div>
                 @if($stjasa  == 0)
-                <div class="card-body">
-                    {!! Form::open(['url'=>route('simpanbidangjasa')]) !!}
-                    <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
-                    @include('kuesioners._form_jasa')
-                    {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanjasa'] )  }}
-                    {!! Form::close() !!}
-                </div>
+                    <div class="card-body">
+                        {!! Form::open(['url'=>route('simpanbidangjasa')]) !!}
+                        <input type="text" name="nik" value="{{$penduduk->nik}}" hidden>
+                        @include('kuesioners._form_jasa')
+                        {{ Form::button('<i class="fa fa-save"> SIMPAN</i>', ['type' => 'submit', 'class' => 'btn btn-primary','id'=>'simpanjasa'] )  }}
+                        {!! Form::close() !!}
+                    </div>
             @endif
-                <!-- /.card-body -->
+            <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
@@ -240,10 +243,10 @@
             });
         });
 
-        
+
         // KUESIONER DASAR
 
-   
+
         function check() {
             var i = 1;
             var total = {{$bidangusahapekerjaan->count('id')}};
@@ -253,12 +256,12 @@
                 if (check.checked === true) {
                     // $('#idstatuspekerjaan' + i).val('1');
                     $('#div' + i).show();
-                    document.getElementById("idstatuspekerjaan"+i).required = true;
+                    document.getElementById("idstatuspekerjaan" + i).required = true;
                     document.getElementById("tidakpunyapekerjaan").required = false;
                 } else {
                     $('#div' + i).hide();
                     $('#idstatuspekerjaan' + i).val('');
-                    
+
                 }
             }
 
@@ -272,9 +275,9 @@
                 var check = document.getElementById(id)
                 if (check.checked === true) {
                     $('#divaset' + i).show();
-                    var input = document.getElementById ("jumlahaset"+i);
-                    input.focus ();
-                    document.getElementById("jumlahaset"+i).required = true;
+                    var input = document.getElementById("jumlahaset" + i);
+                    input.focus();
+                    document.getElementById("jumlahaset" + i).required = true;
                     document.getElementById("tidakpunyaaset").required = false;
                 } else {
                     $('#divaset' + i).hide();
@@ -291,8 +294,8 @@
                 document.getElementById("namasumberdaya").required = true;
                 document.getElementById("panenpertahun").required = true;
                 document.getElementById("hasilperpanen").required = true;
-                var input = document.getElementById ("namasumberdaya");
-                    input.focus ();
+                var input = document.getElementById("namasumberdaya");
+                input.focus();
             } else {
                 $("#namasumberdaya").prop("disabled", true);
                 $("#panenpertahun").prop("disabled", true);
@@ -303,8 +306,8 @@
                 $('#namasumberdaya').val('');
                 $('#panenpertahun').val('');
                 $('#hasilperpanen').val('');
-                var input2 = document.getElementById ("pendapatanperbulan");
-                    input2.focus ();
+                var input2 = document.getElementById("pendapatanperbulan");
+                input2.focus();
             }
 
         }
@@ -363,16 +366,16 @@
                 if (check.checked === true) {
                     $('#divnamabank' + i).show();
                     $('#divalamatbank' + i).show();
-                    document.getElementById("namabank"+i).required = true;
-                    document.getElementById("cabang"+i).required = true;
+                    document.getElementById("namabank" + i).required = true;
+                    document.getElementById("cabang" + i).required = true;
                     document.getElementById('idjenisperbankan1').required = false;
                     document.getElementById('idjenisperbankan2').required = false;
                     document.getElementById('idjenisperbankan3').required = false;
                     document.getElementById('idjenisperbankan4').required = false;
                     document.getElementById('idjenisperbankan5').required = false;
                     document.getElementById('idjenisperbankan6').required = false;
-                    var input = document.getElementById ("namabank"+i);
-                    input.focus ();
+                    var input = document.getElementById("namabank" + i);
+                    input.focus();
                 } else {
                     $('#divnamabank' + i).hide();
                     $('#divalamatbank' + i).hide();
@@ -380,8 +383,8 @@
                     $('#cabang' + i).val('');
                     $('#idbesarankredit').val('');
                     $('#lamakredit').val('');
-                    document.getElementById("namabank"+i).required = false;
-                    document.getElementById("cabang"+i).required = false;
+                    document.getElementById("namabank" + i).required = false;
+                    document.getElementById("cabang" + i).required = false;
                     $('#idbesarankredit').prop('disabled', true);
                     $('#lamakredit').prop('disabled', true);
                     document.getElementById('idbesarankredit').required = false;
@@ -389,7 +392,7 @@
                 }
             }
 
-            for (o= 3; o <= total; o++) {
+            for (o = 3; o <= total; o++) {
                 var idm = 'idjenisperbankan' + o;
                 var check2 = document.getElementById(idm)
                 if (check2.checked === true) {
@@ -397,15 +400,15 @@
                     $('#lamakredit').prop('disabled', false);
                     document.getElementById('idbesarankredit').required = true;
                     document.getElementById('lamakredit').required = true;
-                } 
+                }
             }
-            
+
         }
 
         $(document).ready(function () {
             $('#idbesarankredit').change(function () {
-                var input = document.getElementById ("lamakredit");
-                    input.focus ();
+                var input = document.getElementById("lamakredit");
+                input.focus();
             });
         });
 
@@ -419,34 +422,34 @@
                 if (check.checked === true) {
                     for (a = 0; a <= 13; a++) {
                         for (x = 1; x <= 3; x++) {
-                        $('#kolom' + a + 'baris' + x +'industri' + i).show();
+                            $('#kolom' + a + 'baris' + x + 'industri' + i).show();
                         }
                     }
                     $("#jenisindustri1bar" + i).prop("disabled", false);
                 } else {
                     for (a = 1; a <= 3; a++) {
                         for (x = 0; x <= 13; x++) {
-                        $('#kolom' + x +'baris' + a + 'industri' + i).hide();
+                            $('#kolom' + x + 'baris' + a + 'industri' + i).hide();
                         }
-                        $('#jenisindustri'+ a + 'bar' + i).val('');
-                        $('#namaproduk'+ a + 'bar' + i).val('');
-                        $('#produksiperbulan'+ a + 'bar' + i).val('');
-                        $('#satuanproduksi'+ a + 'bar' + i).val('');
-                        $('#idbahanbaku'+ a + 'bar' + i).val('');
-                        $('#kebutuhanperbulan'+ a + 'bar' + i).val('');
-                        $('#satuanbahanbaku'+ a + 'bar' + i).val('');
-                        $('#hargakulakbahan'+ a + 'bar' + i).val('');
-                        $('#satuankulak'+ a + 'bar' + i).val('');
-                        $('#idsuplier'+ a + 'bar' + i).val('');
-                        $('#namasuplier'+ a + 'bar' + i).val('');
-                        $('#hargajualproduk'+ a + 'bar' + i).val('');
-                        $('#satuanjual'+ a + 'bar' + i).val('');
-                        $('#operasionalperbulan'+ a + 'bar' + i).val('');
-                        $('#pemasarandalamkabupaten'+ a + 'bar' + i).prop('checked', false);
-                        $('#pemasaranluarkabupaten'+ a + 'bar' + i).prop('checked', false);
-                        $('#pemasaranluarprovinsi'+ a + 'bar' + i).prop('checked', false);
-                        $('#pemasaranluarnegeri'+ a + 'bar' + i).prop('checked', false);
-                        $('#idjenisindustriu'+ a + 'bar' + i).val('');
+                        $('#jenisindustri' + a + 'bar' + i).val('');
+                        $('#namaproduk' + a + 'bar' + i).val('');
+                        $('#produksiperbulan' + a + 'bar' + i).val('');
+                        $('#satuanproduksi' + a + 'bar' + i).val('');
+                        $('#idbahanbaku' + a + 'bar' + i).val('');
+                        $('#kebutuhanperbulan' + a + 'bar' + i).val('');
+                        $('#satuanbahanbaku' + a + 'bar' + i).val('');
+                        $('#hargakulakbahan' + a + 'bar' + i).val('');
+                        $('#satuankulak' + a + 'bar' + i).val('');
+                        $('#idsuplier' + a + 'bar' + i).val('');
+                        $('#namasuplier' + a + 'bar' + i).val('');
+                        $('#hargajualproduk' + a + 'bar' + i).val('');
+                        $('#satuanjual' + a + 'bar' + i).val('');
+                        $('#operasionalperbulan' + a + 'bar' + i).val('');
+                        $('#pemasarandalamkabupaten' + a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarkabupaten' + a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarprovinsi' + a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarnegeri' + a + 'bar' + i).prop('checked', false);
+                        $('#idjenisindustriu' + a + 'bar' + i).val('');
                     }
                     $("#jenisindustri1bar" + i).prop("disabled", true);
                 }
@@ -466,431 +469,432 @@
                     $('#idjenisindustri1bar' + i).prop('checked', false);
                     for (a = 1; a <= 3; a++) {
                         for (x = 0; x <= 13; x++) {
-                        $('#kolom' + x + 'baris' + a + 'industri' + i).hide();
+                            $('#kolom' + x + 'baris' + a + 'industri' + i).hide();
                         }
-                        $('#jenisindustri'+ a + 'bar' + i).val('');
-                        $('#namaproduk'+ a + 'bar' + i).val('');
-                        $('#produksiperbulan'+ a + 'bar' + i).val('');
-                        $('#satuanproduksi'+ a + 'bar' + i).val('');
-                        $('#idbahanbaku'+ a + 'bar' + i).val('');
-                        $('#kebutuhanperbulan'+ a + 'bar' + i).val('');
-                        $('#satuanbahanbaku'+ a + 'bar' + i).val('');
-                        $('#hargakulakbahan'+ a + 'bar' + i).val('');
-                        $('#satuankulak'+ a + 'bar' + i).val('');
-                        $('#idsuplier'+ a + 'bar' + i).val('');
-                        $('#namasuplier'+ a + 'bar' + i).val('');
-                        $('#hargajualproduk'+ a + 'bar' + i).val('');
-                        $('#satuanjual'+ a + 'bar' + i).val('');
-                        $('#operasionalperbulan'+ a + 'bar' + i).val('');
-                        $('#pemasarandalamkabupaten'+ a + 'bar' + i).prop('checked', false);
-                        $('#pemasaranluarkabupaten'+ a + 'bar' + i).prop('checked', false);
-                        $('#pemasaranluarprovinsi'+ a + 'bar' + i).prop('checked', false);
-                        $('#pemasaranluarnegeri'+ a + 'bar' + i).prop('checked', false);
+                        $('#jenisindustri' + a + 'bar' + i).val('');
+                        $('#namaproduk' + a + 'bar' + i).val('');
+                        $('#produksiperbulan' + a + 'bar' + i).val('');
+                        $('#satuanproduksi' + a + 'bar' + i).val('');
+                        $('#idbahanbaku' + a + 'bar' + i).val('');
+                        $('#kebutuhanperbulan' + a + 'bar' + i).val('');
+                        $('#satuanbahanbaku' + a + 'bar' + i).val('');
+                        $('#hargakulakbahan' + a + 'bar' + i).val('');
+                        $('#satuankulak' + a + 'bar' + i).val('');
+                        $('#idsuplier' + a + 'bar' + i).val('');
+                        $('#namasuplier' + a + 'bar' + i).val('');
+                        $('#hargajualproduk' + a + 'bar' + i).val('');
+                        $('#satuanjual' + a + 'bar' + i).val('');
+                        $('#operasionalperbulan' + a + 'bar' + i).val('');
+                        $('#pemasarandalamkabupaten' + a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarkabupaten' + a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarprovinsi' + a + 'bar' + i).prop('checked', false);
+                        $('#pemasaranluarnegeri' + a + 'bar' + i).prop('checked', false);
                     }
                 }
             }
 
         }
-//Tidak Bisa dengan Perulangan (Manual)
+
+        //Tidak Bisa dengan Perulangan (Manual)
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar1').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar1').val(gg);
+            $('#satuanbahanbaku1bar1').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar1').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar1').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar1').val(gg);
+            $('#satuanbahanbaku2bar1').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar1').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar1').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar1').val(gg);
+            $('#satuanbahanbaku3bar1').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar1').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar2').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar2').val(gg);
+            $('#satuanbahanbaku1bar2').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar2').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar2').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar2').val(gg);
+            $('#satuanbahanbaku2bar2').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar2').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar2').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar2').val(gg);
+            $('#satuanbahanbaku3bar2').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar2').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar3').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar3').val(gg);
+            $('#satuanbahanbaku1bar3').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar3').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar3').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar3').val(gg);
+            $('#satuanbahanbaku2bar3').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar3').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar3').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar3').val(gg);
+            $('#satuanbahanbaku3bar3').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar3').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar4').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar4').val(gg);
+            $('#satuanbahanbaku1bar4').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar4').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar4').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar4').val(gg);
+            $('#satuanbahanbaku2bar4').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar4').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar4').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar4').val(gg);
+            $('#satuanbahanbaku3bar4').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar4').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar5').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar5').val(gg);
+            $('#satuanbahanbaku1bar5').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar5').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar5').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar5').val(gg);
+            $('#satuanbahanbaku2bar5').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar5').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar5').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar5').val(gg);
+            $('#satuanbahanbaku3bar5').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar5').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar6').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar6').val(gg);
+            $('#satuanbahanbaku1bar6').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar6').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar6').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar6').val(gg);
+            $('#satuanbahanbaku2bar6').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar6').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar6').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar6').val(gg);
+            $('#satuanbahanbaku3bar6').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar6').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar7').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar7').val(gg);
+            $('#satuanbahanbaku1bar7').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar7').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar7').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar7').val(gg);
+            $('#satuanbahanbaku2bar7').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar7').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar7').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar7').val(gg);
+            $('#satuanbahanbaku3bar7').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar7').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar8').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar8').val(gg);
+            $('#satuanbahanbaku1bar8').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar8').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar8').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar8').val(gg);
+            $('#satuanbahanbaku2bar8').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar8').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar8').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar8').val(gg);
+            $('#satuanbahanbaku3bar8').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar8').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar9').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar9').val(gg);
+            $('#satuanbahanbaku1bar9').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar9').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar9').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar9').val(gg);
+            $('#satuanbahanbaku2bar9').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar9').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar9').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar9').val(gg);
+            $('#satuanbahanbaku3bar9').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar9').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar10').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar10').val(gg);
+            $('#satuanbahanbaku1bar10').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar10').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar10').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar10').val(gg);
+            $('#satuanbahanbaku2bar10').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar10').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar10').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar10').val(gg);
+            $('#satuanbahanbaku3bar10').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar10').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku1bar11').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak1bar11').val(gg);
+            $('#satuanbahanbaku1bar11').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak1bar11').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku2bar11').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak2bar11').val(gg);
+            $('#satuanbahanbaku2bar11').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak2bar11').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanbahanbaku3bar11').change(function () {
-                    var gg = $(this).val();
-                    $('#satuankulak3bar11').val(gg);
+            $('#satuanbahanbaku3bar11').change(function () {
+                var gg = $(this).val();
+                $('#satuankulak3bar11').val(gg);
             });
         });
-// end manual
-//Tidak Bisa dengan Perulangan (Manual)
+        // end manual
+        //Tidak Bisa dengan Perulangan (Manual)
         $(document).ready(function () {
-                    $('#satuanproduksi1bar1').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar1').val(gg);
+            $('#satuanproduksi1bar1').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar1').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar1').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar1').val(gg);
+            $('#satuanproduksi2bar1').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar1').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar1').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar1').val(gg);
+            $('#satuanproduksi3bar1').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar1').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar2').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar2').val(gg);
+            $('#satuanproduksi1bar2').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar2').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar2').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar2').val(gg);
+            $('#satuanproduksi2bar2').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar2').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar2').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar2').val(gg);
+            $('#satuanproduksi3bar2').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar2').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar3').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar3').val(gg);
+            $('#satuanproduksi1bar3').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar3').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar3').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar3').val(gg);
+            $('#satuanproduksi2bar3').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar3').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar3').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar3').val(gg);
+            $('#satuanproduksi3bar3').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar3').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar4').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar4').val(gg);
+            $('#satuanproduksi1bar4').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar4').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar4').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar4').val(gg);
+            $('#satuanproduksi2bar4').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar4').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar4').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar4').val(gg);
+            $('#satuanproduksi3bar4').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar4').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar5').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar5').val(gg);
+            $('#satuanproduksi1bar5').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar5').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar5').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar5').val(gg);
+            $('#satuanproduksi2bar5').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar5').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar5').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar5').val(gg);
+            $('#satuanproduksi3bar5').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar5').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar6').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar6').val(gg);
+            $('#satuanproduksi1bar6').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar6').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar6').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar6').val(gg);
+            $('#satuanproduksi2bar6').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar6').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar6').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar6').val(gg);
+            $('#satuanproduksi3bar6').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar6').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar7').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar7').val(gg);
+            $('#satuanproduksi1bar7').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar7').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar7').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar7').val(gg);
+            $('#satuanproduksi2bar7').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar7').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar7').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar7').val(gg);
+            $('#satuanproduksi3bar7').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar7').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar8').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar8').val(gg);
+            $('#satuanproduksi1bar8').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar8').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar8').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar8').val(gg);
+            $('#satuanproduksi2bar8').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar8').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar8').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar8').val(gg);
+            $('#satuanproduksi3bar8').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar8').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar9').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar9').val(gg);
+            $('#satuanproduksi1bar9').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar9').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar9').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar9').val(gg);
+            $('#satuanproduksi2bar9').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar9').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar9').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar9').val(gg);
+            $('#satuanproduksi3bar9').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar9').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar10').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar10').val(gg);
+            $('#satuanproduksi1bar10').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar10').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar10').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar10').val(gg);
+            $('#satuanproduksi2bar10').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar10').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar10').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar10').val(gg);
+            $('#satuanproduksi3bar10').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar10').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi1bar11').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual1bar11').val(gg);
+            $('#satuanproduksi1bar11').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual1bar11').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi2bar11').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual2bar11').val(gg);
+            $('#satuanproduksi2bar11').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual2bar11').val(gg);
             });
         });
         $(document).ready(function () {
-                    $('#satuanproduksi3bar11').change(function () {
-                    var gg = $(this).val();
-                    $('#satuanjual3bar11').val(gg);
+            $('#satuanproduksi3bar11').change(function () {
+                var gg = $(this).val();
+                $('#satuanjual3bar11').val(gg);
             });
         });
-// end manual
+        // end manual
 
         // BIDANG PERDAGANGAN
         function checkjenisdagang() {

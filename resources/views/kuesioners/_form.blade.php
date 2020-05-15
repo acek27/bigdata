@@ -29,17 +29,17 @@
                     </div>
                     @php($idr++)
                 @endforeach
-                    <div class="form-check col-lg-6">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <input onclick="check()" name="tidakpunyapekerjaan" id="tidakpunyapekerjaan"
-                                       value="0"
-                                       class="form-group-input" type="checkbox" required>
-                                <label for="tidakpunyapekerjaan"
-                                       class="form-check-label">Tidak Punya</label>
-                            </div>
+                <div class="form-check col-lg-6">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input onclick="check()" name="tidakpunyapekerjaan" id="tidakpunyapekerjaan"
+                                   value="0"
+                                   class="form-group-input" type="checkbox" required>
+                            <label for="tidakpunyapekerjaan"
+                                   class="form-check-label">Tidak Punya</label>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -80,17 +80,17 @@
                     </div>
                     @php($ids++)
                 @endforeach
-                    <div class="form-check col-lg-6">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <input onclick="checkaset()" name="tidakpunyaaset" id="tidakpunyaaset"
-                                       value="0"
-                                       class="form-group-input" type="checkbox" required>
-                                <label for="tidakpunyaaset"
-                                       class="form-check-label">Tidak Punya</label>
-                            </div>
+                <div class="form-check col-lg-6">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input onclick="checkaset()" name="tidakpunyaaset" id="tidakpunyaaset"
+                                   value="0"
+                                   class="form-group-input" type="checkbox" required>
+                            <label for="tidakpunyaaset"
+                                   class="form-check-label">Tidak Punya</label>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ class Bidang_jasa extends Model
 {
     use GetAttributes;
 
+
     protected $fillable = ['jenisjasa', 'konsumenperminggu', 'brutoperbulan', 'pemasarandalamkabupaten',
         'pemasaranluarkabupaten', 'pemasaranluarprovinsi', 'pemasaranluarnegeri'];
 }

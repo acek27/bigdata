@@ -28,11 +28,14 @@
                         <th style="text-align: center; vertical-align: middle">Nama/Jenis Produk</th>
                         <th style="text-align: center; vertical-align: middle">Bahan Baku Utama</th>
                         <th style="text-align: center; vertical-align: middle">Kebutuhan Bahan Baku perbulan</th>
-                        <th style="text-align: center; vertical-align: middle">Harga Kulak Bahan Baku per satuan kulak</th>
+                        <th style="text-align: center; vertical-align: middle">Harga Kulak Bahan Baku per satuan kulak
+                        </th>
                         <th style="text-align: center; vertical-align: middle">Asal Suplier Bahan Baku Utama</th>
                         <th style="text-align: center; vertical-align: middle">Nama Suplier Bahan Baku Utama</th>
                         <th style="text-align: center; vertical-align: middle">Kapasitas Produksi perbulan</th>
-                        <th style="text-align: center; vertical-align: middle">Harga Jual Produk Hasil Produksi per satuan</th>
+                        <th style="text-align: center; vertical-align: middle">Harga Jual Produk Hasil Produksi per
+                            satuan
+                        </th>
                         <th style="text-align: center; vertical-align: middle">Biaya Operasional Produksi perbulan</th>
                         <th style="text-align: center; vertical-align: middle">Daerah Pemasaran Produk</th>
                     </tr>
@@ -55,27 +58,27 @@
                                 style="display: none">{{ Form::text('namaproduk1bar'.$i,null,['class'=>'form-control','id' => 'namaproduk1bar'.$i]) }}
                             </td>
                             <td id="kolom2baris1industri{{$i}}" style="display: none">
-                            {{ Form::select('idbahanbaku1bar'.$i,$bahanbaku,null,[
-                            'class'=>'form-control select2','placeholder' => 'Pilih',
-                            'id' => 'idbahanbaku1bar'.$i
-                            ]) }}
+                                {{ Form::select('idbahanbaku1bar'.$i,$bahanbaku,null,[
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'idbahanbaku1bar'.$i
+                                ]) }}
                             </td>
                             <td id="kolom3baris1industri{{$i}}" style="display: none">
-                            <div class="input-group">
-                                {{ Form::text('kebutuhanperbulan1bar'.$i,null,[
-                                    'class'=>'form-control',
-                                    'id' => 'kebutuhanperbulan1bar'.$i
-                                ]) }}
-                                <div class="input-group-append">
-                                {{ Form::select('satuanbahanbaku1bar'.$i,$satuan,null,[
-                                'class'=>'form-control select2','placeholder' => 'Pilih',
-                                'id' => 'satuanbahanbaku1bar'.$i
-                                ]) }}
+                                <div class="input-group">
+                                    {{ Form::text('kebutuhanperbulan1bar'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'kebutuhanperbulan1bar'.$i
+                                    ]) }}
+                                    <div class="input-group-append">
+                                        {{ Form::select('satuanbahanbaku1bar'.$i,$satuan,null,[
+                                        'class'=>'form-control select2','placeholder' => 'Pilih',
+                                        'id' => 'satuanbahanbaku1bar'.$i
+                                        ]) }}
+                                    </div>
                                 </div>
-                            </div>
                             </td>
                             <td id="kolom5baris1industri{{$i}}" style="display: none">
-                            <div class="input-group">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
@@ -84,25 +87,25 @@
                                         'id' => 'hargakulakbahan1bar'.$i
                                     ]) }}
                                     <div class="input-group-append">
-                                    <span class="input-group-text">/</span>
-                                    {{ Form::select('satuankulak1bar'.$i,$satuan,null,['disabled'=>'disabled',
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuankulak1bar'.$i
-                                        ]) }}
+                                        <span class="input-group-text">/</span>
+                                        {{ Form::select('satuankulak1bar'.$i,$satuan,null,['disabled'=>'disabled',
+                                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                                            'id' => 'satuankulak1bar'.$i
+                                            ]) }}
                                     </div>
                                 </div>
                             </td>
                             <td id="kolom7baris1industri{{$i}}" style="display: none">
-                            {{ Form::select('idsuplier1bar'.$i, $suplier,null,[
-                                      'class'=>'form-control select2','placeholder' => 'Pilih',
-                                      'id' => 'idsuplier1bar'.$i
-                                      ]) }}
+                                {{ Form::select('idsuplier1bar'.$i, $suplier,null,[
+                                          'class'=>'form-control select2','placeholder' => 'Pilih',
+                                          'id' => 'idsuplier1bar'.$i
+                                          ]) }}
                             </td>
                             <td id="kolom8baris1industri{{$i}}" style="display: none">
-                            {{ Form::text('namasuplier1bar'.$i,null,[
-                                            'class'=>'form-control',
-                                            'id' => 'namasuplier1bar'.$i
-                                        ]) }}
+                                {{ Form::text('namasuplier1bar'.$i,null,[
+                                                'class'=>'form-control',
+                                                'id' => 'namasuplier1bar'.$i
+                                            ]) }}
                             </td>
                             <td id="kolom9baris1industri{{$i}}" style="display: none">
                                 <div class="input-group">
@@ -148,19 +151,23 @@
                                 </div>
                             </td>
                             <td id="kolom13baris1industri{{$i}}" style="display: none">
-                                <input name="pemasarandalamkabupaten1bar{{$i}}" id="pemasarandalamkabupaten1bar{{$i}}" value="1"
+                                <input name="pemasarandalamkabupaten1bar{{$i}}" id="pemasarandalamkabupaten1bar{{$i}}"
+                                       value="1"
                                        class="form-group-input" type="checkbox">
                                 <label for="pemasarandalamkabupaten1bar{{$i}}" class="form-check-label">Dalam
                                     Kabupaten</label>
 
-                                <input name="pemasaranluarkabupaten1bar{{$i}}" id="pemasaranluarkabupaten1bar{{$i}}" value="1"
+                                <input name="pemasaranluarkabupaten1bar{{$i}}" id="pemasaranluarkabupaten1bar{{$i}}"
+                                       value="1"
                                        class="form-group-input" type="checkbox">
                                 <label for="pemasaranluarkabupaten1bar{{$i}}" class="form-check-label">Luar
                                     Kabupaten</label>
 
-                                <input name="pemasaranluarprovinsi1bar{{$i}}" id="pemasaranluarprovinsi1bar{{$i}}" value="1"
+                                <input name="pemasaranluarprovinsi1bar{{$i}}" id="pemasaranluarprovinsi1bar{{$i}}"
+                                       value="1"
                                        class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarprovinsi1bar{{$i}}" class="form-check-label">Luar Provinsi</label>
+                                <label for="pemasaranluarprovinsi1bar{{$i}}" class="form-check-label">Luar
+                                    Provinsi</label>
 
                                 <input name="pemasaranluarnegeri1bar{{$i}}" id="pemasaranluarnegeri1bar{{$i}}" value="1"
                                        class="form-group-input" type="checkbox">
@@ -169,127 +176,133 @@
 
                         </tr>
                         @for($x=2;$x<=3;$x++)
-                        <tr>
-                            <td id="kolom0baris{{$x}}industri{{$i}}" style="display: none">
+                            <tr>
+                                <td id="kolom0baris{{$x}}industri{{$i}}" style="display: none">
                                 </td>
-                            <td id="kolom1baris{{$x}}industri{{$i}}"
-                                style="display: none">{{ Form::text('namaproduk'.$x.$bar.$i,null,['class'=>'form-control','id' => 'namaproduk'.$x.$bar.$i]) }}
-                            </td>
-                            <td id="kolom2baris{{$x}}industri{{$i}}" style="display: none">
-                            {{ Form::select('idbahanbaku'.$x.$bar.$i,$bahanbaku,null,[
-                            'class'=>'form-control select2','placeholder' => 'Pilih',
-                            'id' => 'idbahanbaku'.$x.$bar.$i
-                            ]) }}
-                            </td>
-                            <td id="kolom3baris{{$x}}industri{{$i}}" style="display: none">
-                            <div class="input-group">
-                            {{ Form::text('kebutuhanperbulan'.$x.$bar.$i,null,[
-                                    'class'=>'form-control',
-                                    'id' => 'kebutuhanperbulan'.$x.$bar.$i
-                                ]) }}
-                                <div class="input-group-append">
-                                {{ Form::select('satuanbahanbaku'.$x.$bar.$i,$satuan,null,[
-                                'class'=>'form-control select2','placeholder' => 'Pilih',
-                                'id' => 'satuanbahanbaku'.$x.$bar.$i
-                                ]) }}   
-                                </div>
-                            </div>
-                            </td>
-                            <td id="kolom5baris{{$x}}industri{{$i}}" style="display: none">
-                            <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    {{ Form::text('hargakulakbahan'.$x.$bar.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'hargakulakbahan'.$x.$bar.$i
+                                <td id="kolom1baris{{$x}}industri{{$i}}"
+                                    style="display: none">{{ Form::text('namaproduk'.$x.$bar.$i,null,['class'=>'form-control','id' => 'namaproduk'.$x.$bar.$i]) }}
+                                </td>
+                                <td id="kolom2baris{{$x}}industri{{$i}}" style="display: none">
+                                    {{ Form::select('idbahanbaku'.$x.$bar.$i,$bahanbaku,null,[
+                                    'class'=>'form-control select2','placeholder' => 'Pilih',
+                                    'id' => 'idbahanbaku'.$x.$bar.$i
                                     ]) }}
-                                    <div class="input-group-append">
-                                    <span class="input-group-text">/</span>
-                                    {{ Form::select('satuankulak'.$x.$bar.$i,$satuan,null,['disabled'=>'disabled',
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuankulak'.$x.$bar.$i
-                                        ]) }}
+                                </td>
+                                <td id="kolom3baris{{$x}}industri{{$i}}" style="display: none">
+                                    <div class="input-group">
+                                        {{ Form::text('kebutuhanperbulan'.$x.$bar.$i,null,[
+                                                'class'=>'form-control',
+                                                'id' => 'kebutuhanperbulan'.$x.$bar.$i
+                                            ]) }}
+                                        <div class="input-group-append">
+                                            {{ Form::select('satuanbahanbaku'.$x.$bar.$i,$satuan,null,[
+                                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                                            'id' => 'satuanbahanbaku'.$x.$bar.$i
+                                            ]) }}
+                                        </div>
                                     </div>
-                                </div>  
-                            </td>
-                            <td id="kolom7baris{{$x}}industri{{$i}}" style="display: none">
-                            {{ Form::select('idsuplier'.$x.$bar.$i, $suplier,null,[
-                                      'class'=>'form-control select2','placeholder' => 'Pilih',
-                                      'id' => 'idsuplier'.$x.$bar.$i
-                                      ]) }}
-                            </td>
-                            <td id="kolom8baris{{$x}}industri{{$i}}" style="display: none">
-                            {{ Form::text('namasuplier'.$x.$bar.$i,null,[
+                                </td>
+                                <td id="kolom5baris{{$x}}industri{{$i}}" style="display: none">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp.</span>
+                                        </div>
+                                        {{ Form::text('hargakulakbahan'.$x.$bar.$i,null,[
                                             'class'=>'form-control',
-                                            'id' => 'namasuplier'.$x.$bar.$i
+                                            'id' => 'hargakulakbahan'.$x.$bar.$i
                                         ]) }}
-                            </td>
-                            <td id="kolom9baris{{$x}}industri{{$i}}" style="display: none">
-                                
-                                <div class="input-group">
-                                    {{ Form::text('produksiperbulan'.$x.$bar.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'produksiperbulan'.$x.$bar.$i
-                                    ]) }}
-                                    <div class="input-group-append">
-                                        {{ Form::select('satuanproduksi'.$x.$bar.$i,$satuan,null,[
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuanproduksi'.$x.$bar.$i
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">/</span>
+                                            {{ Form::select('satuankulak'.$x.$bar.$i,$satuan,null,['disabled'=>'disabled',
+                                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                                'id' => 'satuankulak'.$x.$bar.$i
+                                                ]) }}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td id="kolom7baris{{$x}}industri{{$i}}" style="display: none">
+                                    {{ Form::select('idsuplier'.$x.$bar.$i, $suplier,null,[
+                                              'class'=>'form-control select2','placeholder' => 'Pilih',
+                                              'id' => 'idsuplier'.$x.$bar.$i
+                                              ]) }}
+                                </td>
+                                <td id="kolom8baris{{$x}}industri{{$i}}" style="display: none">
+                                    {{ Form::text('namasuplier'.$x.$bar.$i,null,[
+                                                    'class'=>'form-control',
+                                                    'id' => 'namasuplier'.$x.$bar.$i
+                                                ]) }}
+                                </td>
+                                <td id="kolom9baris{{$x}}industri{{$i}}" style="display: none">
+
+                                    <div class="input-group">
+                                        {{ Form::text('produksiperbulan'.$x.$bar.$i,null,[
+                                            'class'=>'form-control',
+                                            'id' => 'produksiperbulan'.$x.$bar.$i
+                                        ]) }}
+                                        <div class="input-group-append">
+                                            {{ Form::select('satuanproduksi'.$x.$bar.$i,$satuan,null,[
+                                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                                            'id' => 'satuanproduksi'.$x.$bar.$i
+                                            ]) }}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td id="kolom10baris{{$x}}industri{{$i}}" style="display: none">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp.</span>
+                                        </div>
+                                        {{ Form::text('hargajualproduk'.$x.$bar.$i,null,[
+                                            'class'=>'form-control',
+                                            'id' => 'hargajualproduk'.$x.$bar.$i
+                                        ]) }}
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">/</span>
+                                            {{ Form::select('satuanjual'.$x.$bar.$i,$satuan,null,['disabled'=>'disabled',
+                                            'class'=>'form-control select2','placeholder' => 'Pilih',
+                                            'id' => 'satuanjual'.$x.$bar.$i
+                                            ]) }}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td id="kolom12baris{{$x}}industri{{$i}}" style="display: none">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rp.</span>
+                                        </div>
+                                        {{ Form::text('operasionalperbulan'.$x.$bar.$i,null,[
+                                            'class'=>'form-control',
+                                            'id' => 'operasionalperbulan'.$x.$bar.$i
                                         ]) }}
                                     </div>
-                                </div>
-                            </td>
-                            <td id="kolom10baris{{$x}}industri{{$i}}" style="display: none">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    {{ Form::text('hargajualproduk'.$x.$bar.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'hargajualproduk'.$x.$bar.$i
-                                    ]) }}
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">/</span>
-                                        {{ Form::select('satuanjual'.$x.$bar.$i,$satuan,null,['disabled'=>'disabled',
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuanjual'.$x.$bar.$i
-                                        ]) }}
-                                    </div>
-                                </div>
-                            </td>
-                            <td id="kolom12baris{{$x}}industri{{$i}}" style="display: none">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    {{ Form::text('operasionalperbulan'.$x.$bar.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'operasionalperbulan'.$x.$bar.$i
-                                    ]) }}
-                                </div>
-                            </td>
-                            <td id="kolom13baris{{$x}}industri{{$i}}" style="display: none">
-                                <input name="pemasarandalamkabupaten{{$x}}bar{{$i}}" id="pemasarandalamkabupaten{{$x}}bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasarandalamkabupaten{{$x}}bar{{$i}}" class="form-check-label">Dalam
-                                    Kabupaten</label>
+                                </td>
+                                <td id="kolom13baris{{$x}}industri{{$i}}" style="display: none">
+                                    <input name="pemasarandalamkabupaten{{$x}}bar{{$i}}"
+                                           id="pemasarandalamkabupaten{{$x}}bar{{$i}}" value="1"
+                                           class="form-group-input" type="checkbox">
+                                    <label for="pemasarandalamkabupaten{{$x}}bar{{$i}}" class="form-check-label">Dalam
+                                        Kabupaten</label>
 
-                                <input name="pemasaranluarkabupaten{{$x}}bar{{$i}}" id="pemasaranluarkabupaten{{$x}}bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarkabupaten{{$x}}bar{{$i}}" class="form-check-label">Luar
-                                    Kabupaten</label>
+                                    <input name="pemasaranluarkabupaten{{$x}}bar{{$i}}"
+                                           id="pemasaranluarkabupaten{{$x}}bar{{$i}}" value="1"
+                                           class="form-group-input" type="checkbox">
+                                    <label for="pemasaranluarkabupaten{{$x}}bar{{$i}}" class="form-check-label">Luar
+                                        Kabupaten</label>
 
-                                <input name="pemasaranluarprovinsi{{$x}}bar{{$i}}" id="pemasaranluarprovinsi{{$x}}bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarprovinsi{{$x}}bar{{$i}}" class="form-check-label">Luar Provinsi</label>
+                                    <input name="pemasaranluarprovinsi{{$x}}bar{{$i}}"
+                                           id="pemasaranluarprovinsi{{$x}}bar{{$i}}" value="1"
+                                           class="form-group-input" type="checkbox">
+                                    <label for="pemasaranluarprovinsi{{$x}}bar{{$i}}" class="form-check-label">Luar
+                                        Provinsi</label>
 
-                                <input name="pemasaranluarnegeri{{$x}}bar{{$i}}" id="pemasaranluarnegeri{{$x}}bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarnegeri1bar{{$i}}" class="form-check-label">Luar Negeri</label>
-                            </td>
+                                    <input name="pemasaranluarnegeri{{$x}}bar{{$i}}"
+                                           id="pemasaranluarnegeri{{$x}}bar{{$i}}" value="1"
+                                           class="form-group-input" type="checkbox">
+                                    <label for="pemasaranluarnegeri1bar{{$i}}" class="form-check-label">Luar
+                                        Negeri</label>
+                                </td>
 
-                        </tr>
+                            </tr>
                         @endfor
                         @php($i++)
                     @endforeach
@@ -303,153 +316,155 @@
                             </div>
                         </td>
                         <td id="kolom1baris1industri{{$i}}"
-                                style="display: none">{{ Form::text('namaproduk1bar'.$i,null,['class'=>'form-control','id' => 'namaproduk1bar'.$i]) }}
-                            </td>
-                            <td id="kolom2baris1industri{{$i}}" style="display: none">
+                            style="display: none">{{ Form::text('namaproduk1bar'.$i,null,['class'=>'form-control','id' => 'namaproduk1bar'.$i]) }}
+                        </td>
+                        <td id="kolom2baris1industri{{$i}}" style="display: none">
                             {{ Form::select('idbahanbaku1bar'.$i,$bahanbaku,null,[
                             'class'=>'form-control select2','placeholder' => 'Pilih',
                             'id' => 'idbahanbaku1bar'.$i
                             ]) }}
-                            </td>
-                            <td id="kolom3baris1industri{{$i}}" style="display: none">
+                        </td>
+                        <td id="kolom3baris1industri{{$i}}" style="display: none">
                             <div class="input-group">
-                            {{ Form::text('kebutuhanperbulan1bar'.$i,null,[
-                                    'class'=>'form-control',
-                                    'id' => 'kebutuhanperbulan1bar'.$i
-                                ]) }}
+                                {{ Form::text('kebutuhanperbulan1bar'.$i,null,[
+                                        'class'=>'form-control',
+                                        'id' => 'kebutuhanperbulan1bar'.$i
+                                    ]) }}
                                 <div class="input-group-prepend">
-                                {{ Form::select('satuanbahanbaku1bar'.$i,$satuan,null,[
-                                'class'=>'form-control select2','placeholder' => 'Pilih',
-                                'id' => 'satuanbahanbaku1bar'.$i
-                                ]) }} 
+                                    {{ Form::select('satuanbahanbaku1bar'.$i,$satuan,null,[
+                                    'class'=>'form-control select2','placeholder' => 'Pilih',
+                                    'id' => 'satuanbahanbaku1bar'.$i
+                                    ]) }}
                                 </div>
                             </div>
-                            </td>
-                            <td id="kolom5baris1industri{{$i}}" style="display: none">
+                        </td>
+                        <td id="kolom5baris1industri{{$i}}" style="display: none">
                             <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    {{ Form::text('hargakulakbahan1bar'.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'hargakulakbahan1bar'.$i
-                                    ]) }}
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">/</span>
-                                        {{ Form::select('satuankulak1bar'.$i,$satuan,null,['disabled'=>'disabled',
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuankulak1bar'.$i
-                                        ]) }}
-                                    </div>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp.</span>
                                 </div>
-                            </td>
-                            <td id="kolom7baris1industri{{$i}}" style="display: none">
+                                {{ Form::text('hargakulakbahan1bar'.$i,null,[
+                                    'class'=>'form-control',
+                                    'id' => 'hargakulakbahan1bar'.$i
+                                ]) }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text">/</span>
+                                    {{ Form::select('satuankulak1bar'.$i,$satuan,null,['disabled'=>'disabled',
+                                    'class'=>'form-control select2','placeholder' => 'Pilih',
+                                    'id' => 'satuankulak1bar'.$i
+                                    ]) }}
+                                </div>
+                            </div>
+                        </td>
+                        <td id="kolom7baris1industri{{$i}}" style="display: none">
                             {{ Form::select('idsuplier1bar'.$i, $suplier,null,[
                                       'class'=>'form-control select2','placeholder' => 'Pilih',
                                       'id' => 'idsuplier1bar'.$i
                                       ]) }}
-                            </td>
-                            <td id="kolom8baris1industri{{$i}}" style="display: none">
+                        </td>
+                        <td id="kolom8baris1industri{{$i}}" style="display: none">
                             {{ Form::text('namasuplier1bar'.$i,null,[
                                             'class'=>'form-control',
                                             'id' => 'namasuplier1bar'.$i
                                         ]) }}
-                            </td>
-                            <td id="kolom9baris1industri{{$i}}" style="display: none">
-                                <div class="input-group">
-                                    {{ Form::text('produksiperbulan1bar'.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'produksiperbulan1bar'.$i
-                                    ]) }}
-                                    <div class="input-group-append">
-                                        {{ Form::select('satuanproduksi1bar'.$i,$satuan,null,[
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuanproduksi1bar'.$i
-                                        ]) }}
-                                    </div>
-                                </div>
-                            </td>
-                            <td id="kolom10baris1industri{{$i}}" style="display: none">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    {{ Form::text('hargajualproduk1bar'.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'hargajualproduk1bar'.$i
-                                    ]) }}
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">/</span>
-                                        {{ Form::select('satuanjual1bar'.$i,$satuan,null,['disabled'=>'disabled',
-                                        'class'=>'form-control select2','placeholder' => 'Pilih',
-                                        'id' => 'satuanjual1bar'.$i
-                                        ]) }}
-                                    </div>
-                                </div>
-                            </td>
-                            <td id="kolom12baris1industri{{$i}}" style="display: none">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    {{ Form::text('operasionalperbulan1bar'.$i,null,[
-                                        'class'=>'form-control',
-                                        'id' => 'operasionalperbulan1bar'.$i
+                        </td>
+                        <td id="kolom9baris1industri{{$i}}" style="display: none">
+                            <div class="input-group">
+                                {{ Form::text('produksiperbulan1bar'.$i,null,[
+                                    'class'=>'form-control',
+                                    'id' => 'produksiperbulan1bar'.$i
+                                ]) }}
+                                <div class="input-group-append">
+                                    {{ Form::select('satuanproduksi1bar'.$i,$satuan,null,[
+                                    'class'=>'form-control select2','placeholder' => 'Pilih',
+                                    'id' => 'satuanproduksi1bar'.$i
                                     ]) }}
                                 </div>
-                            </td>
-                            <td id="kolom13baris1industri{{$i}}" style="display: none">
-                                <input name="pemasarandalamkabupaten1bar{{$i}}" id="pemasarandalamkabupaten1bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasarandalamkabupaten1bar{{$i}}" class="form-check-label">Dalam
-                                    Kabupaten</label>
+                            </div>
+                        </td>
+                        <td id="kolom10baris1industri{{$i}}" style="display: none">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp.</span>
+                                </div>
+                                {{ Form::text('hargajualproduk1bar'.$i,null,[
+                                    'class'=>'form-control',
+                                    'id' => 'hargajualproduk1bar'.$i
+                                ]) }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text">/</span>
+                                    {{ Form::select('satuanjual1bar'.$i,$satuan,null,['disabled'=>'disabled',
+                                    'class'=>'form-control select2','placeholder' => 'Pilih',
+                                    'id' => 'satuanjual1bar'.$i
+                                    ]) }}
+                                </div>
+                            </div>
+                        </td>
+                        <td id="kolom12baris1industri{{$i}}" style="display: none">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp.</span>
+                                </div>
+                                {{ Form::text('operasionalperbulan1bar'.$i,null,[
+                                    'class'=>'form-control',
+                                    'id' => 'operasionalperbulan1bar'.$i
+                                ]) }}
+                            </div>
+                        </td>
+                        <td id="kolom13baris1industri{{$i}}" style="display: none">
+                            <input name="pemasarandalamkabupaten1bar{{$i}}" id="pemasarandalamkabupaten1bar{{$i}}"
+                                   value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasarandalamkabupaten1bar{{$i}}" class="form-check-label">Dalam
+                                Kabupaten</label>
 
-                                <input name="pemasaranluarkabupaten1bar{{$i}}" id="pemasaranluarkabupaten1bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarkabupaten1bar{{$i}}" class="form-check-label">Luar
-                                    Kabupaten</label>
+                            <input name="pemasaranluarkabupaten1bar{{$i}}" id="pemasaranluarkabupaten1bar{{$i}}"
+                                   value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasaranluarkabupaten1bar{{$i}}" class="form-check-label">Luar
+                                Kabupaten</label>
 
-                                <input name="pemasaranluarprovinsi1bar{{$i}}" id="pemasaranluarprovinsi1bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarprovinsi1bar{{$i}}" class="form-check-label">Luar Provinsi</label>
+                            <input name="pemasaranluarprovinsi1bar{{$i}}" id="pemasaranluarprovinsi1bar{{$i}}" value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasaranluarprovinsi1bar{{$i}}" class="form-check-label">Luar Provinsi</label>
 
-                                <input name="pemasaranluarnegeri1bar{{$i}}" id="pemasaranluarnegeri1bar{{$i}}" value="1"
-                                       class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarnegeri1bar{{$i}}" class="form-check-label">Luar Negeri</label>
-                            </td>
+                            <input name="pemasaranluarnegeri1bar{{$i}}" id="pemasaranluarnegeri1bar{{$i}}" value="1"
+                                   class="form-group-input" type="checkbox">
+                            <label for="pemasaranluarnegeri1bar{{$i}}" class="form-check-label">Luar Negeri</label>
+                        </td>
                     </tr>
                     @for($x=2;$x<=3;$x++)
                         <tr>
                             <td id="kolom0baris{{$x}}industri{{$i}}" style="display: none">
-                            <div class="input-group">
-                            &nbsp;&nbsp;&nbsp;&nbsp; {{ Form::text('jenisindustri'.$x.$bar.$i,null,['class'=>'form-control','id' => 'jenisindustri'.$x.$bar.$i,'placeholder'=>'Lainnya']) }}
-                            </div>
-                                </td>
+                                <div class="input-group">
+                                    &nbsp;&nbsp;&nbsp;&nbsp; {{ Form::text('jenisindustri'.$x.$bar.$i,null,['class'=>'form-control','id' => 'jenisindustri'.$x.$bar.$i,'placeholder'=>'Lainnya']) }}
+                                </div>
+                            </td>
                             <td id="kolom1baris{{$x}}industri{{$i}}"
                                 style="display: none">{{ Form::text('namaproduk'.$x.$bar.$i,null,['class'=>'form-control','id' => 'namaproduk'.$x.$bar.$i]) }}
                             </td>
                             <td id="kolom2baris{{$x}}industri{{$i}}" style="display: none">
-                            {{ Form::select('idbahanbaku'.$x.$bar.$i,$bahanbaku,null,[
-                            'class'=>'form-control select2','placeholder' => 'Pilih',
-                            'id' => 'idbahanbaku'.$x.$bar.$i
-                            ]) }}
+                                {{ Form::select('idbahanbaku'.$x.$bar.$i,$bahanbaku,null,[
+                                'class'=>'form-control select2','placeholder' => 'Pilih',
+                                'id' => 'idbahanbaku'.$x.$bar.$i
+                                ]) }}
                             </td>
                             <td id="kolom3baris{{$x}}industri{{$i}}" style="display: none">
-                            <div class="input-group">
-                            {{ Form::text('kebutuhanperbulan'.$x.$bar.$i,null,[
-                                    'class'=>'form-control',
-                                    'id' => 'kebutuhanperbulan'.$x.$bar.$i
-                                ]) }}
-                                <div class="input-group-append">
-                                    {{ Form::select('satuanbahanbaku'.$x.$bar.$i,$satuan,null,[
-                                    'class'=>'form-control select2','placeholder' => 'Pilih',
-                                    'id' => 'satuanbahanbaku'.$x.$bar.$i
-                                    ]) }} 
+                                <div class="input-group">
+                                    {{ Form::text('kebutuhanperbulan'.$x.$bar.$i,null,[
+                                            'class'=>'form-control',
+                                            'id' => 'kebutuhanperbulan'.$x.$bar.$i
+                                        ]) }}
+                                    <div class="input-group-append">
+                                        {{ Form::select('satuanbahanbaku'.$x.$bar.$i,$satuan,null,[
+                                        'class'=>'form-control select2','placeholder' => 'Pilih',
+                                        'id' => 'satuanbahanbaku'.$x.$bar.$i
+                                        ]) }}
+                                    </div>
                                 </div>
-                            </div>
                             </td>
                             <td id="kolom5baris{{$x}}industri{{$i}}" style="display: none">
-                            <div class="input-group">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
@@ -467,19 +482,19 @@
                                 </div>
                             </td>
                             <td id="kolom7baris{{$x}}industri{{$i}}" style="display: none">
-                            {{ Form::select('idsuplier'.$x.$bar.$i, $suplier,null,[
-                                      'class'=>'form-control select2','placeholder' => 'Pilih',
-                                      'id' => 'idsuplier'.$x.$bar.$i
-                                      ]) }}
+                                {{ Form::select('idsuplier'.$x.$bar.$i, $suplier,null,[
+                                          'class'=>'form-control select2','placeholder' => 'Pilih',
+                                          'id' => 'idsuplier'.$x.$bar.$i
+                                          ]) }}
                             </td>
                             <td id="kolom8baris{{$x}}industri{{$i}}" style="display: none">
-                            {{ Form::text('namasuplier'.$x.$bar.$i,null,[
-                                            'class'=>'form-control',
-                                            'id' => 'namasuplier'.$x.$bar.$i
-                                        ]) }}
+                                {{ Form::text('namasuplier'.$x.$bar.$i,null,[
+                                                'class'=>'form-control',
+                                                'id' => 'namasuplier'.$x.$bar.$i
+                                            ]) }}
                             </td>
                             <td id="kolom9baris{{$x}}industri{{$i}}" style="display: none">
-                                
+
                                 <div class="input-group">
                                     {{ Form::text('produksiperbulan'.$x.$bar.$i,null,[
                                         'class'=>'form-control',
@@ -523,27 +538,32 @@
                                 </div>
                             </td>
                             <td id="kolom13baris{{$x}}industri{{$i}}" style="display: none">
-                                <input name="pemasarandalamkabupaten{{$x}}bar{{$i}}" id="pemasarandalamkabupaten{{$x}}bar{{$i}}" value="1"
+                                <input name="pemasarandalamkabupaten{{$x}}bar{{$i}}"
+                                       id="pemasarandalamkabupaten{{$x}}bar{{$i}}" value="1"
                                        class="form-group-input" type="checkbox">
                                 <label for="pemasarandalamkabupaten{{$x}}bar{{$i}}" class="form-check-label">Dalam
                                     Kabupaten</label>
 
-                                <input name="pemasaranluarkabupaten{{$x}}bar{{$i}}" id="pemasaranluarkabupaten{{$x}}bar{{$i}}" value="1"
+                                <input name="pemasaranluarkabupaten{{$x}}bar{{$i}}"
+                                       id="pemasaranluarkabupaten{{$x}}bar{{$i}}" value="1"
                                        class="form-group-input" type="checkbox">
                                 <label for="pemasaranluarkabupaten{{$x}}bar{{$i}}" class="form-check-label">Luar
                                     Kabupaten</label>
 
-                                <input name="pemasaranluarprovinsi{{$x}}bar{{$i}}" id="pemasaranluarprovinsi{{$x}}bar{{$i}}" value="1"
+                                <input name="pemasaranluarprovinsi{{$x}}bar{{$i}}"
+                                       id="pemasaranluarprovinsi{{$x}}bar{{$i}}" value="1"
                                        class="form-group-input" type="checkbox">
-                                <label for="pemasaranluarprovinsi{{$x}}bar{{$i}}" class="form-check-label">Luar Provinsi</label>
+                                <label for="pemasaranluarprovinsi{{$x}}bar{{$i}}" class="form-check-label">Luar
+                                    Provinsi</label>
 
-                                <input name="pemasaranluarnegeri{{$x}}bar{{$i}}" id="pemasaranluarnegeri{{$x}}bar{{$i}}" value="1"
+                                <input name="pemasaranluarnegeri{{$x}}bar{{$i}}" id="pemasaranluarnegeri{{$x}}bar{{$i}}"
+                                       value="1"
                                        class="form-group-input" type="checkbox">
                                 <label for="pemasaranluarnegeri1bar{{$i}}" class="form-check-label">Luar Negeri</label>
                             </td>
 
                         </tr>
-                        @endfor
+                    @endfor
                     </tbody>
                 </table>
             </div>

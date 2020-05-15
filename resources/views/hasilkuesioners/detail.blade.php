@@ -21,7 +21,7 @@
                             <div class="col-12">
                                 <h4>
                                     <i class="fas fa-globe"></i> Pemerintah Kabupaten Situbondo
-                                    <small class="float-right">Date: 5/5/2020</small>
+                                    <small class="float-right">Date: {{\Carbon\Carbon::now()->formatLocalized("%A, %d %B %Y")}}</small>
                                 </h4>
                             </div>
                             <!-- /.col -->
@@ -140,7 +140,7 @@
                                         <td>Berapa rata-rata total penghasilan kepala rumah tangga beserta seluruh
                                             anggota rumah tangga yang bekerja dalam satu bulan
                                         </td>
-                                        <td>Rp.{{$pdrb->pendapatanperbulan}}</td>
+                                        <td>Rp.{{$pdrb->pendapatanperbulan}} - {{$pdrb->getPendapatan()}}</td>
                                     </tr>
                                     <tr>
                                         <td>6</td>

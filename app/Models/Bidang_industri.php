@@ -59,6 +59,8 @@ class Bidang_industri extends Model
             'operasionalperbulan' => 'required',
         ];
     }
+
+
     public function md_jenisindustris()
     {
         return $this->belongsTo(Md_jenisindustri::class, 'idjenisindustri', 'id');
@@ -82,5 +84,5 @@ class Bidang_industri extends Model
     {
         return $this->belongsTo(Md_satuan::class, 'satuanbahanbaku', 'id');
     }
-   
+
 }
