@@ -1,22 +1,22 @@
 <!-- Kuesioner Bidang Jasa-->
 
 <div class="form-group">
-    <label for="inputDescription">50. Apakah anda memiliki kegiatan dibidang jasa?</label>
+    <label for="inputDescription">58. Apakah anda memiliki kegiatan dibidang jasa?</label>
     <div class="col-md-1">
         <input onclick="checkjasa(this.value)" class="form-group" name="jasa" id="jasa" value="1"
-               class="form-check-input" type="radio">
+               class="form-check-input" type="radio" required>
         <label class="form-check-label">Ya</label>
     </div>
     <div class="col-md-1">
         <input onclick="checkjasa(this.value)" class="form-group" name="jasa" id="jasa" value="0"
-               class="form-check-input" type="radio">
+               class="form-check-input" type="radio" required>
         <label class="form-check-label">Tidak</label>
     </div>
 </div>
 
-
-<div id="divjasa" class="form-group">
-    <label for="inputProjectLeader">51. Bila anda bergerak dibidang usaha jasa, sebutkan:</label>
+<div id="divjasa">
+<div class="form-group">
+    <label for="inputProjectLeader">59. Bila anda bergerak dibidang usaha jasa, sebutkan:</label>
     <div class="col-12">
         <div class="card">
             <!-- /.card-header -->
@@ -88,3 +88,36 @@
     </div>
 </div>
 
+
+<div class="form-group">
+    <label for="inputProjectLeader">60. Berapa total pekerja tetap (dibayar) dari usaha industri anda (tidak termasuk pemilik/pengelola)? isikan 0 'nol' jika tidak ada pekerja/karyawan</label>
+    <div class="col-md-12">
+    <div class="row">
+            <div class="col-md-2">
+                <div class="form-group row">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laki-Laki</label>
+                    <div class="col-md-5">
+                        {{ Form::number('buruhjasalaki',null,['style'=>'text-align:right','min'=>'0','required'=>'required',
+                        'class'=>'form-control',
+                        'id' => 'buruhjasalaki'
+                        ]) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group row">
+                    <label>Perempuan</label>
+                    <div class="col-sm-5">
+                    {{ Form::number('buruhjasaperempuan',null,['style'=>'text-align:right','min'=>'0','required'=>'required',
+                        'class'=>'form-control',
+                        'id' => 'buruhjasaperempuan'
+                        ]) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>

@@ -23,6 +23,8 @@ use App\Models\Md_jenisikanbudidaya;
 use App\Models\Md_jenisikantangkap;
 use App\Models\Md_jenispakanikan;
 use App\Models\Md_jenisusahadagang;
+use App\Models\Md_tanamanlokal;
+use App\Models\Md_tanamantumpangsari;
 use App\Models\Desa;
 use App\Models\Pekerjaantambahan;
 use App\Models\Kepemilikanaset;
@@ -32,6 +34,8 @@ use App\Models\Penghasilantambahan;
 use App\Models\Pdrbdankredit;
 use App\Models\Fasilitasperbankan;
 use App\Models\Bidang_industri;
+use App\Models\Tenagakerja;
+use App\Models\Tumpangsari;
 use App\Models\Garapanpertanian;
 use App\Models\Bidang_perdagangan;
 use App\Models\Kepemilikanusahadagang;
@@ -63,13 +67,12 @@ class KuesionerController extends Controller
 
     public function index()
     {
-        $pdrb = Pdrbdankredit::AnyData()->get();
-        return view($this->view . '.index', compact('pdrb'));
+        return view($this->view . '.index');
     }
 
     public function show($id)
     {
-        $penduduk = DB::table('penduduk')->where('nik', $id)->first();
+        $penduduk = DB::table('penduduk')->where('nik',$id)->first();
         $bidangusahapekerjaan = Md_bidangusahapekerjaan::all();
         $statuspekerjaan = Md_statuspekerjaan::all();
         $asetusaha = Md_asetusaha::all();
@@ -79,17 +82,19 @@ class KuesionerController extends Controller
         $jenisindustri = Md_jenisindustri::all();
         $suplier = Md_suplier::pluck('suplier', 'id')->all();
         $satuan = Md_satuan::pluck('satuan', 'id')->all();
-        $jenistanaman = Md_jenistanaman::all();
+        $tanamaninti = Md_jenistanaman::pluck('jenistanaman', 'id')->all();
+        $jenistanaman = Md_jenistanaman::OrderBy('jenistanaman','ASC')->get();
         $jenissaprodi = Md_saprodi::all();
         $jenisternak = Md_jenisternak::all();
         $jenispakanternak = Md_jenispakanternak::all();
         $limbahternak = Md_limbahternak::all();
-        $jenisikanbudidaya = Md_jenisikanbudidaya::all();
-        $jenisikantangkap = Md_jenisikantangkap::all();
+        $jenisikanbudidaya = Md_jenisikanbudidaya::OrderBy('jenisikan','ASC')->get();
+        $jenisikantangkap = Md_jenisikantangkap::OrderBy('jenisikan','ASC')->get();
         $jenisusahadagang = Md_jenisusahadagang::all();
+        $tanamantumpangsari = Md_tanamantumpangsari::all();
         $penyakitternak = Md_penyakitternak::pluck('penyakitternak', 'id')->all();
         $jenispakanikan = Md_jenispakanikan::pluck('jenispakanikan', 'id')->all();
-
+//Open
         //session kuesioner dasar
         $kuesdasar = Pdrbdankredit::PersonalData($id)->first();
         if (empty($kuesdasar)) {
@@ -134,7 +139,7 @@ class KuesionerController extends Controller
         if (empty($bdperikanan)) {
             $stperikanan = 0;
         } else {
-            $stperikanan = $bdpertanian->status();
+            $stperikanan = $bdperikanan->status();
         }
 
         //session jasa
@@ -149,10 +154,13 @@ class KuesionerController extends Controller
             ->join('kecamatan', 'desa.idkecamatan', '=', 'kecamatan.idkecamatan')->pluck('desa', 'iddesa')->all();
         return view($this->view . '.show', compact('bidangusahapekerjaan', 'statuspekerjaan', 'asetusaha', 'perbankan', 'kredit', 'jenisindustri',
             'bahanbaku', 'suplier', 'satuan', 'jenistanaman', 'desa', 'jenissaprodi', 'jenisternak', 'jenispakanternak', 'limbahternak', 'jenisikanbudidaya',
-            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang', 'penyakitternak', 'penduduk',
-            'stkuesdasar', 'stindustri', 'stperdagangan', 'stpertanian', 'stternak', 'stperikanan', 'stjasa'));
+            'jenispakanikan', 'jenisikantangkap', 'jenisusahadagang', 'penyakitternak', 'penduduk','tanamaninti',
+            'stkuesdasar','stindustri','stperdagangan','stpertanian','stternak','stperikanan','stjasa','tanamantumpangsari'));
     }
+//Close
 
+
+// Kuesioner Dasar
     public function simpankuesionerdasar(Request $request)
     {
         $iddtdakp = 'DTD-012345-PANJI';
@@ -215,7 +223,9 @@ class KuesionerController extends Controller
 
         return Redirect::back();
     }
+// End Kuesioner Dasar
 
+//Bidang Industri
     public function simpanbidangindustri(Request $request)
     {
         $iddtdakp = 'DTD-012345-PANJI';
@@ -223,57 +233,76 @@ class KuesionerController extends Controller
         $data = array_filter($request->all());
         $bar = 'bar';
         for ($i = 1; $i <= $totalindustri + 1; $i++) {
-            if (array_key_exists('idjenisindustri1bar' . $i, $data)) {
-                for ($b = 1; $b <= 3; $b++) {
-                    $industri = new Bidang_industri();
-                    if (array_key_exists('namaproduk' . $b . $bar . $i, $data)) {
-                        $industri->nik = $request->get('nik');
-                        $industri->idjenisindustri = $data['idjenisindustri1bar' . $i];
-                        if (array_key_exists('jenisindustri' . $b . $bar . $i, $data)) {
-                            $industri->jenisindustri = $data['jenisindustri' . $b . $bar . $i];
-                        }
-                        $industri->namaproduk = $data['namaproduk' . $b . $bar . $i];
-                        $industri->produksiperbulan = $data['produksiperbulan' . $b . $bar . $i];
-                        $industri->satuanproduksi = $data['satuanproduksi' . $b . $bar . $i];
-                        $industri->idbahanbaku = $data['idbahanbaku' . $b . $bar . $i];
-                        $industri->kebutuhanperbulan = $data['kebutuhanperbulan' . $b . $bar . $i];
-                        $industri->satuanbahanbaku = $data['satuanbahanbaku' . $b . $bar . $i];
-                        $industri->hargakulakbahan = $data['hargakulakbahan' . $b . $bar . $i];
-                        $industri->idsuplier = $data['idsuplier' . $b . $bar . $i];
-                        $industri->namasuplier = $data['namasuplier' . $b . $bar . $i];
-                        $industri->hargajualproduk = $data['hargajualproduk' . $b . $bar . $i];
-                        $industri->operasionalperbulan = $data['operasionalperbulan' . $b . $bar . $i];
-                        if (array_key_exists('pemasarandalamkabupaten' . $b . $bar . $i, $data)) {
-                            $industri->pemasarandalamkabupaten = $data['pemasarandalamkabupaten' . $b . $bar . $i];
-                        } else {
-                            $industri->pemasarandalamkabupaten = 0;
-                        }
-                        if (array_key_exists('pemasaranluarkabupaten' . $b . $bar . $i, $data)) {
-                            $industri->pemasaranluarkabupaten = $data['pemasaranluarkabupaten' . $b . $bar . $i];
-                        } else {
-                            $industri->pemasaranluarkabupaten = 0;
-                        }
-                        if (array_key_exists('pemasaranluarprovinsi' . $b . $bar . $i, $data)) {
-                            $industri->pemasaranluarprovinsi = $data['pemasaranluarprovinsi' . $b . $bar . $i];
-                        } else {
-                            $industri->pemasaranluarprovinsi = 0;
-                        }
-                        if (array_key_exists('pemasaranluarnegeri' . $b . $bar . $i, $data)) {
-                            $industri->pemasaranluarnegeri = $data['pemasaranluarnegeri' . $b . $bar . $i];
-                        } else {
-                            $industri->pemasaranluarnegeri = 0;
-                        }
-                        $industri->save();
-                    }
+        if (array_key_exists('idjenisindustri1bar' . $i, $data)) {
+            for ($b = 1; $b <= 3; $b++) {
+                $industri = new Bidang_industri();
+                if (array_key_exists('namaproduk'. $b . $bar  . $i, $data)) {
+                $industri->nik = $request->get('nik');
+                $industri->idjenisindustri = $data['idjenisindustri1bar' . $i];
+                if (array_key_exists('jenisindustri'. $b . $bar  . $i, $data)) {
+                    $industri->jenisindustri = $data['jenisindustri'. $b . $bar  . $i];
+                }
+                $industri->namaproduk = $data['namaproduk'. $b . $bar  . $i];
+                $industri->produksiperbulan = $data['produksiperbulan'. $b . $bar . $i];
+                $industri->satuanproduksi = $data['satuanproduksi'. $b . $bar . $i];
+                $industri->idbahanbaku = $data['idbahanbaku'. $b . $bar . $i];
+                $industri->kebutuhanperbulan = $data['kebutuhanperbulan'. $b . $bar . $i];
+                $industri->satuanbahanbaku = $data['satuanbahanbaku'. $b . $bar . $i];
+                $industri->hargakulakbahan = $data['hargakulakbahan'. $b . $bar . $i];
+                $industri->idsuplier = $data['idsuplier'. $b . $bar . $i];
+                $industri->namasuplier = $data['namasuplier'. $b . $bar . $i];
+                $industri->hargajualproduk = $data['hargajualproduk' . $b . $bar. $i];
+                $industri->operasionalperbulan = $data['operasionalperbulan'. $b . $bar. $i];
+                $industri->omsetperbulan = $data['omsetperbulan'. $b . $bar. $i];
+                if (array_key_exists('pemasarandalamkabupaten'. $b . $bar . $i, $data)) {
+                    $industri->pemasarandalamkabupaten = $data['pemasarandalamkabupaten'. $b . $bar . $i];
+                } else {
+                    $industri->pemasarandalamkabupaten = 0;
+                }
+                if (array_key_exists('pemasaranluarkabupaten'. $b . $bar . $i, $data)) {
+                    $industri->pemasaranluarkabupaten = $data['pemasaranluarkabupaten'. $b . $bar . $i];
+                } else {
+                    $industri->pemasaranluarkabupaten = 0;
+                }
+                if (array_key_exists('pemasaranluarprovinsi'. $b . $bar . $i, $data)) {
+                    $industri->pemasaranluarprovinsi = $data['pemasaranluarprovinsi'. $b . $bar . $i];
+                } else {
+                    $industri->pemasaranluarprovinsi = 0;
+                }
+                if (array_key_exists('pemasaranluarnegeri'. $b . $bar . $i, $data)) {
+                    $industri->pemasaranluarnegeri = $data['pemasaranluarnegeri'. $b . $bar . $i];
+                } else {
+                    $industri->pemasaranluarnegeri = 0;
+                }
+                $industri->save();
                 }
             }
+            $karyawan = new Tenagakerja();
+            $karyawan->nik = $request->get('nik');
+            if (array_key_exists('buruhindustrilaki',$data)) {
+            $karyawan->laki = $data['buruhindustrilaki'];
+            }else{
+                $karyawan->laki = 0;
+            }
+            if (array_key_exists('buruhindustriperempuan',$data)) {
+            $karyawan->perempuan = $data['buruhindustriperempuan'];
+            }else{
+                $karyawan->perempuan = 0;
+            }
+            $karyawan->bidang = 1;
+            $karyawan->save();
+
+          }
+
         }
         \Session::flash("flash_notification", [
             "message" => " Data bidang industri berhasil disimpan."
         ]);
         return Redirect::back();
     }
+//End Bidang Industri
 
+//Bidang Perdagangan
     public function simpanbidangperdagangan(Request $request)
     {
 
@@ -327,6 +356,22 @@ class KuesionerController extends Controller
                     $milikdagang->konsumenluarprovinsi = 0;
                 }
                 $milikdagang->save();
+
+
+            $karyawan = new Tenagakerja();
+            $karyawan->nik = $request->get('nik');
+            if (array_key_exists('buruhdaganglaki',$data)) {
+            $karyawan->laki = $data['buruhdaganglaki'];
+            }else{
+                $karyawan->laki = 0;
+            }
+            if (array_key_exists('buruhdagangperempuan',$data)) {
+            $karyawan->perempuan = $data['buruhdagangperempuan'];
+            }else{
+                $karyawan->perempuan = 0;
+            }
+            $karyawan->bidang = 2;
+            $karyawan->save();
             }
 
         }
@@ -335,22 +380,25 @@ class KuesionerController extends Controller
         ]);
         return Redirect::back();
     }
+//Bidang Perdagangan
 
+//Bidang Pertanian
     public function simpanbidangpertanian(Request $request)
     {
-
-
         $iddtdakp = 'DTD-012345-PANJI';
         $totaltanaman = Md_jenistanaman::count();
         $totalsaprodi = Md_saprodi::count();
+        $totaltumpang = Md_tanamantumpangsari::count();
         $data = array_filter($request->all());
         for ($i = 1; $i <= $totaltanaman + 1; $i++) {
             $garapan = new Garapanpertanian();
             if (array_key_exists('idjenistanaman' . $i, $data)) {
                 $garapan->nik = $request->get('nik');
                 $garapan->idjenistanaman = $data['idjenistanaman' . $i];
+                if (array_key_exists('jenistanaman' . $i, $data)) {
+                    $garapan->jenistanaman = $data['jenistanaman' . $i];
+                }
                 $garapan->luastanam = $data['luastanam' . $i];
-                $garapan->satuanluas = $data['satuanluas' . $i];
                 $garapan->bulantanam = $data['bulantanam' . $i];
                 $garapan->bulantanamselanjutnya = $data['bulantanamselanjutnya' . $i];
                 $garapan->kebutuhanbibit = $data['kebutuhanbibit' . $i];
@@ -362,21 +410,69 @@ class KuesionerController extends Controller
                 $garapan->save();
             }
         }
+
+        for ($i = 1; $i <= $totaltumpang + 1; $i++) {
+            $sari = new Tumpangsari();
+            if (array_key_exists('idtanamantumpang' . $i, $data)) {
+                $sari->nik = $request->get('nik');
+                $sari->idtanamantumpangsari = $data['idtanamantumpang' . $i];
+                if (array_key_exists('jenistanamantumpang' . $i, $data)) {
+                $sari->jenistumpangsari = $data['jenistanamantumpang' . $i];
+                }
+                $sari->idtanamaninti = $data['tanamaninti' . $i];
+                $sari->produksiperpanen = $data['kapasitaspanentumpang' . $i];
+                $sari->panenpertanam = $data['panenpertanamtumpang' . $i];                
+                $sari->save();
+            }
+        }
+        
         $pertanian = new Bidang_pertanian();
         $pertanian->nik = $request->get('nik');
         $pertanian->statuspengelolaan = $data['statuspengelolaan'];
+        if (array_key_exists('luaslahannonproduktif', $data)) {
+        $pertanian->luaslahannonproduktif = $data['luaslahannonproduktif'];
+        } else {
+            $pertanian->luaslahannonproduktif = 0;
+        }
         $pertanian->statuspembibitan = $data['statuspembibitan'];
         if (array_key_exists('suplierbibit', $data)) {
             $pertanian->namasuplier = $data['suplierbibit'];
             $pertanian->iddesasuplier = $data['iddesasuplierbibit'];
         }
-        if (array_key_exists('kebutuhanpupukorganik', $data)) {
-            $pertanian->kebutuhanpupukorganik = $data['kebutuhanpupukorganik'];
-            $pertanian->jenispupukorganik = $data['jenispupukorganik'];
+        if (array_key_exists('bokasi',$data)) {
+        $pertanian->bokasi = $data['bokasi'];
+        }else{
+            $pertanian->bokasi = 0;
         }
-        if (array_key_exists('kebutuhanpupukanorganik', $data)) {
-            $pertanian->kebutuhanpupukanorganik = $data['kebutuhanpupukanorganik'];
-            $pertanian->jenispupukanorganik = $data['jenispupukanorganik'];
+        if (array_key_exists('pupukcair',$data)) {
+        $pertanian->pupukcair = $data['pupukcair'];
+        }else{
+            $pertanian->pupukcair = 0;
+        }
+        if (array_key_exists('urea',$data)) {
+        $pertanian->urea = $data['urea'];
+        }else{
+            $pertanian->urea = 0;
+        }
+        if (array_key_exists('za',$data)) {
+        $pertanian->za = $data['za'];
+        }else{
+            $pertanian->za = 0;
+        }
+        if (array_key_exists('tsp',$data)) {
+        $pertanian->tsp = $data['tsp'];
+        }else{
+            $pertanian->tsp = 0;
+        }
+        if (array_key_exists('kcl',$data)) {
+        $pertanian->kcl = $data['kcl'];
+        }else{
+            $pertanian->kcl = 0;
+        }
+        if (array_key_exists('npk',$data)) {
+        $pertanian->npk = $data['npk'];
+        }else{
+            $pertanian->npk = 0;
         }
         $pertanian->sumberpupuk = $data['sumberpupuk'];
         if (array_key_exists('pupukbuatan', $data)) {
@@ -413,12 +509,123 @@ class KuesionerController extends Controller
                 $saprodi->save();
             }
         }
+
+        $karyawan = new Tenagakerja();
+            $karyawan->nik = $request->get('nik');
+            if (array_key_exists('buruhtanilaki',$data)) {
+            $karyawan->laki = $data['buruhtanilaki'];
+            }else{
+                $karyawan->laki = 0;
+            }
+            if (array_key_exists('buruhtaniperempuan',$data)) {
+            $karyawan->perempuan = $data['buruhtaniperempuan'];
+            }else{
+                $karyawan->perempuan = 0;
+            }
+            $karyawan->bidang = 3;
+            $karyawan->save();
+
         \Session::flash("flash_notification", [
             "message" => " Data bidang pertanian/perkebunan berhasil disimpan."
         ]);
         return Redirect::back();
     }
+//End Bidang Pertanian
 
+//Bidang Peternakan
+    public function simpanbidangpeternakan(Request $request)
+    {
+
+    $totalternak = Md_jenisternak::count();
+    $totallimbah = Md_limbahternak::count();
+    $totalpakanternak = Md_jenispakanternak::count();
+    $data = array_filter($request->all());
+    //kelola ternak
+    for ($i = 1; $i <= $totalternak + 1; $i++) {
+        $kelolaternak = new Pengelolaanternak();
+        if (array_key_exists('idjenisternak' . $i, $data)) {
+            $kelolaternak->nik = $request->get('nik');
+            $kelolaternak->idjenisternak = $data['idjenisternak' . $i];
+            if (array_key_exists('jenisternak' . $i, $data)) {
+                $kelolaternak->jenisternak = $data['jenisternak' . $i];
+            } else {
+                unset($kelolaternak['jenisternak' . $i]);
+            }
+            $kelolaternak->idjenisternak = $data['idjenisternak' . $i];
+            $kelolaternak->statuskepemilikan = $data['statuskepemilikan' . $i];
+            $kelolaternak->jumlahternak = $data['jumlahternak' . $i];
+            $kelolaternak->hargabibitternak = $data['hargabibitternak' . $i];
+            $kelolaternak->hargajualternak = $data['hargajualternak' . $i];
+            $kelolaternak->hargajualhasilpeternakan = $data['hjhasilpeternakan' . $i];
+            $kelolaternak->satuanhasilpeternakan = $data['satuanhasilpeternakan' . $i];
+            $kelolaternak->kapasitasproduksipertahun = $data['kptahun' . $i];
+            $kelolaternak->kapasitashasilternakperperiode = $data['khternakperiode' . $i];
+            $kelolaternak->periodepertahun = $data['periodepertahun' . $i];
+            $kelolaternak->operasionalperproduksi = $data['operasionalperproduksi' . $i];
+            $kelolaternak->save();
+        }
+    }
+    //bidang peternakan
+    $request->merge(['nik' => $request->get('nik')]);
+    Bidang_peternakan::create($request->all());
+
+    //kelola limbah
+    for ($i = 1; $i <= $totallimbah + 1; $i++) {
+        $olahlimbah = new Pengolahanlimbahternak();
+        if (array_key_exists('idlimbahternak' . $i, $data)) {
+            $olahlimbah->nik = $request->get('nik');
+            $olahlimbah->idlimbahternak = $data['idlimbahternak' . $i];
+            if (array_key_exists('jenislimbahternak' . $i, $data)) {
+                $olahlimbah->jenislimbahternak = $data['jenislimbahternak' . $i];
+            }
+            $olahlimbah->kapasitasperbulan = $data['kapasitasperbulanlimbahternak' . $i];
+            $olahlimbah->satuanlimbah = $data['satuanlimbahlimbahternak' . $i];
+            $olahlimbah->hargajual = $data['hargajuallimbahternak' . $i];
+            $olahlimbah->save();
+        }
+    }
+
+    //penggunaan pakan ternak
+    for ($i = 1; $i <= $totalpakanternak + 1; $i++) {
+        $pakanternak = new Penggunaanpakanternak();
+        if (array_key_exists('idjenispakanternak' . $i, $data)) {
+            $pakanternak->nik = $request->get('nik');
+            $pakanternak->idjenispakanternak = $data['idjenispakanternak' . $i];
+            if (array_key_exists('namapakanternak' . $i, $data)) {
+                $pakanternak->namapakanternak = $data['namapakanternak' . $i];
+            }
+            $pakanternak->kebutuhanperhari = $data['kebutuhanperhari' . $i];
+            $pakanternak->satuanpakan = $data['satuanpakan' . $i];
+            $pakanternak->hargapakan = $data['hargapakan' . $i];
+            $pakanternak->save();
+        }
+    }
+    
+    //Karyawan
+    $karyawan = new Tenagakerja();
+        $karyawan->nik = $request->get('nik');
+        if (array_key_exists('buruhternaklaki',$data)) {
+        $karyawan->laki = $data['buruhternaklaki'];
+        }else{
+            $karyawan->laki = 0;
+        }
+        if (array_key_exists('buruhternakperempuan',$data)) {
+        $karyawan->perempuan = $data['buruhternakperempuan'];
+        }else{
+            $karyawan->perempuan = 0;
+        }
+        $karyawan->bidang = 4;
+        $karyawan->save();
+
+
+    \Session::flash("flash_notification", [
+        "message" => " Data bidang peternakan berhasil disimpan."
+    ]);
+    return Redirect::back();
+    }
+//End Bidang Peternakan
+
+//Bidang Perikanan
     public function simpanbidangperikanan(Request $request)
     {
 
@@ -433,20 +640,18 @@ class KuesionerController extends Controller
                 $ibudidaya->nik = $request->get('nik');
                 $ibudidaya->idjenisikan = $data['idikanbudidaya' . $i];
                 $ibudidaya->luaskolam = $data['luaskolam' . $i];
-                $ibudidaya->satuanluas = $data['satuanluas' . $i];
-                $ibudidaya->hargabibit = $data['hargabibit' . $i];
-                $ibudidaya->satuanbibit = $data['satuanbibit' . $i];
-                $ibudidaya->hargajual = $data['hargajual' . $i];
-                $ibudidaya->satuanjual = $data['satuanjual' . $i];
-                $ibudidaya->tanggaltebar = $data['tanggaltebar' . $i];
-                $ibudidaya->tanggalpanen = $data['tanggalpanen' . $i];
-                $ibudidaya->kapasitasperpanen = $data['kapasitasperpanen' . $i];
-                $ibudidaya->panenpertahun = $data['panenpertahun' . $i];
-                $ibudidaya->biayaproduksi = $data['biayaproduksi' . $i];
-                $ibudidaya->idjenispakan = $data['idjenispakan' . $i];
-                $ibudidaya->kebutuhanpakanperhari = $data['kebutuhanpakanperhari' . $i];
-                $ibudidaya->satuanpakan = $data['satuanpakan' . $i];
-                $ibudidaya->hargapakan = $data['hargapakan' . $i];
+                $ibudidaya->hargabibit = $data['hargabibitikan' . $i];
+                $ibudidaya->satuanbibit = $data['satuanbibitikan' . $i];
+                $ibudidaya->hargajual = $data['hargajualikan' . $i];
+                $ibudidaya->satuanjual = $data['satuanjualikan' . $i];
+                $ibudidaya->tanggaltebar = $data['tanggaltebarikan' . $i];
+                $ibudidaya->tanggalpanen = $data['tanggalpanenikan' . $i];
+                $ibudidaya->kapasitasperpanen = $data['kapasitasperpanenikan' . $i];
+                $ibudidaya->panenpertahun = $data['panenpertahunikan' . $i];
+                $ibudidaya->biayaproduksi = $data['biayaproduksiikan' . $i];
+                $ibudidaya->idjenispakan = $data['idjenispakanikan' . $i];
+                $ibudidaya->kebutuhanpakanperhari = $data['kebutuhanpakanperhariikan' . $i];
+                $ibudidaya->hargapakan = $data['hargapakanikan' . $i];
                 $ibudidaya->save();
             }
         }
@@ -486,9 +691,9 @@ class KuesionerController extends Controller
         $perikanan = new Bidang_perikanan();
         $perikanan->nik = $request->get('nik');
         $perikanan->perolehanpakan = $data['perolehanpakan'];
-        if (array_key_exists('idsuplier', $data)) {
-            $perikanan->idsuplier = $data['idsuplier'];
-            $perikanan->namasuplier = $data['namasuplier'];
+        if (array_key_exists('idsuplierikan', $data)) {
+            $perikanan->idsuplier = $data['idsuplierikan'];
+            $perikanan->namasuplier = $data['namasuplierikan'];
         }
         $perikanan->olahanlanjutan = $data['olahanlanjutan'];
         if (array_key_exists('namaolahan', $data)) {
@@ -520,13 +725,31 @@ class KuesionerController extends Controller
         }
         $perikanan->save();
 
+        //Karyawan
+        $karyawan = new Tenagakerja();
+        $karyawan->nik = $request->get('nik');
+        if (array_key_exists('buruhikanlaki',$data)) {
+        $karyawan->laki = $data['buruhikanlaki'];
+        }else{
+            $karyawan->laki = 0;
+        }
+        if (array_key_exists('buruhikanperempuan',$data)) {
+        $karyawan->perempuan = $data['buruhikanperempuan'];
+        }else{
+            $karyawan->perempuan = 0;
+        }
+        $karyawan->bidang = 5;
+        $karyawan->save();
+
         \Session::flash("flash_notification", [
             "message" => " Data bidang perikanan berhasil disimpan."
         ]);
 
         return Redirect::back();
     }
+//End Bidang Perikanan
 
+//Bidang Jasa
     public function simpanbidangjasa(Request $request)
     {
 
@@ -562,87 +785,29 @@ class KuesionerController extends Controller
                 $jasa->save();
             }
         }
+
+        //Karyawan
+        $karyawan = new Tenagakerja();
+        $karyawan->nik = $request->get('nik');
+        if (array_key_exists('buruhjasalaki',$data)) {
+        $karyawan->laki = $data['buruhjasalaki'];
+        }else{
+            $karyawan->laki = 0;
+        }
+        if (array_key_exists('buruhjasaperempuan',$data)) {
+        $karyawan->perempuan = $data['buruhjasaperempuan'];
+        }else{
+            $karyawan->perempuan = 0;
+        }
+        $karyawan->bidang = 6;
+        $karyawan->save();
+
         \Session::flash("flash_notification", [
             "message" => " Data bidang jasa berhasil disimpan."
         ]);
         return Redirect::back();
     }
-
-    //BIDANG PETERNAKAN
-    public function simpanbidangpeternakan(Request $request)
-    {
-
-        $totalternak = Md_jenisternak::count();
-        $totallimbah = Md_limbahternak::count();
-        $totalpakanternak = Md_jenispakanternak::count();
-        $data = array_filter($request->all());
-        //kelola ternak
-        for ($i = 1; $i <= $totalternak + 1; $i++) {
-            $kelolaternak = new Pengelolaanternak();
-            if (array_key_exists('idjenisternak' . $i, $data)) {
-                $kelolaternak->nik = $request->get('nik');
-                $kelolaternak->idjenisternak = $data['idjenisternak' . $i];
-                if (array_key_exists('jenisternak' . $i, $data)) {
-                    $kelolaternak->jenisternak = $data['jenisternak' . $i];
-                } else {
-                    unset($kelolaternak['jenisternak' . $i]);
-                }
-                $kelolaternak->idjenisternak = $data['idjenisternak' . $i];
-                $kelolaternak->statuskepemilikan = $data['statuskepemilikan' . $i];
-                $kelolaternak->jumlahternak = $data['jumlahternak' . $i];
-                $kelolaternak->hargabibitternak = $data['hargabibitternak' . $i];
-                $kelolaternak->hargajualternak = $data['hargajualternak' . $i];
-                $kelolaternak->hargajualhasilpeternakan = $data['hjhasilpeternakan' . $i];
-                $kelolaternak->satuanhasilpeternakan = $data['satuanhasilpeternakan' . $i];
-                $kelolaternak->kapasitasproduksipertahun = $data['kptahun' . $i];
-                $kelolaternak->kapasitashasilternakperperiode = $data['khternakperiode' . $i];
-                $kelolaternak->periodepertahun = $data['periodepertahun' . $i];
-                $kelolaternak->operasionalperproduksi = $data['operasionalperproduksi' . $i];
-                $kelolaternak->save();
-            }
-        }
-        //bidang peternakan
-        $request->merge(['nik' => $request->get('nik')]);
-        Bidang_peternakan::create($request->all());
-
-        //kelola limbah
-        for ($i = 1; $i <= $totallimbah + 1; $i++) {
-            $olahlimbah = new Pengolahanlimbahternak();
-            if (array_key_exists('idlimbahternak' . $i, $data)) {
-                $olahlimbah->nik = $request->get('nik');
-                $olahlimbah->idlimbahternak = $data['idlimbahternak' . $i];
-                if (array_key_exists('jenislimbahternak' . $i, $data)) {
-                    $olahlimbah->jenislimbahternak = $data['jenislimbahternak' . $i];
-                }
-                $olahlimbah->kapasitasperbulan = $data['kapasitasperbulan' . $i];
-                $olahlimbah->satuanlimbah = $data['satuanlimbah' . $i];
-                $olahlimbah->hargajual = $data['hargajual' . $i];
-                $olahlimbah->save();
-            }
-        }
-
-        //penggunaan pakan ternak
-        for ($i = 1; $i <= $totalpakanternak + 1; $i++) {
-            $pakanternak = new Penggunaanpakanternak();
-            if (array_key_exists('idjenispakanternak' . $i, $data)) {
-                $pakanternak->nik = $request->get('nik');
-                $pakanternak->idjenispakanternak = $data['idjenispakanternak' . $i];
-                if (array_key_exists('namapakanternak' . $i, $data)) {
-                    $pakanternak->namapakanternak = $data['namapakanternak' . $i];
-                }
-                $pakanternak->kebutuhanperhari = $data['kebutuhanperhari' . $i];
-                $pakanternak->satuanpakan = $data['satuanpakan' . $i];
-                $pakanternak->hargapakan = $data['hargapakan' . $i];
-                $pakanternak->save();
-            }
-        }
-
-
-        \Session::flash("flash_notification", [
-            "message" => " Data bidang peternakan berhasil disimpan."
-        ]);
-        return Redirect::back();
-    }
+//End Bidang Jasa
 
     public function anyData()
     {

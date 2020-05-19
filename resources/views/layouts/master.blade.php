@@ -672,7 +672,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                           @yield('bar')
+                            <li class="breadcrumb-item"><a href="#">@yield('bar1')</a></li>
+                            <li class="breadcrumb-item active">@yield('bar2')</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->

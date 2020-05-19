@@ -1,6 +1,6 @@
 <!-- Kuesioner Bidang Perdagangan -->
 <div class="form-group">
-    <label for="inputDescription">11. Apakah anda memiliki usaha perdagangan?</label>
+    <label for="inputDescription">12. Apakah anda memiliki usaha perdagangan?</label>
     <div class="col-md-1">
         <input onclick="checkdagang(this.value)" class="form-group" name="perdagangan" id="perdagangan" value="1"
                class="form-check-input" type="radio">
@@ -13,8 +13,8 @@
     </div>
 </div>
 
-<div id="divjenisdagang" class="form-group">
-    <label for="inputDescription">12. Pilihlah jenis usaha perdagangan anda dan isikan informasinya! (bisa mengisi lebih
+<div id="divjenisdagang1" class="form-group">
+    <label for="inputDescription">13. Pilihlah jenis usaha perdagangan anda dan isikan informasinya! (bisa mengisi lebih
         dari satu)</label>
     <div class="col-12">
         <div class="card">
@@ -50,16 +50,16 @@
                                        class="form-check-label">{{$dagang->id}}{{'. '}}{{$dagang->jenisusahadagang}}</label>
                             </td>
                             <td id="kolom1baris1jenis{{$jud}}"
-                                style="display: none">{{ Form::text('produkunggulan1bar'.$jud,null,['class'=>'form-control','id' => 'produkunggulan1bar'.$jud]) }}
+                                style="display: none">{{ Form::text('produkunggulan1bar'.$jud,null,['required'=>'required','class'=>'form-control','id' => 'produkunggulan1bar'.$jud]) }}
                             </td>
                             <td id="kolom2baris1jenis{{$jud}}" style="display: none">
-                                {{ Form::text('jumlahkulakperbulan1bar'.$jud,null,[
+                                {{ Form::text('jumlahkulakperbulan1bar'.$jud,null,['required'=>'required',
                                     'class'=>'form-control',
                                     'id' => 'jumlahkulakperbulan1bar'.$jud
                                 ]) }}
                             </td>
                             <td id="kolom3baris1jenis{{$jud}}" style="display: none">
-                                {{ Form::select('satuankulak1bar'.$jud,$satuan,null,[
+                                {{ Form::select('satuankulak1bar'.$jud,$satuan,null,['required'=>'required',
                                       'class'=>'form-control select2','placeholder' => 'Pilih',
                                       'id' => 'satuankulak1bar'.$jud
                                       ]) }}
@@ -69,7 +69,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    {{ Form::text('hargakulak1bar'.$jud,null,[
+                                    {{ Form::text('hargakulak1bar'.$jud,null,['required'=>'required',
                                         'class'=>'form-control',
                                         'id' => 'hargakulak1bar'.$jud
                                     ]) }}
@@ -80,24 +80,24 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    {{ Form::text('hargajual1bar'.$jud,null,[
+                                    {{ Form::text('hargajual1bar'.$jud,null,['required'=>'required',
                                         'class'=>'form-control',
                                         'id' => 'hargajual1bar'.$jud
                                     ]) }}
                                 </div>
                             </td>
                             <td id="kolom6baris1jenis{{$jud}}" style="display: none">
-                                {{ Form::select('satuanjual1bar'.$jud,$satuan,null,[
+                                {{ Form::select('satuanjual1bar'.$jud,$satuan,null,['required'=>'required',
                                       'class'=>'form-control select2','placeholder' => 'Pilih',
                                       'id' => 'satuanjual1bar'.$jud
                                       ]) }}
                             </td>
                             <td id="kolom7baris1jenis{{$jud}}" style="display: none">
                                 {{ Form::select('idsuplier1bar'.$jud,array('1' => 'Dalam Kecamatan', '2' => 'Dalam Kabupaten', '3' => 'Luar Kabupaten'),null,
-                                ['class'=>'form-control select2','placeholder' => 'Pilih','id' => 'idsuplier1bar'.$jud]) }}
+                                ['required'=>'required','class'=>'form-control select2','placeholder' => 'Pilih','id' => 'idsuplier1bar'.$jud]) }}
                             </td>
                             <td id="kolom8baris1jenis{{$jud}}" style="display: none">
-                                {{ Form::text('namasuplier1bar'.$jud,null,[
+                                {{ Form::text('namasuplier1bar'.$jud,null,['required'=>'required',
                                     'class'=>'form-control',
                                     'id' => 'namasuplier1bar'.$jud
                                 ]) }}
@@ -195,22 +195,22 @@
                                 <input onclick="checkjenisdagang()" name="idjenisusahadagang1bar{{$jud}}"
                                        id="idjenisusahadagang1bar{{$jud}}" value="99"
                                        class="form-group-input" type="checkbox">
-                                {{ Form::text('jenisusahadagang1bar'.$jud,null,['disabled' =>'disabled','class'=>'form-control',
+                                {{ Form::text('jenisusahadagang1bar'.$jud,null,['required'=>'required','disabled' =>'disabled','placeholder'=>'Lainnya','class'=>'form-control',
                              'id' => 'jenisusahadagang1bar'.$jud
-                         ]) }}
+                            ]) }}
                             </div>
                         </td>
                         <td id="kolom1baris1jenis{{$jud}}"
-                            style="display: none">{{ Form::text('produkunggulan1bar'.$jud,null,['class'=>'form-control','id' => 'produkunggulan1bar'.$jud]) }}
+                            style="display: none">{{ Form::text('produkunggulan1bar'.$jud,null,['required'=>'required','class'=>'form-control','id' => 'produkunggulan1bar'.$jud]) }}
                         </td>
                         <td id="kolom2baris1jenis{{$jud}}" style="display: none">
-                            {{ Form::text('jumlahkulakperbulan1bar'.$jud,null,[
+                            {{ Form::text('jumlahkulakperbulan1bar'.$jud,null,['required'=>'required',
                                 'class'=>'form-control',
                                 'id' => 'jumlahkulakperbulan1bar'.$jud
                             ]) }}
                         </td>
                         <td id="kolom3baris1jenis{{$jud}}" style="display: none">
-                            {{ Form::select('satuankulak1bar'.$jud,$satuan,null,[
+                            {{ Form::select('satuankulak1bar'.$jud,$satuan,null,['required'=>'required',
                                   'class'=>'form-control select2','placeholder' => 'Pilih',
                                   'id' => 'satuankulak1bar'.$jud
                                   ]) }}
@@ -220,7 +220,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('hargakulak1bar'.$jud,null,[
+                                {{ Form::text('hargakulak1bar'.$jud,null,['required'=>'required',
                                     'class'=>'form-control',
                                     'id' => 'hargakulak1bar'.$jud
                                 ]) }}
@@ -231,24 +231,24 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                {{ Form::text('hargajual1bar'.$jud,null,[
+                                {{ Form::text('hargajual1bar'.$jud,null,['required'=>'required',
                                     'class'=>'form-control',
                                     'id' => 'hargajual1bar'.$jud
                                 ]) }}
                             </div>
                         </td>
                         <td id="kolom6baris1jenis{{$jud}}" style="display: none">
-                            {{ Form::select('satuanjual1bar'.$jud,$satuan,null,[
+                            {{ Form::select('satuanjual1bar'.$jud,$satuan,null,['required'=>'required',
                                   'class'=>'form-control select2','placeholder' => 'Pilih',
                                   'id' => 'satuanjual1bar'.$jud
                                   ]) }}
                         </td>
                         <td id="kolom7baris1jenis{{$jud}}" style="display: none">
                             {{ Form::select('idsuplier1bar'.$jud,array('1' => 'Dalam Kecamatan', '2' => 'Dalam Kabupaten', '3' => 'Luar Kabupaten'),null,
-                            ['class'=>'form-control select2','placeholder' => 'Pilih','id' => 'idsuplier1bar'.$jud]) }}
+                            ['required'=>'required','class'=>'form-control select2','placeholder' => 'Pilih','id' => 'idsuplier1bar'.$jud]) }}
                         </td>
                         <td id="kolom8baris1jenis{{$jud}}" style="display: none">
-                            {{ Form::text('namasuplier1bar'.$jud,null,[
+                            {{ Form::text('namasuplier1bar'.$jud,null,['required'=>'required',
                                 'class'=>'form-control',
                                 'id' => 'namasuplier1bar'.$jud
                             ]) }}
@@ -347,4 +347,35 @@
         </div>
         <!-- /.card -->
     </div>
+</div>
+
+<div id="divjenisdagang2" class="form-group">
+    <label for="inputProjectLeader">14. Berapa total pekerja tetap (dibayar) dari usaha industri anda (tidak termasuk pemilik/pengelola)? isikan 0 'nol' jika tidak ada pekerja/karyawan</label>
+    <div class="col-md-12">
+    <div class="row">
+            <div class="col-md-2">
+                <div class="form-group row">
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Laki-Laki</label>
+                    <div class="col-md-5">
+                        {{ Form::number('buruhdaganglaki',null,['style'=>'text-align:right','min'=>'0','required'=>'required',
+                        'class'=>'form-control',
+                        'id' => 'buruhdaganglaki'
+                        ]) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group row">
+                    <label>Perempuan</label>
+                    <div class="col-sm-5">
+                    {{ Form::number('buruhdagangperempuan',null,['style'=>'text-align:right','min'=>'0','required'=>'required',
+                        'class'=>'form-control',
+                        'id' => 'buruhdagangperempuan'
+                        ]) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
